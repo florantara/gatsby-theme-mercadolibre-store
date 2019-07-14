@@ -1,21 +1,93 @@
-exports.createPages = ({ actions, reporter }) => {
-  reporter.warn("make sure to load data from somewhere!")
+const UrlSafeString = require("url-safe-string"),
+  slugify = new UrlSafeString()
 
-  // TODO replace this with data from somewhere
-  actions.createPage({
-    path: "/",
-    component: require.resolve("./src/templates/page.js"),
-    context: {
-      heading: "Your Theme Here",
-      content: `
-        <p>
-          Use this handy theme example as the basis for your own amazing theme!
-        </p>
-        <p>
-          For more information, see 
-          <a href="https://themejam.gatsbyjs.org">themejam.gatsbyjs.org</a>.
-        </p>
-      `,
-    },
+// Implement the Gatsby API “createPages”. This is called once the
+// data layer is bootstrapped to let plugins create pages from data.
+
+exports.createPages = ({ graphql, actions, reporter }, options) => {
+  const { createPage } = actions
+  const productDetailPath = options.paths.productDetail || "producto"
+  const productsListingPath = options.paths.productsListing || "productos"
+
+  return new Promise((resolve, reject) => {
+    const productDetailTemplate = require.resolve(
+      `./src/templates/productDetail.js`
+    )
+    resolve(
+      graphql(
+        `
+          {
+            allMercadoLibreProduct {
+              edges {
+                node {
+                  title
+                  id
+                }
+              }
+            }
+          }
+        `
+      )
+        .then(result => {
+          if (result.errors) {
+            reject(result.errors)
+          }
+          //reporter.info("creating product pages")
+          const products = result.data.allMercadoLibreProduct.edges
+          reporter.info(
+            `creating ${
+              products.length
+            } product pages with the path /${productDetailPath}:slug`
+          )
+          products.forEach(({ node }) => {
+            const slug = slugify.generate(node.title)
+            const path = `/${productDetailPath}/${slug}`
+            createPage({
+              path,
+              component: productDetailTemplate,
+              context: {
+                id: node.id,
+              },
+            })
+          })
+
+          // Create a Homepage
+          createPage({
+            path: "/",
+            component: require.resolve("./src/templates/page.js"),
+            context: {
+              heading: "Homepage",
+            },
+          })
+
+          // Products Listing
+          reporter.info(
+            `creating a products listing page located at /${productsListingPath}`
+          )
+          createPage({
+            path: `/${productsListingPath}/`,
+            component: require.resolve("./src/templates/productsListing.js"),
+            context: {
+              heading: "Products",
+            },
+          })
+        })
+        .catch(err => console.log("Error creating products listing ", err))
+    )
   })
+}
+
+exports.onCreateNode = ({ node, actions }, options) => {
+  const { createNodeField } = actions
+  const productDetailPath = options.paths.productDetail || "producto"
+
+  if (node.internal.type === `MercadoLibreProduct`) {
+    const slug = slugify.generate(node.title)
+    const path = `/${productDetailPath}/${slug}`
+    createNodeField({
+      node,
+      name: `slug`,
+      value: path,
+    })
+  }
 }

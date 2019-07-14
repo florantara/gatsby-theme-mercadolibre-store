@@ -5,5 +5,22 @@
  */
 
 module.exports = {
-  plugins: ["gatsby-theme-mercadolibre-store"],
+  plugins: [
+    {
+      resolve: "gatsby-theme-mercadolibre-store",
+      options: {
+        site: {
+          title: "Tienda Picuadrado Design",
+        },
+        paths: {
+          productDetail: "planta",
+          productsListing: "cosas",
+        },
+        mercadoLibre: {
+          siteID: "MLA",
+          user: "PICUADRADO_DESIGN",
+        },
+      },
+    },
+  ],
 }
