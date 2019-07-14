@@ -1,8 +1,12 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
+
+// Material UI
 import Grid from "@material-ui/core/Grid"
+
+// Gatsby
 import { graphql, useStaticQuery } from "gatsby"
 
-export default function Header() {
+const Header: FunctionComponent = () => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -14,11 +18,13 @@ export default function Header() {
   `)
   return (
     <header>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
+      <Grid container={true} spacing={3}>
+        <Grid item={true} xs={12}>
           <h2>{data.site.siteMetadata.title}</h2>
         </Grid>
       </Grid>
     </header>
   )
 }
+
+export default Header

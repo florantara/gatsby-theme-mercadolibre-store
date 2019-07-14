@@ -36,7 +36,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
 
   return new Promise((resolve, reject) => {
     const productDetailTemplate = require.resolve(
-      `./src/templates/productDetail.js`
+      `./src/templates/productDetail.tsx`
     )
     resolve(
       graphql(
@@ -91,7 +91,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
           )
           createPage({
             path: `/${productsListingPath}/`,
-            component: require.resolve("./src/templates/productsListing.js"),
+            component: require.resolve("./src/templates/productsListing.tsx"),
             context: {
               heading: "Products",
             },

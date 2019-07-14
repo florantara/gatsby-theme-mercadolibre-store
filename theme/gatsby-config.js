@@ -6,6 +6,8 @@ module.exports = ({ site = {}, mercadoLibre = {}, paths = {} }) => ({
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-tslint`,
     {
       resolve: "gatsby-source-mercadolibre", // source plugin
       options: {

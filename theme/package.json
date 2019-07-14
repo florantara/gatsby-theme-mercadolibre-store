@@ -8,22 +8,38 @@
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project ."
+  },
   "peerDependencies": {
     "gatsby": "^2.13.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
     "gatsby": "^2.13.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "@material-ui/icons": "^4.2.1",
+    "@types/material-ui": "^0.21.6",
+    "@types/styled-components": "^4.1.18",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.2",
     "gatsby-plugin-sharp": "^2.2.7",
+    "gatsby-plugin-tslint": "^0.0.2",
+    "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-source-mercadolibre": "^1.0.7",
     "gatsby-transformer-sharp": "^2.2.3",
     "styled-components": "^4.3.2",

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 
 // Material UI
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -13,7 +13,10 @@ import { createMuiTheme } from "@material-ui/core/styles"
 // Components
 import Header from "./header"
 
-const Layout = ({ children }) => {
+interface IProps {
+  children: any
+}
+const Layout: FunctionComponent<IProps> = ({ children }) => {
   const {
     siteTheme: { theme },
   } = useTheme()

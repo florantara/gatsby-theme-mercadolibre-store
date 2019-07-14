@@ -1,4 +1,7 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
+
+// Types
+import { IProduct, IProductQuery } from "../types/product"
 
 // Gatsby
 import { graphql } from "gatsby"
@@ -7,8 +10,11 @@ import Img from "gatsby-image"
 // Components
 import Layout from "../components/layout"
 
-const ProductDetail = ({ data }) => {
-  const product = data.mercadoLibreProduct
+interface IProps {
+  data: IProductQuery
+}
+const ProductDetail: FunctionComponent<IProps> = ({ data }) => {
+  const product: IProduct = data.mercadoLibreProduct
   return (
     <Layout>
       <h1>{product.title}</h1>
@@ -29,6 +35,7 @@ export const productQuery = graphql`
     mercadoLibreProduct(id: { eq: $id }) {
       id
       title
+      currency_id
       price
       video_id
       permalink

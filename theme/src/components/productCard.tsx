@@ -1,4 +1,7 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
+
+// Types
+import { IProduct } from "../types/product"
 
 // Gatsby
 import Img from "gatsby-image"
@@ -16,10 +19,10 @@ import { useTheme } from "../theme/useTheme"
 // Styled Components
 import styled from "styled-components"
 
-const Wrapper = styled(Card)`
+const Wrapper = styled(Card)<{ maxwidth?: string }>`
   width: ${props => props.maxWidth || "270px"};
 `
-const Image = styled(Img)`
+const Image = styled(Img)<{ height?: string }>`
   height: ${props => props.height || "400px"};
 `
 
@@ -31,13 +34,16 @@ const Price = styled(Typography)`
   color: ;
 `
 
-const ProductCard = ({ product }) => {
+interface IProps {
+  product: IProduct
+}
+const ProductCard: FunctionComponent<IProps> = ({ product }) => {
   const {
     siteTheme: { theme },
   } = useTheme()
 
   return (
-    <Wrapper maxWidth={theme.productDetail.cardWidth}>
+    <Wrapper maxwidth={theme.productDetail.cardWidth}>
       <Link to={product.fields.slug}>
         <CardActionArea>
           <Image
