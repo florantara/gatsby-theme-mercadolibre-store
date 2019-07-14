@@ -9,9 +9,9 @@ module.exports = {
     {
       resolve: "gatsby-theme-mercadolibre-store",
       options: {
-        site: {
-          title: "Tienda Picuadrado Design",
-        },
+        // site: {
+        //   title: "Tienda Picuadrado Design",
+        // },
         paths: {
           productDetail: "planta",
           productsListing: "cosas",
@@ -19,6 +19,19 @@ module.exports = {
         mercadoLibre: {
           siteID: "MLA",
           user: "PICUADRADO_DESIGN",
+        },
+        theme: {
+          productDetail: {
+            cardWidth: "270px",
+            imageHeight: "400px",
+          },
+          materialUI: {
+            palette: {
+              primary: {
+                main: "#000000",
+              },
+            },
+          },
         },
       },
     },

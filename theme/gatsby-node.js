@@ -1,8 +1,33 @@
+const crypto = require("crypto")
 const UrlSafeString = require("url-safe-string"),
   slugify = new UrlSafeString()
 
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
+
+exports.onPreBootstrap = ({ actions }, options) => {
+  const { createNode } = actions
+  const theme = options.theme || {}
+
+  // We create a node with the Theme data
+  // so it can be reused in components
+  // throught useTheme hook from theme/useHook
+  createNode({
+    theme,
+    id: `gatsby-theme-styles`,
+    parent: null,
+    children: [],
+    internal: {
+      type: `SiteTheme`,
+      content: JSON.stringify(theme),
+      description: `Gatsby Theme Styles"`,
+      contentDigest: crypto
+        .createHash(`md5`)
+        .update(JSON.stringify(theme))
+        .digest(`hex`),
+    },
+  })
+}
 
 exports.createPages = ({ graphql, actions, reporter }, options) => {
   const { createPage } = actions

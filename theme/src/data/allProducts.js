@@ -18,7 +18,7 @@ export const useAllProducts = () => {
               itemThumbnail {
                 image {
                   childImageSharp {
-                    fluid(maxWidth: 400, maxHeight: 250) {
+                    fluid(maxWidth: 800) {
                       ...GatsbyImageSharpFluid
                     }
                   }

@@ -1,26 +1,40 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+
+// Material UI
+import CssBaseline from "@material-ui/core/CssBaseline"
+import { ThemeProvider } from "@material-ui/styles"
+import Container from "@material-ui/core/Container"
+
+// Data
+import materialUIBase from "../theme/materialUIBase"
+import { useTheme } from "../theme/useTheme"
+import { createMuiTheme } from "@material-ui/core/styles"
+
+// Components
+import Header from "./header"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+  const {
+    siteTheme: { theme },
+  } = useTheme()
   return (
-    <div>
-      <header>
-        <span>{data.site.siteMetadata.title}</span>
-      </header>
-      <main>
-        <div>{children}</div>
-      </main>
-    </div>
+    <>
+      <CssBaseline />
+      <ThemeProvider
+        theme={{
+          ...materialUIBase,
+          ...createMuiTheme({ ...theme.materialUI }), // site's customizations
+        }}
+      >
+        <Container>
+          <Header />
+
+          <main>
+            <div>{children}</div>
+          </main>
+        </Container>
+      </ThemeProvider>
+    </>
   )
 }
 

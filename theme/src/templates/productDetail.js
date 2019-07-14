@@ -1,7 +1,11 @@
 import React from "react"
-import Layout from "../components/layout"
+
+// Gatsby
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+
+// Components
+import Layout from "../components/layout"
 
 const ProductDetail = ({ data }) => {
   const product = data.mercadoLibreProduct
