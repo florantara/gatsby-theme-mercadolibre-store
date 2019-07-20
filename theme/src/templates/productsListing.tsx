@@ -3,35 +3,35 @@ import React, { FunctionComponent } from "react"
 // Types
 import { IProductsQuery } from "../types/product"
 
+// Theme
+/** @jsx jsx */
+import { Styled, Box, jsx } from "theme-ui"
+
 // Components
 import Layout from "../components/layout"
 import ProductCard from "../components/productCard"
 
+// Styled
+import { Grid } from "../styledComponents/grid"
+
 // Data
 import { useAllProducts } from "../data/allProducts"
 
-// Material UI
-import Grid from "@material-ui/core/Grid"
-
-const ProductDetail: FunctionComponent = () => {
+const ProductsListing: FunctionComponent = () => {
   const { allMercadoLibreProduct } = useAllProducts()
   const products: IProductsQuery = allMercadoLibreProduct
 
   return (
     <Layout>
-      <h1>Productos:</h1>
+      <Styled.h1>Productos:</Styled.h1>
 
-      <Grid container justify="center" spacing={5}>
+      <Grid>
         {products &&
           products.edges.map(product => {
-            return (
-              <Grid key={product.node.id} item>
-                <ProductCard product={product.node} />
-              </Grid>
-            )
+            return <ProductCard product={product.node} key={product.node.id} />
           })}
       </Grid>
     </Layout>
   )
 }
-export default ProductDetail
+export default ProductsListing

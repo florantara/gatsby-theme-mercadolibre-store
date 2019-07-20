@@ -9,5 +9,10 @@ export interface ISiteTitle {
 }
 
 export interface ITheme {
-  // TOdo
+  // Needs support
+}
+
+export interface IProductListingLayout {
+  columns: number[]
+  spacing: string[]
 }

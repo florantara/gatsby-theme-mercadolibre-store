@@ -19,7 +19,7 @@ export const useAllProducts = () => {
                 image {
                   childImageSharp {
                     fluid(maxWidth: 800) {
-                      ...GatsbyImageSharpFluid
+                      ...GatsbyImageSharpFluid_withWebp
                     }
                   }
                 }

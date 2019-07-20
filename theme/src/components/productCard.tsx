@@ -3,66 +3,54 @@ import React, { FunctionComponent } from "react"
 // Types
 import { IProduct } from "../types/product"
 
-// Gatsby
-import Img from "gatsby-image"
-import { Link } from "gatsby"
-
-// Material UI
-import Card from "@material-ui/core/Card"
-import CardActionArea from "@material-ui/core/CardActionArea"
-import CardContent from "@material-ui/core/CardContent"
-import Typography from "@material-ui/core/Typography"
-
-// Data
-import { useTheme } from "../theme/useTheme"
+// Theme UI
+/** @jsx jsx */
+import { jsx } from "theme-ui"
 
 // Styled Components
-import styled from "styled-components"
+import styled from "@emotion/styled"
 
-const Wrapper = styled(Card)<{ maxwidth?: string }>`
-  width: ${props => props.maxWidth || "270px"};
-`
-const Image = styled(Img)<{ height?: string }>`
-  height: ${props => props.height || "400px"};
-`
-
-const Title = styled(Typography)`
+const Card = styled(Link)`
   text-decoration: none;
 `
-const Price = styled(Typography)`
-  text-decoration: none;
-  color: ;
+const Image = styled.span`
+  .gatsby-image-wrapper {
+    height: 100%;
+    width: 100%;
+  }
 `
+// Gatsby
+import { Link } from "gatsby"
+import Img from "gatsby-image"
 
 interface IProps {
   product: IProduct
 }
-const ProductCard: FunctionComponent<IProps> = ({ product }) => {
-  const {
-    siteTheme: { theme },
-  } = useTheme()
 
+const ProductCard: FunctionComponent<IProps> = ({ product }) => {
   return (
-    <Wrapper maxwidth={theme.productDetail.cardWidth}>
-      <Link to={product.fields.slug}>
-        <CardActionArea>
-          <Image
-            height={theme.productDetail.imageHeight}
-            fluid={product.itemThumbnail.image.childImageSharp.fluid}
-            alt={`${product.title} - ${product.title}`}
+    <article sx={{ variant: "productCard.item" }}>
+      <Card to={product.fields.slug}>
+        <Image sx={{ variant: "productCard.image" }}>
+          <Img
+            fluid={{
+              ...product.itemThumbnail.image.childImageSharp.fluid,
+            }}
+            imgStyle={{
+              objectFit: "contain",
+            }}
+            alt={product.title}
           />
-          <CardContent>
-            <Title gutterBottom variant="h6" component="h2">
-              {product.title}
-            </Title>
-            <Price variant="body2" component="p">
-              {product.currency_id}
-              {product.price}
-            </Price>
-          </CardContent>
-        </CardActionArea>
-      </Link>
-    </Wrapper>
+        </Image>
+        <span sx={{ variant: "productCard.meta" }}>
+          <span sx={{ variant: "productCard.title" }}>{product.title}</span>
+          <small sx={{ variant: "productCard.price" }}>
+            {product.currency_id}
+            {product.price}
+          </small>
+        </span>
+      </Card>
+    </article>
   )
 }
 

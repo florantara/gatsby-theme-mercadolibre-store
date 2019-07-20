@@ -20,19 +20,6 @@ module.exports = {
           siteID: "MLA",
           user: "PICUADRADO_DESIGN",
         },
-        theme: {
-          productDetail: {
-            cardWidth: "270px",
-            imageHeight: "400px",
-          },
-          materialUI: {
-            palette: {
-              primary: {
-                main: "#000000",
-              },
-            },
-          },
-        },
       },
     },
   ],

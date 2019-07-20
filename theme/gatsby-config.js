@@ -8,22 +8,12 @@ module.exports = ({ site = {}, mercadoLibre = {}, paths = {} }) => ({
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-tslint`,
+    `gatsby-theme-ui`,
     {
       resolve: "gatsby-source-mercadolibre", // source plugin
       options: {
         username: mercadoLibre.user || "",
         site_id: mercadoLibre.siteID || "",
-      },
-    },
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Roboto`,
-            subsets: [`latin`],
-          },
-        ],
       },
     },
   ],
