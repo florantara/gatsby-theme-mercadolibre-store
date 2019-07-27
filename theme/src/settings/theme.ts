@@ -131,9 +131,34 @@ export const theme = {
     fontFamily: base.fonts.body,
     display: "flex",
     justifyContent: "center",
-    padding: "45px 0 20px",
+    padding: ["45px 0 0", "45px 0 20px"],
+    ul: {
+      display: "flex",
+      listStyle: "none",
+      margin: 0,
+      padding: 0,
+      li: {
+        minWidth: ["1.5em", "2em"],
+        a: {
+          color: base.colors.text,
+          textDecoration: "none",
+          "&:hover, &:active": {
+            color: base.colors.primary,
+            textDecoration: "none",
+          },
+          "&[aria-current]": {
+            color: base.colors.primary,
+            fontWeight: "bold",
+          },
+        },
+      },
+    },
+    separator: {
+      color: "gray.0",
+    },
+
     rightArrow: {
-      paddingLeft: "20px",
+      paddingLeft: "30px",
       a: {
         color: base.colors.text,
         "&:hover, &:active": {
@@ -142,7 +167,7 @@ export const theme = {
       },
     },
     leftArrow: {
-      paddingRight: "20px",
+      paddingRight: "30px",
       a: {
         color: base.colors.text,
         "&:hover, &:active": {
