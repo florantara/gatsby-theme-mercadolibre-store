@@ -9,16 +9,17 @@ module.exports = {
     {
       resolve: "gatsby-theme-mercadolibre-store",
       options: {
-        // site: {
-        //   title: "Tienda Picuadrado Design",
-        // },
+        site: {
+          title: "Guau Yeah Petstore",
+        },
         paths: {
-          productDetail: "planta",
-          productsListing: "cosas",
+          productDetail: "producto",
+          productsListing: "productos",
+          productsListingPerPage: 6,
         },
         mercadoLibre: {
           siteID: "MLA",
-          user: "PICUADRADO_DESIGN",
+          user: "guau+yeah", //PICUADRADO_DESIGN
         },
       },
     },

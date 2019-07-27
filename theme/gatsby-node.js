@@ -1,9 +1,7 @@
 const crypto = require("crypto")
 const UrlSafeString = require("url-safe-string"),
   slugify = new UrlSafeString()
-
-// Implement the Gatsby API “createPages”. This is called once the
-// data layer is bootstrapped to let plugins create pages from data.
+const createPaginatedProducts = require("gatsby-paginate")
 
 exports.onPreBootstrap = ({ actions }, options) => {
   const { createNode } = actions
@@ -33,6 +31,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
   const { createPage } = actions
   const productDetailPath = options.paths.productDetail || "producto"
   const productsListingPath = options.paths.productsListing || "productos"
+  const productsListingPerPage = options.paths.productsListingPerPage || 6
 
   return new Promise((resolve, reject) => {
     const productDetailTemplate = require.resolve(
@@ -45,8 +44,29 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
             allMercadoLibreProduct {
               edges {
                 node {
-                  title
                   id
+                  title
+                  fields {
+                    slug
+                  }
+                  domain_id
+                  price
+                  currency_id
+                  itemThumbnail {
+                    image {
+                      childImageSharp {
+                        fluid(maxWidth: 800) {
+                          base64
+                          aspectRatio
+                          src
+                          srcSet
+                          srcWebp
+                          srcSetWebp
+                          sizes
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -89,12 +109,15 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
           reporter.info(
             `creating a products listing page located at /${productsListingPath}`
           )
-          createPage({
-            path: `/${productsListingPath}/`,
-            component: require.resolve("./src/templates/productsListing.tsx"),
-            context: {
-              heading: "Products",
-            },
+
+          createPaginatedProducts({
+            edges: products,
+            pageLength: productsListingPerPage,
+            pageTemplate: require.resolve(
+              "./src/templates/productsListing.tsx"
+            ),
+            pathPrefix: productsListingPath,
+            createPage: createPage,
           })
         })
         .catch(err => console.log("Error creating products listing ", err))

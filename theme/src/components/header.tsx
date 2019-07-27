@@ -19,8 +19,8 @@ const Header: FunctionComponent = () => {
   return (
     <ThemeHeader>
       <Styled.h2>{data.site.siteMetadata.title}</Styled.h2>
-      <Styled.a as={Link} to="/cosas">
-        Cosas
+      <Styled.a as={Link} to="/productos">
+        Productos
       </Styled.a>
     </ThemeHeader>
   )

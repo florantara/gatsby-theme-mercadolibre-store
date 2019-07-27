@@ -21,7 +21,7 @@ export interface IProductQuery {
   mercadoLibreProduct: IProduct
 }
 
-interface IProductNode {
+export interface IProductNode {
   node: IProduct
 }
 export interface IProductsQuery {

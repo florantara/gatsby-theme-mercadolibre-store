@@ -9,6 +9,8 @@
     "jsx-boolean-value": false,
     "ordered-imports": false,
     "no-submodule-imports": false,
-    "no-implicit-dependencies": false
+    "no-implicit-dependencies": false,
+    "object-literal-sort-keys": false,
+    "no-console": false
   }
 }

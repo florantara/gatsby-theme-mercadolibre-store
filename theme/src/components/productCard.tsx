@@ -43,11 +43,14 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
           />
         </Image>
         <span sx={{ variant: "productCard.meta" }}>
-          <span sx={{ variant: "productCard.title" }}>{product.title}</span>
-          <small sx={{ variant: "productCard.price" }}>
-            {product.currency_id}
-            {product.price}
+          <small
+            sx={{ variant: "productCard.price" }}
+            title={`Currency: ${product.currency_id}`}
+            aria-label={`Currency: ${product.currency_id}`}
+          >
+            ${product.price}
           </small>
+          <span sx={{ variant: "productCard.title" }}>{product.title}</span>
         </span>
       </Card>
     </article>
