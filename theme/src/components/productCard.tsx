@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useRef, useState, useEffect } from "react"
 
 // Types
 import { IProduct } from "../types/product"
@@ -28,6 +28,21 @@ interface IProps {
 }
 
 const ProductCard: FunctionComponent<IProps> = ({ product }) => {
+  console.log("Product ", product)
+  const titleElement = useRef<HTMLSpanElement>(null)
+  const [title, setTitle] = useState(product.title)
+
+  // Truncate long titles
+  useEffect(() => {
+    if (
+      titleElement &&
+      titleElement.current &&
+      titleElement.current.offsetHeight < titleElement.current.scrollHeight
+    ) {
+      setTitle(title.replace(/\W*\s(\S)*$/, "..."))
+    }
+  }, [titleElement])
+
   return (
     <article sx={{ variant: "productCard.item" }}>
       <Card to={product.fields.slug}>
@@ -43,14 +58,19 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
           />
         </Image>
         <span sx={{ variant: "productCard.meta" }}>
-          <small
+          <span sx={{ variant: "productCard.category" }}>
+            {product.itemCategory.category_name}
+          </span>
+          <span sx={{ variant: "productCard.title" }} ref={titleElement}>
+            {title}
+          </span>
+          <span
             sx={{ variant: "productCard.price" }}
             title={`Currency: ${product.currency_id}`}
             aria-label={`Currency: ${product.currency_id}`}
           >
             ${product.price}
-          </small>
-          <span sx={{ variant: "productCard.title" }}>{product.title}</span>
+          </span>
         </span>
       </Card>
     </article>

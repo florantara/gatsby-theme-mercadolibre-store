@@ -41,7 +41,7 @@
     "gatsby-plugin-sharp": "^2.2.7",
     "gatsby-plugin-tslint": "^0.0.2",
     "gatsby-plugin-typescript": "^2.1.2",
-    "gatsby-source-mercadolibre": "^1.0.8",
+    "gatsby-source-mercadolibre": "^1.0.11",
     "gatsby-theme-ui": "^0.2.0",
     "gatsby-transformer-sharp": "^2.2.3",
     "react-icons": "^3.7.0",

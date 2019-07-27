@@ -7,6 +7,10 @@ const base = roboto
 
 export const theme = {
   ...base,
+  colors: {
+    ...base.colors,
+    gray: ["#C1C5CD", "#A8ADB9", "#68737D", "#515B65", "#363D45"],
+  },
   breakpoints: ["40em", "52em", "64em"],
   styles: {
     ...base.styles,
@@ -54,15 +58,26 @@ export const theme = {
     },
     title: {
       display: "block",
-
       fontSize: [16, 14, 15],
       color: "black",
       fontWeight: "100",
+      paddingY: "0.5em",
+      lineHeight: "1.5em",
+      maxHeight: "calc( 3em + 1em ) ", // calculate lineHeight + paddingY
+      overflow: "hidden",
     },
     price: {
       display: "block",
       fontSize: [14, 18, 20],
       color: base.colors.primary,
+      paddingBottom: "0.5em",
+      fontWeight: "bold",
+    },
+    category: {
+      display: "block",
+      fontSize: "10px",
+      textTransform: "uppercase",
+      color: "gray.2",
       paddingBottom: "0.5em",
       fontWeight: "bold",
     },

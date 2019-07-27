@@ -15,6 +15,10 @@ export interface IProduct {
   itemImages: IImage[]
   itemThumbnail: IImage
   fields: { slug: string }
+  itemCategory: {
+    category_name: string
+    category_id: string
+  }
 }
 
 export interface IProductQuery {

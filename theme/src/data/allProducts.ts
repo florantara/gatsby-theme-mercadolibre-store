@@ -12,7 +12,10 @@ export const useAllProducts = () => {
               fields {
                 slug
               }
-              domain_id
+              itemCategory {
+                category_name
+                category_id
+              }
               price
               currency_id
               itemThumbnail {

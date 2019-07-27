@@ -49,7 +49,10 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
                   fields {
                     slug
                   }
-                  domain_id
+                  itemCategory {
+                    category_name
+                    category_id
+                  }
                   price
                   currency_id
                   itemThumbnail {

@@ -1,9 +1,8 @@
 import React, { FunctionComponent, useState } from "react"
 
 // Theme UI
-import { Styled } from "theme-ui"
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { Styled, jsx } from "theme-ui"
 
 // Types
 import { IProductNode } from "../types/product"
