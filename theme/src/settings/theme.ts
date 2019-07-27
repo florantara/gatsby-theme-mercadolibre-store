@@ -22,9 +22,23 @@ export const theme = {
   },
 
   // Variants (aka: components styling):
+  siteWrapper: {
+    backgroundColor: "#FAFAFA",
+  },
   productsListing: {
     columns: [1, 2, 3],
     space: ["0", "40px", "30px"],
+    header: {
+      title: {
+        width: "50%",
+      },
+      paginationContext: {
+        fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
+        fontFamily: base.fonts.body,
+        width: "50%",
+        textAlign: "right",
+      },
+    },
   },
   productCard: {
     item: {
@@ -35,7 +49,8 @@ export const theme = {
       borderStyle: "solid",
       borderRadius: "5px",
       transition: "box-shadow 10ms linear",
-      boxShadow: `4px 4px 10px 5px ${convertHexToRGBA(base.colors.muted, 0.9)}`,
+      backgroundColor: "white",
+      boxShadow: `4px 4px 10px 5px ${convertHexToRGBA(base.colors.muted, 0)}`,
       "&:hover": {
         boxShadow: `4px 4px 5px 0px ${convertHexToRGBA(base.colors.muted, 1)}`,
       },
@@ -48,6 +63,37 @@ export const theme = {
       position: "relative",
       overflow: "hidden",
       padding: "20px",
+      "&:hover": {
+        span: {
+          opacity: 1,
+        },
+      },
+    },
+    actionBox: {
+      display: "flex",
+      position: "absolute",
+      zIndex: 2,
+      alignItems: "center",
+      justifyContent: "center",
+      width: "100%",
+      height: "100%",
+      top: 0,
+      left: 0,
+      backgroundColor: convertHexToRGBA(base.colors.secondary, 0.8),
+      opacity: 0,
+      transition: "opacity 100ms linear",
+      span: {
+        borderColor: "white",
+        color: "white",
+        borderWidth: 1,
+        borderStyle: "solid",
+        display: "grid",
+        placeItems: "center",
+        fontSize: 10,
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        padding: "0.6em 1.2em",
+      },
     },
     meta: {
       display: "block",
@@ -70,7 +116,6 @@ export const theme = {
       display: "block",
       fontSize: [14, 18, 20],
       color: base.colors.primary,
-      paddingBottom: "0.5em",
       fontWeight: "bold",
     },
     category: {

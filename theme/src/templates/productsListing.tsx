@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from "react"
 
 // Theme UI
 /** @jsx jsx */
-import { Styled, jsx } from "theme-ui"
+import { Styled, jsx, Flex, Box } from "theme-ui"
 
 // Types
 import { IProductNode } from "../types/product"
@@ -25,7 +25,7 @@ interface IProps {
   pathContext: any
 }
 const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
-  const { group } = pathContext // Paginated pages from GraphQL
+  const { group, first, index, pageCount } = pathContext // Paginated pages from GraphQL
 
   // All products
   const {
@@ -50,10 +50,32 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
     )
     setProducts(updatedProducts)
   }
-
+  console.log("pathContext", pathContext)
   return (
     <Layout>
-      <Styled.h1>{pageTitle}</Styled.h1>
+      <Flex
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            variant: "productsListing.header.title",
+          }}
+        >
+          <Styled.h1>{pageTitle}</Styled.h1>
+        </Box>
+        {paginationType === "pages" && !first && (
+          <Box
+            sx={{
+              variant: "productsListing.header.paginationContext",
+            }}
+          >
+            página {index} de {pageCount}
+          </Box>
+        )}
+      </Flex>
+
       <Grid>
         {products &&
           products.map((product: IProductNode) => {

@@ -803,7 +803,7 @@
     "@emotion/utils" "0.11.2"
     "@emotion/weak-memoize" "0.2.3"
 
-"@emotion/core@^10.0.14":
+"@emotion/core@^10.0.14", "@emotion/core@^10.0.9":
   version "10.0.14"
   resolved "https://registry.yarnpkg.com/@emotion/core/-/core-10.0.14.tgz#cac5c334b278d5b7688cfff39e460a5b50abb71c"
   integrity sha512-G9FbyxLm3lSnPfLDcag8fcOQBKui/ueXmWOhV+LuEQg9HrqExuWnWaO6gm6S5rNe+AMcqLXVljf8pYgAdFLNSg==
@@ -5283,7 +5283,7 @@ gatsby-source-filesystem@^2.1.3:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-source-mercadolibre@1.0.11:
+gatsby-source-mercadolibre@^1.0.11:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/gatsby-source-mercadolibre/-/gatsby-source-mercadolibre-1.0.11.tgz#4d3d8d32b0c725d861ae7b438dba430f317fb946"
   integrity sha512-6+gJnt34N9d1lMVkxeSxfRkvyhx3rnj63LSfdYi24/9mmQFXOfZDB/fLLQ8M4k3IuYp36y/IztAX57D+3e91Fg==
@@ -9388,6 +9388,13 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-normalize@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-normalize/-/react-normalize-0.4.2.tgz#223cc8130c2019ef20ea7ab991847cf93f85aecd"
+  integrity sha512-kwealc96FcFks/awWpdXLzZEz7zQ1KcVKww6cfTuMl34/QGt4vLh5g3Paxvq36lGo21ZTKNTNdIr/tys3Ur2JA==
+  dependencies:
+    "@emotion/core" "^10.0.9"
 
 react-reconciler@^0.20.0:
   version "0.20.4"

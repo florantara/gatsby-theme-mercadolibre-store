@@ -40,7 +40,7 @@ const Pagination: FunctionComponent<IProps> = ({ context }) => {
         <span sx={{ variant: "pagination.leftArrow" }}>
           <Link
             to={`/${pathPrefix}/${previousUrl}`}
-            aria-label="Go to Previous Page"
+            aria-label="Ir a la página anterior"
           >
             <FaArrowLeft />
           </Link>
@@ -49,7 +49,10 @@ const Pagination: FunctionComponent<IProps> = ({ context }) => {
       {index} of {pageCount} pages
       {!last && (
         <span sx={{ variant: "pagination.rightArrow" }}>
-          <Link to={`/${pathPrefix}/${nextUrl}`} aria-label="Go to Next Page">
+          <Link
+            to={`/${pathPrefix}/${nextUrl}`}
+            aria-label="Ir a la próxima página"
+          >
             <FaArrowRight />
           </Link>
         </span>

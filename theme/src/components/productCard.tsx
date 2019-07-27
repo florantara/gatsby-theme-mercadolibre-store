@@ -19,6 +19,10 @@ const Image = styled.span`
     width: 100%;
   }
 `
+
+// Site config
+import siteConfig from "../settings/site"
+
 // Gatsby
 import { Link } from "gatsby"
 import Img from "gatsby-image"
@@ -28,9 +32,11 @@ interface IProps {
 }
 
 const ProductCard: FunctionComponent<IProps> = ({ product }) => {
-  console.log("Product ", product)
   const titleElement = useRef<HTMLSpanElement>(null)
   const [title, setTitle] = useState(product.title)
+  const {
+    productsListing: { productCard },
+  } = siteConfig
 
   // Truncate long titles
   useEffect(() => {
@@ -47,6 +53,11 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
     <article sx={{ variant: "productCard.item" }}>
       <Card to={product.fields.slug}>
         <Image sx={{ variant: "productCard.image" }}>
+          {productCard.showActionBox && (
+            <span sx={{ variant: "productCard.actionBox" }}>
+              <span>Ver producto</span>
+            </span>
+          )}
           <Img
             fluid={{
               ...product.itemThumbnail.image.childImageSharp.fluid,
@@ -57,21 +68,31 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
             alt={product.title}
           />
         </Image>
-        <span sx={{ variant: "productCard.meta" }}>
-          <span sx={{ variant: "productCard.category" }}>
-            {product.itemCategory.category_name}
+        {(productCard.showCategory ||
+          productCard.showTitle ||
+          productCard.showPrice) && (
+          <span sx={{ variant: "productCard.meta" }}>
+            {productCard.showCategory && (
+              <span sx={{ variant: "productCard.category" }}>
+                {product.itemCategory.category_name}
+              </span>
+            )}
+            {productCard.showTitle && (
+              <span sx={{ variant: "productCard.title" }} ref={titleElement}>
+                {title}
+              </span>
+            )}
+            {productCard.showPrice && (
+              <span
+                sx={{ variant: "productCard.price" }}
+                title={`Currency: ${product.currency_id}`}
+                aria-label={`Currency: ${product.currency_id}`}
+              >
+                ${product.price}
+              </span>
+            )}
           </span>
-          <span sx={{ variant: "productCard.title" }} ref={titleElement}>
-            {title}
-          </span>
-          <span
-            sx={{ variant: "productCard.price" }}
-            title={`Currency: ${product.currency_id}`}
-            aria-label={`Currency: ${product.currency_id}`}
-          >
-            ${product.price}
-          </span>
-        </span>
+        )}
       </Card>
     </article>
   )

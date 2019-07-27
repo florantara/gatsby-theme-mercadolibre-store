@@ -1,7 +1,11 @@
 import React, { FunctionComponent } from "react"
 
+// Normalize
+import Normalize from "react-normalize"
+
 // Theme UI
-import { ThemeProvider, Layout as ThemeLayout, Main } from "theme-ui"
+/** @jsx jsx */
+import { ThemeProvider, Layout as ThemeLayout, Main, jsx } from "theme-ui"
 import theme from "../settings/theme"
 
 // Components
@@ -13,10 +17,13 @@ interface IProps {
 const Layout: FunctionComponent<IProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Header />
-      <ThemeLayout>
-        <Main children={children} />
-      </ThemeLayout>
+      <Normalize />
+      <div sx={{ variant: "siteWrapper" }}>
+        <Header />
+        <ThemeLayout>
+          <Main children={children} />
+        </ThemeLayout>
+      </div>
     </ThemeProvider>
   )
 }
