@@ -15,5 +15,6 @@ const mediaQueries: any = theme.breakpoints.map((b: number, i: number) => {
 
 export const Grid = styled.section`
   display: grid;
+  grid-gap: ${theme.productsListing.space[0]};
   ${mediaQueries}
 `

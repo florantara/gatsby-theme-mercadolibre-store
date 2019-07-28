@@ -17,6 +17,7 @@ export const useAllProducts = () => {
                 category_id
               }
               price
+              original_price
               currency_id
               itemThumbnail {
                 image {

@@ -19,7 +19,7 @@ module.exports = {
         },
         mercadoLibre: {
           siteID: "MLA",
-          user: "guau+yeah", //PICUADRADO_DESIGN
+          user: "KCC-TO", //PICUADRADO_DESIGN
         },
       },
     },

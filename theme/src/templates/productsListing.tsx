@@ -86,10 +86,7 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
         <Pagination context={pathContext} />
       ) : (
         <div sx={{ variant: "pagination.loadMoreButtonWrapper" }}>
-          <button
-            sx={{ variant: "pagination.loadMoreButton" }}
-            onClick={loadMore}
-          >
+          <button sx={{ variant: "buttons.primaryOutline" }} onClick={loadMore}>
             {loadMoreButtonLabel}
           </button>
         </div>

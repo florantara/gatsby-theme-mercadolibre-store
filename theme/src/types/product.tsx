@@ -7,6 +7,7 @@ export interface IProduct {
   title: string
   currency_id: string
   price: string
+  original_price: string
   video_id?: string
   permalink: string
   itemDescription: string

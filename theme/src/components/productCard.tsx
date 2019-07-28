@@ -19,6 +19,8 @@ const Image = styled.span`
     width: 100%;
   }
 `
+// Utils
+import { getPrice } from "../utils/getPrice"
 
 // Site config
 import siteConfig from "../settings/site"
@@ -49,12 +51,21 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
     }
   }, [titleElement])
 
+  const { isOnSale, price, originalPrice, percentageOff } = getPrice(
+    product.price,
+    product.original_price
+  )
+  console.log(isOnSale, price, percentageOff)
+
   return (
     <article sx={{ variant: "productCard.item" }}>
       <Card to={product.fields.slug}>
         <Image sx={{ variant: "productCard.image" }}>
-          {productCard.showActionBox && (
-            <span sx={{ variant: "productCard.actionBox" }}>
+          {productCard.showImageActionBox && (
+            <span
+              sx={{ variant: "productCard.imageActionBox" }}
+              className="imageActionBox"
+            >
               <span>Ver producto</span>
             </span>
           )}
@@ -85,10 +96,22 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
             {productCard.showPrice && (
               <span
                 sx={{ variant: "productCard.price" }}
-                title={`Currency: ${product.currency_id}`}
-                aria-label={`Currency: ${product.currency_id}`}
+                title={`Moneda: ${product.currency_id}`}
+                aria-label={`Moneda: ${product.currency_id}`}
               >
-                ${product.price}
+                {isOnSale ? (
+                  <span sx={{ variant: "productCard.price.onSaleInfo" }}>
+                    <span sx={{ variant: "productCard.price.originalPrice" }}>
+                      ${originalPrice}
+                    </span>
+                    <span>${price}</span>
+                    <span sx={{ variant: "productCard.price.percentageOff" }}>
+                      {percentageOff}% OFF
+                    </span>
+                  </span>
+                ) : (
+                  <span>${price}</span>
+                )}
               </span>
             )}
           </span>

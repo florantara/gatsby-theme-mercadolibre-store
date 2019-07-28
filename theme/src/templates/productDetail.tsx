@@ -3,6 +3,10 @@ import React, { FunctionComponent } from "react"
 // Types
 import { IProduct, IProductQuery } from "../types/product"
 
+// Theme UI
+/** @jsx jsx */
+import { Styled, jsx } from "theme-ui"
+
 // Gatsby
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -15,9 +19,10 @@ interface IProps {
 }
 const ProductDetail: FunctionComponent<IProps> = ({ data }) => {
   const product: IProduct = data.mercadoLibreProduct
+  console.log("product ", product)
   return (
     <Layout>
-      <h1>{product.title}</h1>
+      <Styled.h1>{product.title}</Styled.h1>
       {product.itemImages.map((img, i) => (
         <Img
           key={i}
@@ -37,6 +42,7 @@ export const productQuery = graphql`
       title
       currency_id
       price
+      original_price
       video_id
       permalink
       itemDescription

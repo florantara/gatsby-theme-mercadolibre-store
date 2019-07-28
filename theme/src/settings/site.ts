@@ -4,7 +4,7 @@ interface ISiteConfig {
     paginationType: "loadMore" | "pages"
     loadMoreButtonLabel?: string
     productCard: {
-      showActionBox: boolean
+      showImageActionBox: boolean
       showTitle: boolean
       showPrice: boolean
       showCategory: boolean
@@ -15,10 +15,10 @@ interface ISiteConfig {
 export const siteConfig: ISiteConfig = {
   productsListing: {
     pageTitle: "Productos",
-    paginationType: "pages",
+    paginationType: "loadMore",
     loadMoreButtonLabel: "Cargar más",
     productCard: {
-      showActionBox: true,
+      showImageActionBox: true,
       showTitle: true,
       showPrice: true,
       showCategory: true,

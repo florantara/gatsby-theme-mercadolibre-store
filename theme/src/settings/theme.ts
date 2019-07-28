@@ -25,9 +25,109 @@ export const theme = {
   siteWrapper: {
     backgroundColor: "#FAFAFA",
   },
+  buttons: {
+    primary: {
+      appareance: "none",
+      cursor: "pointer",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: base.colors.primary,
+      color: "white",
+      backgroundColor: base.colors.primary,
+      transition: "all 100ms linear",
+      padding: "0.9em 3em",
+      textTransform: "uppercase",
+      fontFamily: base.fonts.body,
+      fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
+      boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.primary, 0)}`,
+      "&:hover, &:active": {
+        color: base.colors.primary,
+        backgroundColor: "white",
+        boxShadow: `4px 4px 10px ${convertHexToRGBA(base.colors.primary, 0.3)}`,
+      },
+      "&:focus": {
+        outlineColor: base.colors.primary,
+      },
+    },
+    primaryOutline: {
+      appareance: "none",
+      cursor: "pointer",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: base.colors.primary,
+      color: base.colors.primary,
+      background: "transparent",
+      transition: "all 100ms linear",
+      padding: "0.9em 3em",
+      textTransform: "uppercase",
+      fontFamily: base.fonts.body,
+      fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
+      boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.primary, 0)}`,
+      "&:hover, &:active": {
+        color: "white",
+        backgroundColor: base.colors.primary,
+        boxShadow: `4px 4px 10px ${convertHexToRGBA(base.colors.primary, 0.3)}`,
+      },
+      "&:focus": {
+        outlineColor: base.colors.primary,
+      },
+    },
+    secondary: {
+      appareance: "none",
+      cursor: "pointer",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: base.colors.secondary,
+      color: "white",
+      backgroundColor: base.colors.secondary,
+      transition: "all 100ms linear",
+      padding: "0.9em 3em",
+      textTransform: "uppercase",
+      fontFamily: base.fonts.body,
+      fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
+      boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.secondary, 0)}`,
+      "&:hover, &:active": {
+        color: base.colors.secondary,
+        backgroundColor: "white",
+        boxShadow: `4px 4px 10px ${convertHexToRGBA(
+          base.colors.secondary,
+          0.3
+        )}`,
+      },
+      "&:focus": {
+        outlineColor: base.colors.secondary,
+      },
+    },
+    secondaryOutline: {
+      appareance: "none",
+      cursor: "pointer",
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: base.colors.secondary,
+      color: base.colors.secondary,
+      background: "transparent",
+      transition: "all 100ms linear",
+      padding: "0.9em 3em",
+      textTransform: "uppercase",
+      fontFamily: base.fonts.body,
+      fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
+      boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.secondary, 0)}`,
+      "&:hover, &:active": {
+        color: "white",
+        backgroundColor: base.colors.secondary,
+        boxShadow: `4px 4px 10px ${convertHexToRGBA(
+          base.colors.secondary,
+          0.3
+        )}`,
+      },
+      "&:focus": {
+        outlineColor: base.colors.secondary,
+      },
+    },
+  },
   productsListing: {
     columns: [1, 2, 3],
-    space: ["0", "40px", "30px"],
+    space: ["30px", "40px", "30px"],
     header: {
       title: {
         width: "50%",
@@ -53,6 +153,12 @@ export const theme = {
       boxShadow: `4px 4px 10px 5px ${convertHexToRGBA(base.colors.muted, 0)}`,
       "&:hover": {
         boxShadow: `4px 4px 5px 0px ${convertHexToRGBA(base.colors.muted, 1)}`,
+        ".actionBox": {
+          opacity: 1,
+        },
+        ".gatsby-image-wrapper": {
+          transform: "scale(1.1)",
+        },
       },
     },
     image: {
@@ -63,13 +169,16 @@ export const theme = {
       position: "relative",
       overflow: "hidden",
       padding: "20px",
+      ".gatsby-image-wrapper": {
+        transition: "transform 200ms ease-in",
+      },
       "&:hover": {
-        span: {
+        ".imageActionBox": {
           opacity: 1,
         },
       },
     },
-    actionBox: {
+    imageActionBox: {
       display: "flex",
       position: "absolute",
       zIndex: 2,
@@ -79,12 +188,13 @@ export const theme = {
       height: "100%",
       top: 0,
       left: 0,
-      backgroundColor: convertHexToRGBA(base.colors.secondary, 0.8),
+      backgroundColor: convertHexToRGBA(base.colors.secondary, 0.7),
       opacity: 0,
       transition: "opacity 100ms linear",
       span: {
         borderColor: "white",
-        color: "white",
+        backgroundColor: "white",
+        color: base.colors.text,
         borderWidth: 1,
         borderStyle: "solid",
         display: "grid",
@@ -109,14 +219,35 @@ export const theme = {
       fontWeight: "100",
       paddingY: "0.5em",
       lineHeight: "1.5em",
-      maxHeight: "calc( 3em + 1em ) ", // calculate lineHeight + paddingY
+      maxHeight: ["1em", "1em", "calc( 3em + 1em )"], // calculate lineHeight + paddingY
       overflow: "hidden",
     },
     price: {
       display: "block",
       fontSize: [14, 18, 20],
-      color: base.colors.primary,
+      color: base.colors.text,
       fontWeight: "bold",
+      onSaleInfo: {
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+      },
+      originalPrice: {
+        display: "block",
+        width: "100%",
+        color: "gray.1",
+        textDecoration: "line-through",
+        fontWeight: "100",
+        fontSize: [11, 13, 14],
+        marginBottom: "0.2em",
+        fontStyle: "italic",
+      },
+      percentageOff: {
+        fontWeight: "100",
+        fontSize: [11, 13, 15],
+        color: "mediumseagreen",
+        marginLeft: "1em",
+      },
     },
     category: {
       display: "block",
@@ -177,30 +308,7 @@ export const theme = {
     },
     loadMoreButtonWrapper: {
       textAlign: "center",
-      paddingTop: "45px;",
-    },
-    loadMoreButton: {
-      appareance: "none",
-      cursor: "pointer",
-      borderWidth: 1,
-      borderStyle: "solid",
-      borderColor: base.colors.primary,
-      color: base.colors.primary,
-      background: "transparent",
-      transition: "all 100ms linear",
-      padding: "0.9em 3em",
-      textTransform: "uppercase",
-      fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
-      boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.primary, 0)}`,
-
-      "&:hover, &:active": {
-        color: "white",
-        backgroundColor: base.colors.primary,
-        boxShadow: `4px 4px 10px ${convertHexToRGBA(base.colors.primary, 0.3)}`,
-      },
-      "&:focus": {
-        outlineColor: base.colors.primary,
-      },
+      paddingY: "45px",
     },
   },
 }

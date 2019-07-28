@@ -54,6 +54,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
                     category_id
                   }
                   price
+                  original_price
                   currency_id
                   itemThumbnail {
                     image {
