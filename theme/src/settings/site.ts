@@ -2,7 +2,9 @@ interface ISiteConfig {
   productsListing: {
     pageTitle: string
     paginationType: "loadMore" | "pages"
-    loadMoreButtonLabel?: string
+    loadMoreAmount: number
+    loadMoreButtonLabel: string
+    loadMoreNoMoreText: string
     productCard: {
       showImageActionBox: boolean
       showTitle: boolean
@@ -15,8 +17,10 @@ interface ISiteConfig {
 export const siteConfig: ISiteConfig = {
   productsListing: {
     pageTitle: "Productos",
-    paginationType: "loadMore",
+    paginationType: "loadMore", // if set to "pages" but no pages were created it will fallback to "loadMore"
+    loadMoreAmount: 6,
     loadMoreButtonLabel: "Cargar más",
+    loadMoreNoMoreText: "Fin",
     productCard: {
       showImageActionBox: true,
       showTitle: true,

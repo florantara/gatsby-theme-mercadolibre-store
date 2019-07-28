@@ -15,11 +15,12 @@ module.exports = {
         paths: {
           productDetail: "producto",
           productsListing: "productos",
-          productsListingPerPage: 6,
+          enablePagination: true,
+          productsListingPerPage: 3,
         },
         mercadoLibre: {
           siteID: "MLA",
-          user: "KCC-TO", //PICUADRADO_DESIGN
+          user: "PICUADRADO_DESIGN", //PICUADRADO_DESIGN
         },
       },
     },

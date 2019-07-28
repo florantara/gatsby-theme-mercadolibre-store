@@ -21,7 +21,11 @@ export const theme = {
     },
   },
 
-  // Variants (aka: components styling):
+  /*
+   *
+   * Variants (aka: components styling)
+   *
+   */
   siteWrapper: {
     backgroundColor: "#FAFAFA",
   },
@@ -126,7 +130,7 @@ export const theme = {
     },
   },
   productsListing: {
-    columns: [1, 2, 3],
+    columns: [1, 2, 3], // Maybe this belongs to the SiteConfig?
     space: ["30px", "40px", "30px"],
     header: {
       title: {
@@ -188,11 +192,11 @@ export const theme = {
       height: "100%",
       top: 0,
       left: 0,
-      backgroundColor: convertHexToRGBA(base.colors.secondary, 0.7),
+      backgroundColor: convertHexToRGBA("#FFFFFF", 0.6),
       opacity: 0,
       transition: "opacity 100ms linear",
       span: {
-        borderColor: "white",
+        borderColor: base.colors.text,
         backgroundColor: "white",
         color: base.colors.text,
         borderWidth: 1,

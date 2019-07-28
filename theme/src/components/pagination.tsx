@@ -11,19 +11,10 @@ import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 
 // Types
-import { IProductNode } from "../types/product"
+import { IPathContext } from "../types/theme"
 
 interface IProps {
-  context: {
-    additionalContext?: any
-    first: boolean
-    last: boolean
-    group: IProductNode[]
-    index: number
-    isCreatedByStatefulCreatePages: boolean
-    pageCount: number
-    pathPrefix: string
-  }
+  context: IPathContext
 }
 
 interface IPaginationElement {
@@ -47,6 +38,11 @@ const getElement = (
 
 const Pagination: FunctionComponent<IProps> = ({ context }) => {
   const { index, pageCount, pathPrefix } = context
+
+  if (!index || !pageCount || !pathPrefix) {
+    return null
+  }
+
   const previousUrl = index - 1 === 1 ? "/" : (index - 1).toString()
   const nextUrl = (index + 1).toString()
 

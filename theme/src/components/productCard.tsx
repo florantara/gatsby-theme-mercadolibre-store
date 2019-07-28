@@ -55,7 +55,6 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
     product.price,
     product.original_price
   )
-  console.log(isOnSale, price, percentageOff)
 
   return (
     <article sx={{ variant: "productCard.item" }}>

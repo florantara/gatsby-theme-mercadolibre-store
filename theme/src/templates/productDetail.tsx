@@ -14,22 +14,40 @@ import Img from "gatsby-image"
 // Components
 import Layout from "../components/layout"
 
+// Gallery
+import ImageGallery from "react-image-gallery"
+import "react-image-gallery/styles/css/image-gallery.css"
+
 interface IProps {
   data: IProductQuery
 }
 const ProductDetail: FunctionComponent<IProps> = ({ data }) => {
   const product: IProduct = data.mercadoLibreProduct
-  console.log("product ", product)
+  console.log("product ", product.itemImages)
+
+  const galleryImages = product.itemImages.map((img, i) => ({
+    original: img.image.childImageSharp.fixed.src,
+    thumbnail: img.image.childImageSharp.fixed.src,
+    renderItem: () => (
+      <Img
+        key={i}
+        fluid={img.image.childImageSharp.fluid}
+        alt={product.title}
+      />
+    ),
+  }))
   return (
     <Layout>
       <Styled.h1>{product.title}</Styled.h1>
-      {product.itemImages.map((img, i) => (
-        <Img
-          key={i}
-          fluid={img.image.childImageSharp.fluid}
-          alt={product.title}
-        />
-      ))}
+      <ImageGallery
+        items={galleryImages}
+        thumbnailPosition="left"
+        showFullscreenButton={false}
+        infinite={false}
+        showPlayButton={false}
+        lazyLoad={true}
+        showIndex={true}
+      />
     </Layout>
   )
 }
@@ -51,7 +69,10 @@ export const productQuery = graphql`
       itemImages {
         image {
           childImageSharp {
-            fluid(maxWidth: 400, maxHeight: 250) {
+            fixed: fixed(width: 400) {
+              ...GatsbyImageSharpFixed
+            }
+            fluid: fluid(maxWidth: 400, maxHeight: 250) {
               ...GatsbyImageSharpFluid
             }
           }

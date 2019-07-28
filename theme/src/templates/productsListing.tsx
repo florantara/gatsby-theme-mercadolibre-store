@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useState } from "react"
 
+// Types
+import { IPathContext } from "../types/theme"
+
 // Theme UI
 /** @jsx jsx */
 import { Styled, jsx, Flex, Box } from "theme-ui"
@@ -22,35 +25,70 @@ import siteConfig from "../settings/site"
 import { useAllProducts } from "../data/allProducts"
 
 interface IProps {
-  pathContext: any
+  pathContext: IPathContext
 }
-const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
-  const { group, first, index, pageCount } = pathContext // Paginated pages from GraphQL
 
-  // All products
+/*
+ * Pagination formats supported:
+ * "pages" or "loadMore"
+ * "loadMore" is the default
+ */
+const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
+  const group = pathContext && pathContext.group
+  const first = pathContext && pathContext.first
+  const index = pathContext && pathContext.index
+  const pageCount = pathContext && pathContext.pageCount
+
+  // We use this to check that gatsby-paginate ran
+  // and there are pages to work with.
+  //
+  // If so, and paginationType is set to "pages" on
+  // the siteConfig, we'll display a pagination.
+  // If it's set to "pages", but no pages were created
+  // we'll fallback to the "loadMore" format
+  const paginatedPagesExist = pathContext.paginatedPagesExist
+
+  // All products data
   const {
     allMercadoLibreProduct: { edges },
   } = useAllProducts()
+
+  const totalProducts = edges.length
+
+  // Site Config
   const {
-    productsListing: { loadMoreButtonLabel, paginationType, pageTitle },
+    productsListing: {
+      pageTitle,
+      paginationType,
+      loadMoreButtonLabel,
+      loadMoreNoMoreText,
+      loadMoreAmount,
+    },
   } = siteConfig
 
-  const displayProducts =
-    paginationType === "pages"
+  // how many products to show by page/loadMore screen
+  const groupedBy =
+    paginationType === "pages" && paginatedPagesExist && group
+      ? group.length
+      : loadMoreAmount
+
+  const initialDisplayedProducts =
+    paginationType === "pages" && paginatedPagesExist
       ? group
-      : edges.filter((p: IProductNode, i: number) => i < group.length) // Limit the initial displayed amount
+      : edges.filter((p: IProductNode, i: number) => i < groupedBy) // Limit the amount
 
-  const [products, setProducts] = useState(displayProducts)
+  const [products, setProducts] = useState(initialDisplayedProducts)
 
-  const loadMore = () => {
+  // Load More Products
+  const loadMoreHandler = () => {
     const displaying = products.length
-    const amountToLoad = displaying + group.length
+    const amountToLoad = displaying + groupedBy
     const updatedProducts = edges.filter(
       (p: IProductNode, i: number) => i < amountToLoad
     )
     setProducts(updatedProducts)
   }
-  console.log("pathContext", pathContext)
+
   return (
     <Layout>
       <Flex
@@ -65,7 +103,7 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
         >
           <Styled.h1>{pageTitle}</Styled.h1>
         </Box>
-        {paginationType === "pages" && !first && (
+        {paginationType === "pages" && paginatedPagesExist && !first && (
           <Box
             sx={{
               variant: "productsListing.header.paginationContext",
@@ -82,14 +120,22 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
             return <ProductCard product={product.node} key={product.node.id} />
           })}
       </Grid>
-      {paginationType === "pages" ? (
+
+      {paginationType === "pages" && paginatedPagesExist ? (
         <Pagination context={pathContext} />
       ) : (
-        <div sx={{ variant: "pagination.loadMoreButtonWrapper" }}>
-          <button sx={{ variant: "buttons.primaryOutline" }} onClick={loadMore}>
-            {loadMoreButtonLabel}
-          </button>
-        </div>
+        <aside sx={{ variant: "pagination.loadMoreButtonWrapper" }}>
+          {products.length !== totalProducts ? (
+            <button
+              sx={{ variant: "buttons.primaryOutline" }}
+              onClick={loadMoreHandler}
+            >
+              {loadMoreButtonLabel}
+            </button>
+          ) : (
+            <Styled.p>{loadMoreNoMoreText}</Styled.p>
+          )}
+        </aside>
       )}
     </Layout>
   )

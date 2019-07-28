@@ -31,6 +31,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
   const { createPage } = actions
   const productDetailPath = options.paths.productDetail || "producto"
   const productsListingPath = options.paths.productsListing || "productos"
+  const enablePagination = options.paths.enablePagination || false
   const productsListingPerPage = options.paths.productsListingPerPage || 6
 
   return new Promise((resolve, reject) => {
@@ -114,15 +115,27 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
             `creating a products listing page located at /${productsListingPath}`
           )
 
-          createPaginatedProducts({
-            edges: products,
-            pageLength: productsListingPerPage,
-            pageTemplate: require.resolve(
-              "./src/templates/productsListing.tsx"
-            ),
-            pathPrefix: productsListingPath,
-            createPage: createPage,
-          })
+          if (enablePagination) {
+            // Generate the pages and the product listing page
+            createPaginatedProducts({
+              edges: products,
+              pageLength: productsListingPerPage,
+              pageTemplate: require.resolve(
+                "./src/templates/productsListing.tsx"
+              ),
+              pathPrefix: productsListingPath,
+              createPage: createPage,
+              context: {
+                paginatedPagesExist: true,
+              },
+            })
+          } else {
+            // Generate just the product listing page
+            createPage({
+              path: productsListingPath,
+              component: require.resolve("./src/templates/productsListing.tsx"),
+            })
+          }
         })
         .catch(err => console.log("Error creating products listing ", err))
     )
