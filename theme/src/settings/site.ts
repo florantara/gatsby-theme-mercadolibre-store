@@ -1,4 +1,12 @@
+interface IMenuItem {
+  label: string
+  link: string
+}
 interface ISiteConfig {
+  header: {
+    layout: "compact" | "wide"
+    menuItems: IMenuItem[]
+  }
   productsListing: {
     pageTitle: string
     paginationType: "loadMore" | "pages"
@@ -23,6 +31,19 @@ interface ISiteConfig {
 }
 
 export const siteConfig: ISiteConfig = {
+  header: {
+    layout: "wide",
+    menuItems: [
+      {
+        label: "inicio",
+        link: "/",
+      },
+      {
+        label: "productos",
+        link: "/productos",
+      },
+    ],
+  },
   productsListing: {
     pageTitle: "Productos",
     paginationType: "loadMore", // if set to "pages" but no pages were created it will fallback to "loadMore"

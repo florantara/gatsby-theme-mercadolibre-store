@@ -19,6 +19,22 @@ export const theme = {
       marginX: "auto",
       paddingX: [20, 30],
     },
+    Header: {
+      "&.compact": {
+        maxWidth: "980px",
+      },
+      fontFamily: base.fonts.body,
+
+      backgroundColor: "white",
+      paddingY: "15px",
+      paddingX: "30px",
+      marginBottom: "30px",
+      borderBottomWidth: "1px",
+      borderBottomColor: base.colors.muted,
+      borderBottomStyle: "solid",
+      display: "flex",
+      alignItems: "center",
+    },
     ul: {
       margin: "0 0 0 1em",
       padding: 0,
@@ -34,6 +50,41 @@ export const theme = {
    */
   siteWrapper: {
     backgroundColor: "#FAFAFA",
+  },
+  siteHeader: {
+    textLogo: {
+      fontSize: "14px",
+      textTransform: "uppercase",
+      fontWeight: "bold",
+      marginRight: "40px",
+    },
+    navigation: {
+      ul: {
+        margin: 0,
+        padding: 0,
+        listStyle: "none",
+        lineHeight: 1,
+        display: "flex",
+        alignItems: "center",
+        li: {
+          fontSize: [16, 15, 14],
+          marginRight: "1.5em",
+          a: {
+            color: base.colors.text,
+            textDecoration: "none",
+            "&:hover": {
+              textDecoration: "none",
+              color: base.colors.secondary,
+            },
+            "&[aria-current]": {
+              borderBottomColor: "inherit",
+              borderBottomWidth: 2,
+              borderBottomStyle: "solid",
+            },
+          },
+        },
+      },
+    },
   },
   staticPageContainer: {
     backgroundColor: "white",
