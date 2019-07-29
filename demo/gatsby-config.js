@@ -19,8 +19,8 @@ module.exports = {
           productsListingPerPage: 3,
         },
         mercadoLibre: {
-          siteID: "MCO",
-          user: "MERCADEOWEBRELAX", //PICUADRADO_DESIGN
+          siteID: "MLA",
+          user: "PICUADRADO_DESIGN", //PICUADRADO_DESIGN
         },
       },
     },

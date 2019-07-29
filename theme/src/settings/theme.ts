@@ -19,6 +19,12 @@ export const theme = {
       marginX: "auto",
       paddingX: [20, 30],
     },
+    ul: {
+      margin: "0 0 0 1em",
+      padding: 0,
+      lineHeight: "1.7",
+      fontFamily: base.fonts.body,
+    },
   },
 
   /*
@@ -29,6 +35,20 @@ export const theme = {
   siteWrapper: {
     backgroundColor: "#FAFAFA",
   },
+  staticPageContainer: {
+    backgroundColor: "white",
+    padding: 30,
+    boxShadow: `4px 4px 10px ${convertHexToRGBA(base.colors.text, 0.1)}`,
+    h1: {
+      marginTop: 0,
+    },
+    "&.indexPage": {
+      backgroundColor: "transparent",
+      boxShadow: "none",
+      padding: 0,
+    },
+  },
+
   buttons: {
     transparent: {
       appareance: "none",
@@ -414,6 +434,7 @@ export const theme = {
   },
   productDetail: {
     container: {
+      position: "relative",
       fontFamily: base.fonts.body,
       backgroundColor: "white",
       marginTop: 10,
@@ -449,10 +470,17 @@ export const theme = {
     title: {
       gridArea: "title",
       h1: {
-        marginY: 0,
+        marginTop: "0.5em",
+        marginBottom: 0,
       },
     },
-
+    shareIcon: {
+      position: "absolute",
+      top: 20,
+      right: 20,
+      cursor: "pointer",
+      color: "gray.4",
+    },
     gallery: {
       gridArea: "gallery",
       borderWidth: 1,
@@ -460,10 +488,10 @@ export const theme = {
       borderStyle: "solid",
 
       ".gatsby-image-wrapper": { height: "100%", width: "100%" },
-      ".image-gallery-slide-wrapper": { height: "400px", width: "auto" },
+      ".image-gallery-slide-wrapper": { height: "300px", width: "auto" },
       ".image-gallery-slide": {
         display: "flex",
-        height: "400px",
+        height: "300px",
         alignItems: "center",
       },
       ".image-gallery-thumbnails": {
@@ -497,6 +525,12 @@ export const theme = {
         svg: {
           marginLeft: 10,
         },
+      },
+
+      ul: {
+        listStyle: "none",
+        marginTop: "2em",
+        fontSize: [11, 13, 14],
       },
     },
     description: {

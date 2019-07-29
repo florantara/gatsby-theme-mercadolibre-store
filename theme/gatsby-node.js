@@ -1,30 +1,30 @@
-const crypto = require("crypto")
 const UrlSafeString = require("url-safe-string"),
   slugify = new UrlSafeString()
 const createPaginatedProducts = require("gatsby-paginate")
+const fs = require("fs")
 
-exports.onPreBootstrap = ({ actions }, options) => {
-  const { createNode } = actions
-  const theme = options.theme || {}
+exports.onPreBootstrap = ({ reporter }) => {
+  const contentPath = "./src/static-pages"
+  const indexPage = `${contentPath}/index.mdx`
 
-  // We create a node with the Theme data
-  // so it can be reused in components
-  // throught useTheme hook from theme/useHook
-  // createNode({
-  //   theme,
-  //   id: `gatsby-theme-styles`,
-  //   parent: null,
-  //   children: [],
-  //   internal: {
-  //     type: `SiteTheme`,
-  //     content: JSON.stringify(theme),
-  //     description: `Gatsby Theme Styles"`,
-  //     contentDigest: crypto
-  //       .createHash(`md5`)
-  //       .update(JSON.stringify(theme))
-  //       .digest(`hex`),
-  //   },
-  // })
+  // Create a src/static-pages folder if there isn't one yet
+  if (!fs.existsSync(contentPath)) {
+    reporter.info(`creating the ${contentPath} directory`)
+    fs.mkdirSync(contentPath)
+  }
+
+  // If the indexPage doesn't exist yet,
+  // let's create it using the /theme's static-pages/index.mdx content
+  if (!fs.existsSync(indexPage)) {
+    const initialIndexContent = require.resolve(indexPage)
+
+    fs.readFile(initialIndexContent, "utf-8", (err, data) => {
+      fs.writeFile(indexPage, data, err => {
+        if (err) console.log(err)
+        reporter.info(`creating the homepage`)
+      })
+    })
+  }
 }
 
 exports.createPages = ({ graphql, actions, reporter }, options) => {
@@ -34,40 +34,42 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
   const enablePagination = options.paths.enablePagination || false
   const productsListingPerPage = options.paths.productsListingPerPage || 6
 
-  return new Promise((resolve, reject) => {
-    const productDetailTemplate = require.resolve(
-      `./src/templates/productDetail.tsx`
-    )
-    resolve(
-      graphql(
-        `
-          {
-            allMercadoLibreProduct {
-              edges {
-                node {
-                  id
-                  title
-                  fields {
-                    slug
-                  }
-                  itemCategory {
-                    category_name
-                    category_id
-                  }
-                  price
-                  original_price
-                  currency_id
-                  itemThumbnail {
-                    image {
-                      childImageSharp {
-                        fluid(maxWidth: 800) {
-                          base64
-                          aspectRatio
-                          src
-                          srcSet
-                          srcWebp
-                          srcSetWebp
-                          sizes
+  return Promise.all([
+    new Promise((resolve, reject) => {
+      const productDetailTemplate = require.resolve(
+        `./src/templates/productDetail.tsx`
+      )
+      resolve(
+        graphql(
+          `
+            {
+              allMercadoLibreProduct {
+                edges {
+                  node {
+                    id
+                    title
+                    fields {
+                      slug
+                    }
+                    itemCategory {
+                      category_name
+                      category_id
+                    }
+                    price
+                    original_price
+                    currency_id
+                    itemThumbnail {
+                      image {
+                        childImageSharp {
+                          fluid(maxWidth: 800) {
+                            base64
+                            aspectRatio
+                            src
+                            srcSet
+                            srcWebp
+                            srcSetWebp
+                            sizes
+                          }
                         }
                       }
                     }
@@ -75,71 +77,102 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
                 }
               }
             }
-          }
-        `
+          `
+        )
+          .then(result => {
+            if (result.errors) {
+              reject(result.errors)
+            }
+
+            // Create Product Pages
+            const products = result.data.allMercadoLibreProduct.edges
+            reporter.info(
+              `creating ${
+                products.length
+              } product pages with the path /${productDetailPath}:slug`
+            )
+            products.forEach(({ node }) => {
+              const slug = slugify.generate(node.title)
+              const path = `/${productDetailPath}/${slug}`
+              createPage({
+                path,
+                component: productDetailTemplate,
+                context: {
+                  id: node.id,
+                },
+              })
+            })
+
+            // Products Listing
+            reporter.info(
+              `creating a products listing page located at /${productsListingPath}`
+            )
+
+            if (enablePagination) {
+              // Generate the pages and the product listing page
+              createPaginatedProducts({
+                edges: products,
+                pageLength: productsListingPerPage,
+                pageTemplate: require.resolve(
+                  "./src/templates/productsListing.tsx"
+                ),
+                pathPrefix: productsListingPath,
+                createPage: createPage,
+                context: {
+                  paginatedPagesExist: true,
+                },
+              })
+            } else {
+              // Generate just the product listing page
+              createPage({
+                path: productsListingPath,
+                component: require.resolve(
+                  "./src/templates/productsListing.tsx"
+                ),
+              })
+            }
+          })
+          .catch(err => console.log("Error creating products listing ", err))
       )
-        .then(result => {
-          if (result.errors) {
-            reject(result.errors)
-          }
-          //reporter.info("creating product pages")
-          const products = result.data.allMercadoLibreProduct.edges
-          reporter.info(
-            `creating ${
-              products.length
-            } product pages with the path /${productDetailPath}:slug`
-          )
-          products.forEach(({ node }) => {
-            const slug = slugify.generate(node.title)
-            const path = `/${productDetailPath}/${slug}`
-            createPage({
-              path,
-              component: productDetailTemplate,
-              context: {
-                id: node.id,
-              },
+    }),
+    new Promise((resolve, reject) => {
+      const staticPageTemplate = require.resolve(
+        `./src/templates/staticPage.tsx`
+      )
+
+      resolve(
+        graphql(
+          `
+            {
+              allMdx {
+                edges {
+                  node {
+                    frontmatter {
+                      path
+                    }
+                  }
+                }
+              }
+            }
+          `
+        )
+          .then(result => {
+            if (result.errors) {
+              reject(result.errors)
+            }
+            reporter.info("creating MDX static pages...")
+            const mdxPages = result.data.allMdx.edges
+            mdxPages.forEach(({ node }) => {
+              createPage({
+                path: node.frontmatter.path,
+                component: staticPageTemplate,
+              })
             })
           })
-
-          // Create a Homepage
-          createPage({
-            path: "/",
-            component: require.resolve("./src/templates/page.js"),
-            context: {
-              heading: "Homepage",
-            },
-          })
-
-          // Products Listing
-          reporter.info(
-            `creating a products listing page located at /${productsListingPath}`
-          )
-
-          if (enablePagination) {
-            // Generate the pages and the product listing page
-            createPaginatedProducts({
-              edges: products,
-              pageLength: productsListingPerPage,
-              pageTemplate: require.resolve(
-                "./src/templates/productsListing.tsx"
-              ),
-              pathPrefix: productsListingPath,
-              createPage: createPage,
-              context: {
-                paginatedPagesExist: true,
-              },
-            })
-          } else {
-            // Generate just the product listing page
-            createPage({
-              path: productsListingPath,
-              component: require.resolve("./src/templates/productsListing.tsx"),
-            })
-          }
-        })
-        .catch(err => console.log("Error creating products listing ", err))
-    )
-  })
+          .catch(err => console.log("Error creating static pages ", err))
+      )
+    }),
+  ])
 }
 
 exports.onCreateNode = ({ node, actions }, options) => {

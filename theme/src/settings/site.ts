@@ -13,8 +13,12 @@ interface ISiteConfig {
     }
   }
   productDetail: {
+    showMercadoLibreButton: boolean
     showPrice: boolean
+    showShareIcon: boolean
     showCategory: boolean
+    showDescription: boolean
+    showAttributes: boolean
   }
 }
 
@@ -33,8 +37,12 @@ export const siteConfig: ISiteConfig = {
     },
   },
   productDetail: {
+    showMercadoLibreButton: true,
     showPrice: true,
+    showShareIcon: true,
     showCategory: true,
+    showDescription: true,
+    showAttributes: true,
   },
 }
 export default siteConfig

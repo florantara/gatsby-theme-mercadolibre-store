@@ -2,6 +2,10 @@ interface IImage {
   image: any
 }
 
+interface IAttribute {
+  name: string
+  value_name: string
+}
 export interface IProduct {
   id: string
   title: string
@@ -12,6 +16,7 @@ export interface IProduct {
   permalink: string
   itemDescription: string
   accepts_mercadopago: boolean
+  attributes: IAttribute[]
   available_quantity: number // or string?
   itemImages: IImage[]
   itemThumbnail: IImage

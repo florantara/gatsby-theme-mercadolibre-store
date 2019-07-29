@@ -8,7 +8,7 @@ import { IProduct, IProductQuery } from "../types/product"
 import { Styled, jsx } from "theme-ui"
 
 // Gatsby
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 // Components
@@ -22,7 +22,7 @@ import "react-image-gallery/styles/css/image-gallery.css"
 import { getPrice } from "../utils/getPrice"
 
 // Icons
-import { FiExternalLink, FiChevronLeft } from "react-icons/fi"
+import { FiExternalLink, FiChevronLeft, FiShare } from "react-icons/fi"
 
 // Site config
 import siteConfig from "../settings/site"
@@ -31,8 +31,8 @@ interface IProps {
   data: IProductQuery
 }
 const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
-  console.log("Props ", props)
   const product: IProduct = data.mercadoLibreProduct
+  console.log("product ", product)
 
   // Site Config
   const { productDetail } = siteConfig
@@ -63,29 +63,29 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
         sx={{
           variant: "buttons.transparent",
           fontSize: 15,
+          color: "primary",
         }}
         onClick={() => window.history.back()}
         aria-label="Volver"
       >
         <FiChevronLeft /> volver
       </a>
-      <article
-        sx={{
-          variant: "productDetail.container",
-        }}
-      >
-        <section
-          sx={{
-            variant: "productDetail.title",
-          }}
-        >
+      <article sx={{ variant: "productDetail.container" }}>
+        {productDetail.showShareIcon && (
+          <a
+            sx={{ variant: "productDetail.shareIcon" }}
+            href={product.permalink}
+            target="_blank"
+          >
+            <FiShare />
+          </a>
+        )}
+
+        <section sx={{ variant: "productDetail.title" }}>
           <Styled.h1>{product.title}</Styled.h1>
         </section>
-        <section
-          sx={{
-            variant: "productDetail.gallery",
-          }}
-        >
+
+        <section sx={{ variant: "productDetail.gallery" }}>
           <ImageGallery
             items={galleryImages}
             thumbnailPosition="bottom"
@@ -97,68 +97,85 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
             showIndex={true}
           />
         </section>
-        <section
-          sx={{
-            variant: "productDetail.meta",
-          }}
-        >
-          {productDetail.showCategory && (
-            <span
-              sx={{
-                variant: "productDetail.category",
-              }}
-            >
-              {product.itemCategory.category_name}
-            </span>
-          )}
 
-          {productDetail.showPrice && (
-            <span
-              sx={{ variant: "productDetail.price" }}
-              title={`Moneda: ${product.currency_id}`}
-              aria-label={`Moneda: ${product.currency_id}`}
-            >
-              {isOnSale ? (
-                <span sx={{ variant: "productDetail.price.onSaleInfo" }}>
-                  <span sx={{ variant: "productDetail.price.originalPrice" }}>
-                    ${originalPrice}
+        {(productDetail.showCategory ||
+          productDetail.showPrice ||
+          productDetail.showMercadoLibreButton ||
+          productDetail.showAttributes) && (
+          <section sx={{ variant: "productDetail.meta" }}>
+            {productDetail.showCategory && (
+              <span
+                sx={{
+                  variant: "productDetail.category",
+                }}
+              >
+                {product.itemCategory.category_name}
+              </span>
+            )}
+
+            {productDetail.showPrice && (
+              <span
+                sx={{ variant: "productDetail.price" }}
+                title={`Moneda: ${product.currency_id}`}
+                aria-label={`Moneda: ${product.currency_id}`}
+              >
+                {isOnSale ? (
+                  <span sx={{ variant: "productDetail.price.onSaleInfo" }}>
+                    <span sx={{ variant: "productDetail.price.originalPrice" }}>
+                      ${originalPrice}
+                    </span>
+                    <span>${price}</span>
+                    <span sx={{ variant: "productDetail.price.percentageOff" }}>
+                      {percentageOff}% OFF
+                    </span>
                   </span>
+                ) : (
                   <span>${price}</span>
-                  <span sx={{ variant: "productDetail.price.percentageOff" }}>
-                    {percentageOff}% OFF
-                  </span>
-                </span>
-              ) : (
-                <span>${price}</span>
+                )}
+              </span>
+            )}
+
+            {productDetail.showMercadoLibreButton && (
+              <a
+                className="buyButton"
+                sx={{ variant: "buttons.primary" }}
+                href={product.permalink}
+                target="_blank"
+              >
+                Comprar en <strong>MercadoLibre</strong>
+                <FiExternalLink />
+              </a>
+            )}
+
+            {productDetail.showAttributes &&
+              product.attributes &&
+              product.attributes.length > 0 && (
+                <Styled.ul>
+                  {product.attributes.map(a => {
+                    if (a.value_name && a.value_name !== "") {
+                      return (
+                        <Styled.li>
+                          <strong>{a.name}: </strong>
+                          {a.value_name}
+                        </Styled.li>
+                      )
+                    }
+                  })}
+                </Styled.ul>
               )}
-            </span>
-          )}
+          </section>
+        )}
 
-          <a
-            className="buyButton"
-            sx={{
-              variant: "buttons.primary",
-            }}
-            href={product.permalink}
-            target="_blank"
-          >
-            Comprar en <strong>MercadoLibre</strong>
-            <FiExternalLink />
-          </a>
-        </section>
-
-        <section
-          sx={{
-            variant: "productDetail.description",
-          }}
-        >
-          {product.itemDescription && (
-            <div>
-              <Styled.h2>Descripción</Styled.h2>
-              <Styled.p>{product.itemDescription}</Styled.p>
-            </div>
-          )}
-        </section>
+        {productDetail.showDescription && (
+          <section sx={{ variant: "productDetail.description" }}>
+            {product.itemDescription && (
+              <div>
+                <Styled.h2>Descripción</Styled.h2>
+                <Styled.p>{product.itemDescription}</Styled.p>
+              </div>
+            )}
+          </section>
+        )}
       </article>
     </Layout>
   )
@@ -181,6 +198,10 @@ export const productQuery = graphql`
       }
       accepts_mercadopago
       available_quantity
+      attributes {
+        name
+        value_name
+      }
       itemImages {
         image {
           childImageSharp {
