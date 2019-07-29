@@ -1368,6 +1368,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-image-gallery@^0.8.4":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/@types/react-image-gallery/-/react-image-gallery-0.8.4.tgz#b37f2461fc9ac01b485aaa91ef1ac8f40c711fdf"
+  integrity sha512-/C/XtlXiE8sdVCT7MuGuxw5JmMXCWLC6vgirefv+5q22KPdW4dS+GskywigJYZjgCF4GcXPxZzwlnICOOPglSw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-native@*":
   version "0.60.0"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.60.0.tgz#992ecf1e59c4a92ffa1c1b92c669802e433acd05"
@@ -5283,10 +5290,10 @@ gatsby-source-filesystem@^2.1.3:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-source-mercadolibre@1.0.12:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/gatsby-source-mercadolibre/-/gatsby-source-mercadolibre-1.0.12.tgz#eb0ca2ed1924cc66bcb910165afb878cdc28dbbe"
-  integrity sha512-w/G8RnoUIJTPt0mFq2DCcCZzCiwplpFiX5rJFATvLzVEbiGPZY6i2fA03Xz0GbCtT8rKjLCOndlsKQBI6NCduQ==
+gatsby-source-mercadolibre@1.0.14:
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/gatsby-source-mercadolibre/-/gatsby-source-mercadolibre-1.0.14.tgz#10e26f3e11c4d8c3af78287bc3a01f440b26a4e4"
+  integrity sha512-hSiuc1MD5Z8WNU+dWEjU4GGc4aipKYk5f7htsnskCuBH4zxmPkp+JPuiWIzi5TtnLzTbK8t558Xn6bn5t35loQ==
   dependencies:
     gatsby-source-filesystem "^2.1.3"
     node-fetch "^2.3.0"

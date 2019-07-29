@@ -16,7 +16,7 @@ import ProductCard from "../components/productCard"
 import Pagination from "../components/pagination"
 
 // Styled
-import { Grid } from "../styledComponents/grid"
+import { ProductsGrid } from "../styledComponents/productsGrid"
 
 // Site config
 import siteConfig from "../settings/site"
@@ -114,12 +114,12 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
         )}
       </Flex>
 
-      <Grid>
+      <ProductsGrid>
         {products &&
           products.map((product: IProductNode) => {
             return <ProductCard product={product.node} key={product.node.id} />
           })}
-      </Grid>
+      </ProductsGrid>
 
       {paginationType === "pages" && paginatedPagesExist ? (
         <Pagination context={pathContext} />

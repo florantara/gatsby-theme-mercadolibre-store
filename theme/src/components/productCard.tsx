@@ -36,6 +36,8 @@ interface IProps {
 const ProductCard: FunctionComponent<IProps> = ({ product }) => {
   const titleElement = useRef<HTMLSpanElement>(null)
   const [title, setTitle] = useState(product.title)
+
+  // Site Config
   const {
     productsListing: { productCard },
   } = siteConfig

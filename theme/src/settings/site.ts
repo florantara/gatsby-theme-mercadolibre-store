@@ -12,6 +12,10 @@ interface ISiteConfig {
       showCategory: boolean
     }
   }
+  productDetail: {
+    showPrice: boolean
+    showCategory: boolean
+  }
 }
 
 export const siteConfig: ISiteConfig = {
@@ -27,6 +31,10 @@ export const siteConfig: ISiteConfig = {
       showPrice: true,
       showCategory: true,
     },
+  },
+  productDetail: {
+    showPrice: true,
+    showCategory: true,
   },
 }
 export default siteConfig

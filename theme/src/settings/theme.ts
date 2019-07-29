@@ -30,20 +30,50 @@ export const theme = {
     backgroundColor: "#FAFAFA",
   },
   buttons: {
+    transparent: {
+      appareance: "none",
+      cursor: "pointer",
+      fontFamily: base.fonts.body,
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
+
+      // They can be <a> or have one nested
+      a: {
+        display: "block",
+        color: "inherit",
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "none",
+        },
+      },
+    },
     primary: {
       appareance: "none",
       cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      lineHeight: "1.5",
       borderWidth: 1,
       borderStyle: "solid",
       borderColor: base.colors.primary,
       color: "white",
       backgroundColor: base.colors.primary,
       transition: "all 100ms linear",
-      padding: "0.9em 3em",
+      padding: "0.7em 3em",
       textTransform: "uppercase",
       fontFamily: base.fonts.body,
       fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
       boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.primary, 0)}`,
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
       "&:hover, &:active": {
         color: base.colors.primary,
         backgroundColor: "white",
@@ -52,21 +82,39 @@ export const theme = {
       "&:focus": {
         outlineColor: base.colors.primary,
       },
+
+      // They can be <a> or have one nested
+      a: {
+        display: "block",
+        color: "inherit",
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "none",
+        },
+      },
     },
     primaryOutline: {
       appareance: "none",
       cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      lineHeight: "1.5",
       borderWidth: 1,
       borderStyle: "solid",
       borderColor: base.colors.primary,
       color: base.colors.primary,
       background: "transparent",
       transition: "all 100ms linear",
-      padding: "0.9em 3em",
+      padding: "0.7em 3em",
       textTransform: "uppercase",
       fontFamily: base.fonts.body,
       fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
       boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.primary, 0)}`,
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
       "&:hover, &:active": {
         color: "white",
         backgroundColor: base.colors.primary,
@@ -75,21 +123,39 @@ export const theme = {
       "&:focus": {
         outlineColor: base.colors.primary,
       },
+
+      // They can be <a> or have one nested
+      a: {
+        display: "block",
+        color: "inherit",
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "none",
+        },
+      },
     },
     secondary: {
       appareance: "none",
       cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      lineHeight: "1.5",
       borderWidth: 1,
       borderStyle: "solid",
       borderColor: base.colors.secondary,
       color: "white",
       backgroundColor: base.colors.secondary,
       transition: "all 100ms linear",
-      padding: "0.9em 3em",
+      padding: "0.7em 3em",
       textTransform: "uppercase",
       fontFamily: base.fonts.body,
       fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
       boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.secondary, 0)}`,
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
       "&:hover, &:active": {
         color: base.colors.secondary,
         backgroundColor: "white",
@@ -101,21 +167,39 @@ export const theme = {
       "&:focus": {
         outlineColor: base.colors.secondary,
       },
+
+      // They can be <a> or have one nested
+      a: {
+        display: "block",
+        color: "inherit",
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "none",
+        },
+      },
     },
     secondaryOutline: {
       appareance: "none",
       cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      textAlign: "center",
+      lineHeight: "1.5",
       borderWidth: 1,
       borderStyle: "solid",
       borderColor: base.colors.secondary,
       color: base.colors.secondary,
       background: "transparent",
       transition: "all 100ms linear",
-      padding: "0.9em 3em",
+      padding: "0.7em 3em",
       textTransform: "uppercase",
       fontFamily: base.fonts.body,
       fontSize: [base.fontSizes[2], base.fontSizes[1], base.fontSizes[0]],
       boxShadow: `1px 1px 0px ${convertHexToRGBA(base.colors.secondary, 0)}`,
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
       "&:hover, &:active": {
         color: "white",
         backgroundColor: base.colors.secondary,
@@ -126,6 +210,16 @@ export const theme = {
       },
       "&:focus": {
         outlineColor: base.colors.secondary,
+      },
+
+      // They can be <a> or have one nested
+      a: {
+        display: "block",
+        color: "inherit",
+        textDecoration: "none",
+        "&:hover": {
+          textDecoration: "none",
+        },
       },
     },
   },
@@ -313,6 +407,141 @@ export const theme = {
     loadMoreButtonWrapper: {
       textAlign: "center",
       paddingY: "45px",
+      button: {
+        display: "inline-flex",
+      },
+    },
+  },
+  productDetail: {
+    container: {
+      fontFamily: base.fonts.body,
+      backgroundColor: "white",
+      marginTop: 10,
+      padding: 30,
+      boxShadow: `4px 4px 10px ${convertHexToRGBA(base.colors.text, 0.1)}`,
+      display: "grid",
+      gridGap: 30,
+      gridTemplateColumns: "minmax(0, 2fr) 1fr",
+      gridTemplateRows: "auto",
+      // First set of areas is for Mobile
+      // the second is for Desktop
+      gridTemplateAreas: [
+        `
+        "title title"
+        "meta meta"
+        "contact contact"
+        "gallery gallery"
+        "description description"
+        `,
+        `
+        "title title"
+        "meta meta"
+        "gallery gallery"
+        "description description"
+        `,
+        `
+        "title title"
+        "gallery meta"
+        "description description"
+        `,
+      ],
+    },
+    title: {
+      gridArea: "title",
+      h1: {
+        marginY: 0,
+      },
+    },
+
+    gallery: {
+      gridArea: "gallery",
+      borderWidth: 1,
+      borderColor: base.colors.muted,
+      borderStyle: "solid",
+
+      ".gatsby-image-wrapper": { height: "100%", width: "100%" },
+      ".image-gallery-slide-wrapper": { height: "400px", width: "auto" },
+      ".image-gallery-slide": {
+        display: "flex",
+        height: "400px",
+        alignItems: "center",
+      },
+      ".image-gallery-thumbnails": {
+        paddingBottom: 0,
+      },
+      ".image-gallery-thumbnail": {
+        borderWidth: 2,
+        "&:focus": {
+          outline: "none",
+          borderColor: "gray.4",
+          borderWidth: 2,
+        },
+        "&.active": {
+          borderColor: "gray.4",
+          borderWidth: 2,
+        },
+      },
+    },
+    meta: {
+      gridArea: "meta",
+      h5: {
+        marginTop: 0,
+        fontSize: "10px",
+        textTransform: "uppercase",
+        color: "gray.2",
+        fontWeight: "bold",
+      },
+      ".buyButton": {
+        display: "inline-block",
+        marginTop: 20,
+        svg: {
+          marginLeft: 10,
+        },
+      },
+    },
+    description: {
+      gridArea: "description",
+      borderTopColor: base.colors.muted,
+      borderTopWidth: 1,
+      borderTopStyle: "solid",
+      paddingTop: 30,
+      whiteSpace: "pre-line",
+    },
+    category: {
+      display: "block",
+      fontSize: "10px",
+      textTransform: "uppercase",
+      color: "gray.2",
+      paddingBottom: "0.5em",
+      fontWeight: "bold",
+    },
+    price: {
+      display: "block",
+      fontSize: [20, 24, 27],
+      color: base.colors.text,
+      fontWeight: "bold",
+      paddingY: "0.5em",
+      onSaleInfo: {
+        display: "flex",
+        flexWrap: "wrap",
+        alignItems: "center",
+      },
+      originalPrice: {
+        display: "block",
+        width: "100%",
+        color: "gray.1",
+        textDecoration: "line-through",
+        fontWeight: "100",
+        fontSize: [11, 13, 14],
+        marginBottom: "0.2em",
+        fontStyle: "italic",
+      },
+      percentageOff: {
+        fontWeight: "100",
+        fontSize: [11, 13, 15],
+        color: "mediumseagreen",
+        marginLeft: "1em",
+      },
     },
   },
 }
