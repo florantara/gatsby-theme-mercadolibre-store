@@ -45,7 +45,7 @@
     "gatsby-plugin-tslint": "^0.0.2",
     "gatsby-plugin-typescript": "^2.1.2",
     "gatsby-source-filesystem": "^2.1.6",
-    "gatsby-source-mercadolibre": "^1.0.14",
+    "gatsby-source-mercadolibre": "^1.0.15",
     "gatsby-theme-ui": "^0.2.0",
     "gatsby-transformer-remark": "^2.6.9",
     "gatsby-transformer-sharp": "^2.2.3",

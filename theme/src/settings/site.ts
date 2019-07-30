@@ -5,7 +5,13 @@ interface IMenuItem {
 interface ISiteConfig {
   header: {
     layout: "compact" | "wide"
-    menuItems: IMenuItem[]
+    mainNavigationItems: IMenuItem[]
+    secondaryNavigation: {
+      showMLStoreLink: boolean
+      showContactLink: boolean
+      contactType: "email" | "link" // TODO: "page"/ "tel"
+      contactUrl: string
+    }
   }
   productsListing: {
     pageTitle: string
@@ -33,7 +39,7 @@ interface ISiteConfig {
 export const siteConfig: ISiteConfig = {
   header: {
     layout: "wide",
-    menuItems: [
+    mainNavigationItems: [
       {
         label: "inicio",
         link: "/",
@@ -43,6 +49,12 @@ export const siteConfig: ISiteConfig = {
         link: "/productos",
       },
     ],
+    secondaryNavigation: {
+      showMLStoreLink: true,
+      showContactLink: true,
+      contactType: "link",
+      contactUrl: "http://gogle.gom",
+    },
   },
   productsListing: {
     pageTitle: "Productos",

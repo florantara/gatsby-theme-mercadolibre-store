@@ -1,7 +1,7 @@
 const path = require("path")
 module.exports = ({ site = {}, mercadoLibre = {}, paths = {} }) => ({
   siteMetadata: {
-    title: site.title || "Mercado Libre Store",
+    title: "Mercado Libre Store",
   },
 
   plugins: [

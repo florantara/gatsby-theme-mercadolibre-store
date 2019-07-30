@@ -2,10 +2,15 @@ const UrlSafeString = require("url-safe-string"),
   slugify = new UrlSafeString()
 const createPaginatedProducts = require("gatsby-paginate")
 const fs = require("fs")
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
-exports.onPreBootstrap = ({ reporter }) => {
+exports.onPreBootstrap = async (
+  { reporter, createNodeId, store, cache, actions },
+  options
+) => {
   const contentPath = "./src/static-pages"
   const indexPage = `${contentPath}/index.mdx`
+  const { createNode } = actions
 
   // Create a src/static-pages folder if there isn't one yet
   if (!fs.existsSync(contentPath)) {
@@ -25,14 +30,37 @@ exports.onPreBootstrap = ({ reporter }) => {
       })
     })
   }
+
+  // Create a node for the Logo image
+  if (options.site.logoURL) {
+    // TODO: Detect if the URL is actually an image or not.
+    reporter.info("importing the site logo")
+    let fileNode = null
+    try {
+      fileNode = await createRemoteFileNode({
+        url: options.site.logoURL,
+        parent: null,
+        store,
+        cache,
+        createNode,
+        createNodeId: () => "site-logo",
+      })
+    } catch (e) {
+      reporter.warn(`The site logo couldn't be imported. - ${e}`)
+    }
+    if (fileNode) {
+      reporter.info("succesfully imported the site logo")
+    }
+  }
 }
 
 exports.createPages = ({ graphql, actions, reporter }, options) => {
   const { createPage } = actions
-  const productDetailPath = options.paths.productDetail || "producto"
-  const productsListingPath = options.paths.productsListing || "productos"
-  const enablePagination = options.paths.enablePagination || false
-  const productsListingPerPage = options.paths.productsListingPerPage || 6
+  const productDetailPath = options.productDetail.slug || "producto"
+  const productsListingPath = options.productsListing.slug || "productos"
+  const enablePagination = options.productsListing.enablePagination || false
+  const productsListingPerPage =
+    options.productsListing.productsListingPerPage || 6
 
   return Promise.all([
     new Promise((resolve, reject) => {
@@ -84,7 +112,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
               reject(result.errors)
             }
 
-            // Create Product Pages
+            // Create Products' Detail Pages
             const products = result.data.allMercadoLibreProduct.edges
             reporter.info(
               `creating ${
@@ -109,7 +137,8 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
             )
 
             if (enablePagination) {
-              // Generate the pages and the product listing page
+              // Generate the paginated products
+              // and the product listing page
               createPaginatedProducts({
                 edges: products,
                 pageLength: productsListingPerPage,
@@ -123,7 +152,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
                 },
               })
             } else {
-              // Generate just the product listing page
+              // Generate just the products listing page
               createPage({
                 path: productsListingPath,
                 component: require.resolve(
@@ -177,7 +206,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
 
 exports.onCreateNode = ({ node, actions }, options) => {
   const { createNodeField } = actions
-  const productDetailPath = options.paths.productDetail || "producto"
+  const productDetailPath = options.productDetail.slug || "producto"
 
   if (node.internal.type === `MercadoLibreProduct`) {
     const slug = slugify.generate(node.title)

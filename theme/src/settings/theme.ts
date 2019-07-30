@@ -26,7 +26,7 @@ export const theme = {
       fontFamily: base.fonts.body,
 
       backgroundColor: "white",
-      paddingY: "15px",
+      paddingY: "5px",
       paddingX: "30px",
       marginBottom: "30px",
       borderBottomWidth: "1px",
@@ -34,6 +34,8 @@ export const theme = {
       borderBottomStyle: "solid",
       display: "flex",
       alignItems: "center",
+      justifyContent: "space-between",
+      flexWrap: ["wrap", "auto", "auto"],
     },
     ul: {
       margin: "0 0 0 1em",
@@ -49,16 +51,32 @@ export const theme = {
    *
    */
   siteWrapper: {
-    backgroundColor: "#FAFAFA",
+    backgroundColor: "#f7f8fa",
   },
   siteHeader: {
+    logoContainer: {
+      width: "80px",
+      height: "auto",
+      marginRight: "40px",
+      img: {
+        maxWidth: "100%",
+      },
+    },
     textLogo: {
       fontSize: "14px",
       textTransform: "uppercase",
       fontWeight: "bold",
-      marginRight: "40px",
     },
-    navigation: {
+    mainNavigation: {
+      // Responsive Menu
+      order: [1, 0, 0],
+      flexGrow: [1, 0, 0],
+      flexBasis: ["100%", "auto", "auto"],
+      paddingY: [20, 0, 0],
+      borderTopColor: [base.colors.muted, "none", "none"],
+      borderTopStyle: ["solid", "none", "none"],
+      borderTopWidth: [1, 0, 0],
+      //
       ul: {
         margin: 0,
         padding: 0,
@@ -81,6 +99,23 @@ export const theme = {
               borderBottomWidth: 2,
               borderBottomStyle: "solid",
             },
+          },
+        },
+      },
+    },
+    secondaryNavigation: {
+      ul: {
+        margin: "0 0 0 auto",
+        padding: 0,
+        listStyle: "none",
+        lineHeight: 1,
+        display: "flex",
+        alignItems: "center",
+        li: {
+          fontSize: [16, 15, 14],
+          marginRight: "1.5em",
+          svg: {
+            color: base.colors.text,
           },
         },
       },
