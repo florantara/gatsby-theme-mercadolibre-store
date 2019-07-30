@@ -34,6 +34,7 @@ interface ISiteConfig {
     showDescription: boolean
     showAttributes: boolean
   }
+  copyright: string
 }
 
 export const siteConfig: ISiteConfig = {
@@ -77,5 +78,6 @@ export const siteConfig: ISiteConfig = {
     showDescription: true,
     showAttributes: true,
   },
+  copyright: "Copyright © 2019",
 }
 export default siteConfig

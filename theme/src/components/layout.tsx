@@ -10,6 +10,7 @@ import theme from "../settings/theme"
 
 // Components
 import Header from "./header"
+import Copyright from "./copyright"
 
 interface IProps {
   children: any
@@ -23,6 +24,7 @@ const Layout: FunctionComponent<IProps> = ({ children }) => {
         <ThemeLayout>
           <Main children={children} />
         </ThemeLayout>
+        <Copyright />
       </div>
     </ThemeProvider>
   )

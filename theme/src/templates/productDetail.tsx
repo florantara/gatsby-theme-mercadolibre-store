@@ -74,7 +74,7 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
         {productDetail.showShareIcon && (
           <a
             sx={{ variant: "productDetail.shareIcon" }}
-            href={product.permalink}
+            href={window.location.href}
             target="_blank"
           >
             <FiShare />

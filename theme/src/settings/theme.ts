@@ -664,5 +664,13 @@ export const theme = {
       },
     },
   },
+  copyright: {
+    backgroundColor: "black",
+    textAlign: "center",
+    color: "white",
+    fontSize: "11px",
+    paddingY: "1em",
+    fontFamily: base.fonts.body,
+  },
 }
 export default theme
