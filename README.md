@@ -8,6 +8,18 @@ https://gatsby-theme-mercadolibre-store.netlify.com
 ## Documentation
 After installing the theme, the `index.mdx` page will be created with documentation.
 
+## Performance
+Lighthouse scores for the Products Listing page (which has many images).
+
+🔥
+![Lighthouse](https://s3-us-west-2.amazonaws.com/s.cdpn.io/575957/gatsby-theme-performance.png "Lighthouse scores")
+
+## Accesibility
+Navigating with Tabs:
+
+![](https://thepracticaldev.s3.amazonaws.com/i/zo6u02o8i821qjeom7zl.gif)
+
+_____ 
 
 ## Motivation
 A few months ago I started chatting with some friends from Argentina (where I'm from) about how they are handling their e-commerces. Being a web developer means you get to help your friends with their digital challenges, and I love that. 
