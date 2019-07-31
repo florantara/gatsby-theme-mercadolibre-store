@@ -19,6 +19,18 @@ module.exports = ({ site = {}, mercadoLibre = {}, paths = {} }) => ({
         path: path.resolve("src/static-pages"),
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: "Roboto",
+            subsets: ["latin"],
+            variants: ["100", "400", "700"],
+          },
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,

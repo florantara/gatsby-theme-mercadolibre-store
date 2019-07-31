@@ -26,12 +26,12 @@ const Header: FunctionComponent = () => {
   const { mercadoLibreSeller } = useSeller()
   // Site Config
   const {
-    header: { secondaryNavigation, mainNavigationItems },
+    header: { layout, secondaryNavigation, mainNavigationItems },
   } = siteConfig
 
   const whatsappBase = "https://api.whatsapp.com/send?phone="
   return (
-    <ThemeHeader>
+    <ThemeHeader className={layout ? `Header--${layout}` : ""}>
       <div sx={{ variant: "siteHeader.logoContainer" }}>
         <Link to="/">
           {logoMedium ? (

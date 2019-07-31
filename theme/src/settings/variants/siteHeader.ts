@@ -6,7 +6,6 @@ export const siteHeader = {
   logoContainer: {
     width: "80px",
     height: "auto",
-    marginRight: "40px",
     img: {
       maxWidth: "100%",
     },
@@ -36,6 +35,9 @@ export const siteHeader = {
       li: {
         fontSize: [2, "15px", 1],
         marginRight: "1.5em",
+        "&:last-child": {
+          marginRight: 0,
+        },
         a: {
           color: "black",
           textDecoration: "none",

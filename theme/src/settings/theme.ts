@@ -21,6 +21,7 @@ export const theme = {
   breakpoints: ["40em", "52em", "64em"],
   fontSizes: ["12px", "14px", "16px", "18px", "20px", "22px", "24px", "27px"],
   fonts: {
+    heading: "Roboto, system-ui, sans-serif",
     body: "Roboto, system-ui, sans-serif",
   },
   styles: {
@@ -37,8 +38,13 @@ export const theme = {
     },
 
     Header: {
-      "&.compact": {
+      "&.Header--compact": {
+        width: "100%",
         maxWidth: "980px",
+        marginX: "auto",
+        borderColor: colors.gray[0],
+        borderWidth: "1px",
+        borderStyle: "solid",
       },
       fontFamily: "body",
       backgroundColor: "white",
@@ -87,9 +93,11 @@ export const theme = {
     },
     h1: {
       fontSize: [26, 28, 30],
+      fontFamily: "heading",
     },
     h2: {
       fontSize: [24, 26, 28],
+      fontFamily: "heading",
     },
     p: {
       lineHeight: "1.7em",
