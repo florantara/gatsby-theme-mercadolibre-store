@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import { Helmet } from "react-helmet"
 
 // Types
 import { IProduct, IProductQuery } from "../types/product"
@@ -32,7 +33,6 @@ interface IProps {
 }
 const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
   const product: IProduct = data.mercadoLibreProduct
-  console.log("product ", product)
 
   // Site Config
   const { productDetail } = siteConfig
@@ -59,6 +59,10 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
 
   return (
     <Site>
+      <Helmet>
+        <title>{product.title}</title>
+        <meta name="description" content={product.itemDescription} />
+      </Helmet>
       <Layout className="Layout--compact">
         <a
           sx={{
@@ -67,7 +71,7 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
             color: "brand_02.0",
             paddingTop: "30px",
           }}
-          onClick={() => window.history.back()}
+          onClick={() => typeof window !== "undefined" && window.history.back()}
           aria-label="Volver"
         >
           <FiChevronLeft /> volver
@@ -76,7 +80,7 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
           {productDetail.showShareIcon && (
             <a
               sx={{ variant: "productDetail.shareIcon" }}
-              href={window.location.href} // TODO: copy to clipboard
+              href={typeof window !== "undefined" ? window.location.href : ""} // TODO: copy to clipboard
               target="_blank"
               aria-label="Compartir"
               title="Compartir"

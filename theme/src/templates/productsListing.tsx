@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from "react"
+import { Helmet } from "react-helmet"
 
 // Types
 import { IPathContext } from "../types/theme"
@@ -91,6 +92,9 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
 
   return (
     <Site>
+      <Helmet>
+        <title>{pageTitle}</title>
+      </Helmet>
       <Layout className="Layout--compact">
         <Flex sx={{ alignItems: "center" }}>
           <Box sx={{ variant: "productsListing.header.title" }}>

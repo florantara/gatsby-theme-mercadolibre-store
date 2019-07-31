@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import { Helmet } from "react-helmet"
 
 // Gatsby
 import { graphql } from "gatsby"
@@ -32,10 +33,12 @@ interface IProps {
 const StaticPage: FunctionComponent<IProps> = ({ data }) => {
   const { mdx } = data
   const { frontmatter, body } = mdx
-  // Todo, use {frontmatter.title} for SEO
 
   return (
     <Site>
+      <Helmet>
+        <title>{frontmatter.title}</title>
+      </Helmet>
       <MDXProvider components={{ ...fragments, Layout }}>
         <MDXRenderer>{body}</MDXRenderer>
       </MDXProvider>
