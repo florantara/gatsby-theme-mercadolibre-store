@@ -13,12 +13,22 @@ export const theme = {
   },
   breakpoints: ["40em", "52em", "64em"],
   styles: {
+    "*": {
+      boxSizing: "borderBox",
+    },
     ...base.styles,
     Layout: {
-      maxWidth: "980px",
       marginX: "auto",
-      paddingX: [20, 30],
+      "&.Layout--compact": {
+        maxWidth: "980px",
+        paddingX: [20, 30],
+      },
+      "&.Layout--tiny": {
+        maxWidth: "680px",
+        paddingX: [20, 30],
+      },
     },
+
     Header: {
       "&.compact": {
         maxWidth: "980px",
@@ -28,7 +38,6 @@ export const theme = {
       backgroundColor: "white",
       paddingY: "5px",
       paddingX: "30px",
-      marginBottom: "30px",
       borderBottomWidth: "1px",
       borderBottomColor: base.colors.muted,
       borderBottomStyle: "solid",
@@ -36,6 +45,39 @@ export const theme = {
       alignItems: "center",
       justifyContent: "space-between",
       flexWrap: ["wrap", "auto", "auto"],
+    },
+    Footer: {
+      fontFamily: base.fonts.body,
+      fontSize: [12, 13, 13],
+      fontWeight: "light",
+      color: "white",
+      backgroundColor: "gray.4",
+      ul: {
+        margin: 0,
+        padding: "1em 0 0 0",
+        listStyle: "none",
+        lineHeight: 1,
+        li: {
+          fontSize: [15, 14, 13],
+          marginBottom: ".5em",
+          svg: {
+            marginRight: "1em",
+          },
+          a: {
+            color: "white",
+            textDecoration: "none",
+            "&:hover": {
+              textDecoration: "none",
+              color: "white",
+            },
+            "&[aria-current]": {
+              borderBottomColor: "inherit",
+              borderBottomWidth: 2,
+              borderBottomStyle: "solid",
+            },
+          },
+        },
+      },
     },
     ul: {
       margin: "0 0 0 1em",
@@ -50,8 +92,16 @@ export const theme = {
    * Variants (aka: components styling)
    *
    */
-  siteWrapper: {
+  siteContainer: {
     backgroundColor: "#f7f8fa",
+    fontFamily: base.fonts.body,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    minHeight: "100vh",
+    ".siteContainerBottom": {
+      marginTop: "auto",
+    },
   },
   siteHeader: {
     logoContainer: {
@@ -121,20 +171,33 @@ export const theme = {
       },
     },
   },
-  staticPageContainer: {
-    backgroundColor: "white",
-    padding: 30,
-    boxShadow: `4px 4px 10px ${convertHexToRGBA(base.colors.text, 0.1)}`,
-    h1: {
-      marginTop: 0,
+  siteFooter: {
+    container: {
+      width: "100%",
+      display: "flex",
+      justifyContent: "stretch",
+      flexWrap: ["wrap", "auto", "auto"],
+      maxWidth: "980px",
+      marginX: "auto",
+      aside: {
+        flexGrow: 1,
+        textAlign: "left",
+      },
     },
-    "&.indexPage": {
-      backgroundColor: "transparent",
-      boxShadow: "none",
-      padding: 0,
+
+    logoContainer: {
+      width: "50px",
+      height: "auto",
+      img: {
+        maxWidth: "100%",
+      },
+    },
+    textLogo: {
+      fontSize: "12px",
+      textTransform: "uppercase",
+      fontWeight: "bold",
     },
   },
-
   buttons: {
     transparent: {
       appareance: "none",
@@ -671,6 +734,34 @@ export const theme = {
     fontSize: "11px",
     paddingY: "1em",
     fontFamily: base.fonts.body,
+  },
+  fragments: {
+    hero: {
+      marginX: "auto",
+      background: "linear-gradient(to right, #FFC371, #FF5F6D)",
+      color: "white",
+    },
+    hero_homepage: {
+      padding: "1em 3em",
+      h3: {
+        color: "white",
+        textAlign: "center",
+      },
+      h1: {
+        color: "white",
+        textAlign: "center",
+      },
+    },
+    paper: {
+      maxWidth: "980px",
+      margin: "0 auto 30px",
+      backgroundColor: "white",
+      padding: 30,
+      boxShadow: `4px 4px 10px ${convertHexToRGBA(base.colors.text, 0.1)}`,
+      h1: {
+        marginTop: 0,
+      },
+    },
   },
 }
 export default theme

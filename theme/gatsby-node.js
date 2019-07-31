@@ -8,27 +8,31 @@ exports.onPreBootstrap = async (
   { reporter, createNodeId, store, cache, actions },
   options
 ) => {
-  const contentPath = "./src/static-pages"
+  const srcPath = "./src" // TODO: check that exists/ create one
+  const contentPath = `${srcPath}/static-pages`
   const indexPage = `${contentPath}/index.mdx`
   const { createNode } = actions
 
   // Create a src/static-pages folder if there isn't one yet
   if (!fs.existsSync(contentPath)) {
     reporter.info(`creating the ${contentPath} directory`)
+    if (!fs.existsSync(srcPath)) {
+      fs.mkdirSync(srcPath)
+    }
     fs.mkdirSync(contentPath)
-  }
 
-  // If the indexPage doesn't exist yet,
-  // let's create it using the /theme's static-pages/index.mdx content
-  if (!fs.existsSync(indexPage)) {
-    const initialIndexContent = require.resolve(indexPage)
+    // If the indexPage doesn't exist yet,
+    // let's create it using the /theme's static-pages/index.mdx content
+    if (!fs.existsSync(indexPage)) {
+      const initialIndexContent = require.resolve(indexPage)
 
-    fs.readFile(initialIndexContent, "utf-8", (err, data) => {
-      fs.writeFile(indexPage, data, err => {
-        if (err) console.log(err)
-        reporter.info(`creating the homepage`)
+      fs.readFile(initialIndexContent, "utf-8", (err, data) => {
+        fs.writeFile(indexPage, data, err => {
+          if (err) console.log(err)
+          reporter.info(`creating the homepage`)
+        })
       })
-    })
+    }
   }
 
   // Create a node for the Logo image

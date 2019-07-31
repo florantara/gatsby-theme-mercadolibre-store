@@ -28,7 +28,7 @@ module.exports = {
 
         mercadoLibre: {
           siteID: "MLA",
-          user: "guau+yeah", //PICUADRADO_DESIGN
+          user: "PICUADRADO_DESIGN", //PICUADRADO_DESIGN
         },
       },
     },

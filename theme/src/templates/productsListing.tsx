@@ -5,13 +5,13 @@ import { IPathContext } from "../types/theme"
 
 // Theme UI
 /** @jsx jsx */
-import { Styled, jsx, Flex, Box } from "theme-ui"
+import { Styled, jsx, Flex, Box, Layout } from "theme-ui"
 
 // Types
 import { IProductNode } from "../types/product"
 
 // Components
-import Layout from "../components/layout"
+import Site from "../components/site"
 import ProductCard from "../components/productCard"
 import Pagination from "../components/pagination"
 
@@ -90,54 +90,50 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
   }
 
   return (
-    <Layout>
-      <Flex
-        sx={{
-          alignItems: "center",
-        }}
-      >
-        <Box
-          sx={{
-            variant: "productsListing.header.title",
-          }}
-        >
-          <Styled.h1>{pageTitle}</Styled.h1>
-        </Box>
-        {paginationType === "pages" && paginatedPagesExist && !first && (
-          <Box
-            sx={{
-              variant: "productsListing.header.paginationContext",
-            }}
-          >
-            página {index} de {pageCount}
+    <Site>
+      <Layout className="Layout--compact">
+        <Flex sx={{ alignItems: "center" }}>
+          <Box sx={{ variant: "productsListing.header.title" }}>
+            <Styled.h1>{pageTitle}</Styled.h1>
           </Box>
-        )}
-      </Flex>
-
-      <ProductsGrid>
-        {products &&
-          products.map((product: IProductNode) => {
-            return <ProductCard product={product.node} key={product.node.id} />
-          })}
-      </ProductsGrid>
-
-      {paginationType === "pages" && paginatedPagesExist ? (
-        <Pagination context={pathContext} />
-      ) : (
-        <aside sx={{ variant: "pagination.loadMoreButtonWrapper" }}>
-          {products.length !== totalProducts ? (
-            <button
-              sx={{ variant: "buttons.primaryOutline" }}
-              onClick={loadMoreHandler}
+          {paginationType === "pages" && paginatedPagesExist && !first && (
+            <Box
+              sx={{
+                variant: "productsListing.header.paginationContext",
+              }}
             >
-              {loadMoreButtonLabel}
-            </button>
-          ) : (
-            <Styled.p>{loadMoreNoMoreText}</Styled.p>
+              página {index} de {pageCount}
+            </Box>
           )}
-        </aside>
-      )}
-    </Layout>
+        </Flex>
+
+        <ProductsGrid>
+          {products &&
+            products.map((product: IProductNode) => {
+              return (
+                <ProductCard product={product.node} key={product.node.id} />
+              )
+            })}
+        </ProductsGrid>
+
+        {paginationType === "pages" && paginatedPagesExist ? (
+          <Pagination context={pathContext} />
+        ) : (
+          <aside sx={{ variant: "pagination.loadMoreButtonWrapper" }}>
+            {products.length !== totalProducts ? (
+              <button
+                sx={{ variant: "buttons.primaryOutline" }}
+                onClick={loadMoreHandler}
+              >
+                {loadMoreButtonLabel}
+              </button>
+            ) : (
+              <Styled.p>{loadMoreNoMoreText}</Styled.p>
+            )}
+          </aside>
+        )}
+      </Layout>
+    </Site>
   )
 }
 export default ProductsListing

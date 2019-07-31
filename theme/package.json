@@ -51,7 +51,6 @@
     "gatsby-transformer-sharp": "^2.2.3",
     "react-icons": "^3.7.0",
     "react-image-gallery": "^0.8.18",
-    "react-normalize": "^0.4.2",
     "theme-ui": "^0.2.14",
     "url-safe-string": "^1.1.0"
   },

@@ -5,20 +5,24 @@ import { graphql } from "gatsby"
 
 // MDX
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
 
 // Theme UI
 /** @jsx jsx */
-import { Styled, jsx } from "theme-ui"
+import { jsx, Layout } from "theme-ui"
 
 // Components
-import Layout from "../components/layout"
+import Site from "../components/site"
+
+// Fragments
+// These are blocks that can be reused
+import { fragments } from "../fragments"
 
 interface IProps {
   data: {
     mdx: {
       body: any
       frontmatter: {
-        class?: string
         title: string
       }
     }
@@ -28,17 +32,14 @@ interface IProps {
 const StaticPage: FunctionComponent<IProps> = ({ data }) => {
   const { mdx } = data
   const { frontmatter, body } = mdx
+  // Todo, use {frontmatter.title} for SEO
+  console.log("fragments ", fragments)
   return (
-    <Layout>
-      <article
-        sx={{ variant: "staticPageContainer" }}
-        className={frontmatter.class}
-      >
-        <Styled.h1>{frontmatter.title}</Styled.h1>
-
-        <MDXRenderer children={body} />
-      </article>
-    </Layout>
+    <Site>
+      <MDXProvider components={{ ...fragments, Layout }}>
+        <MDXRenderer>{body}</MDXRenderer>
+      </MDXProvider>
+    </Site>
   )
 }
 
@@ -47,7 +48,6 @@ export const staticPageQuery = graphql`
     mdx {
       body
       frontmatter {
-        class
         title
       }
     }

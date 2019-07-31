@@ -5,14 +5,14 @@ import { IProduct, IProductQuery } from "../types/product"
 
 // Theme UI
 /** @jsx jsx */
-import { Styled, jsx } from "theme-ui"
+import { Styled, jsx, Layout } from "theme-ui"
 
 // Gatsby
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 // Components
-import Layout from "../components/layout"
+import Site from "../components/site"
 
 // Gallery
 import ImageGallery from "react-image-gallery"
@@ -58,126 +58,134 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
   )
 
   return (
-    <Layout>
-      <a
-        sx={{
-          variant: "buttons.transparent",
-          fontSize: 15,
-          color: "primary",
-        }}
-        onClick={() => window.history.back()}
-        aria-label="Volver"
-      >
-        <FiChevronLeft /> volver
-      </a>
-      <article sx={{ variant: "productDetail.container" }}>
-        {productDetail.showShareIcon && (
-          <a
-            sx={{ variant: "productDetail.shareIcon" }}
-            href={window.location.href}
-            target="_blank"
-          >
-            <FiShare />
-          </a>
-        )}
+    <Site>
+      <Layout className="Layout--compact">
+        <a
+          sx={{
+            variant: "buttons.transparent",
+            fontSize: 15,
+            color: "primary",
+            paddingTop: 30,
+          }}
+          onClick={() => window.history.back()}
+          aria-label="Volver"
+        >
+          <FiChevronLeft /> volver
+        </a>
+        <article sx={{ variant: "productDetail.container" }}>
+          {productDetail.showShareIcon && (
+            <a
+              sx={{ variant: "productDetail.shareIcon" }}
+              href={window.location.href} // TODO: copy to clipboard
+              target="_blank"
+            >
+              <FiShare />
+            </a>
+          )}
 
-        <section sx={{ variant: "productDetail.title" }}>
-          <Styled.h1>{product.title}</Styled.h1>
-        </section>
+          <section sx={{ variant: "productDetail.title" }}>
+            <Styled.h1>{product.title}</Styled.h1>
+          </section>
 
-        <section sx={{ variant: "productDetail.gallery" }}>
-          <ImageGallery
-            items={galleryImages}
-            thumbnailPosition="bottom"
-            showNav={false}
-            showFullscreenButton={false}
-            infinite={false}
-            showPlayButton={false}
-            lazyLoad={true}
-            showIndex={true}
-          />
-        </section>
+          <section sx={{ variant: "productDetail.gallery" }}>
+            <ImageGallery
+              items={galleryImages}
+              thumbnailPosition="bottom"
+              showNav={false}
+              showFullscreenButton={false}
+              infinite={false}
+              showPlayButton={false}
+              lazyLoad={true}
+              showIndex={true}
+            />
+          </section>
 
-        {(productDetail.showCategory ||
-          productDetail.showPrice ||
-          productDetail.showMercadoLibreButton ||
-          productDetail.showAttributes) && (
-          <section sx={{ variant: "productDetail.meta" }}>
-            {productDetail.showCategory && (
-              <span
-                sx={{
-                  variant: "productDetail.category",
-                }}
-              >
-                {product.itemCategory.category_name}
-              </span>
-            )}
-
-            {productDetail.showPrice && (
-              <span
-                sx={{ variant: "productDetail.price" }}
-                title={`Moneda: ${product.currency_id}`}
-                aria-label={`Moneda: ${product.currency_id}`}
-              >
-                {isOnSale ? (
-                  <span sx={{ variant: "productDetail.price.onSaleInfo" }}>
-                    <span sx={{ variant: "productDetail.price.originalPrice" }}>
-                      ${originalPrice}
-                    </span>
-                    <span>${price}</span>
-                    <span sx={{ variant: "productDetail.price.percentageOff" }}>
-                      {percentageOff}% OFF
-                    </span>
-                  </span>
-                ) : (
-                  <span>${price}</span>
-                )}
-              </span>
-            )}
-
-            {productDetail.showMercadoLibreButton && (
-              <a
-                className="buyButton"
-                sx={{ variant: "buttons.primary" }}
-                href={product.permalink}
-                target="_blank"
-              >
-                Comprar en <strong>MercadoLibre</strong>
-                <FiExternalLink />
-              </a>
-            )}
-
-            {productDetail.showAttributes &&
-              product.attributes &&
-              product.attributes.length > 0 && (
-                <Styled.ul>
-                  {product.attributes.map(a => {
-                    if (a.value_name && a.value_name !== "") {
-                      return (
-                        <Styled.li>
-                          <strong>{a.name}: </strong>
-                          {a.value_name}
-                        </Styled.li>
-                      )
-                    }
-                  })}
-                </Styled.ul>
+          {(productDetail.showCategory ||
+            productDetail.showPrice ||
+            productDetail.showMercadoLibreButton ||
+            productDetail.showAttributes) && (
+            <section sx={{ variant: "productDetail.meta" }}>
+              {productDetail.showCategory && (
+                <span
+                  sx={{
+                    variant: "productDetail.category",
+                  }}
+                >
+                  {product.itemCategory.category_name}
+                </span>
               )}
-          </section>
-        )}
 
-        {productDetail.showDescription && (
-          <section sx={{ variant: "productDetail.description" }}>
-            {product.itemDescription && (
-              <div>
-                <Styled.h2>Descripción</Styled.h2>
-                <Styled.p>{product.itemDescription}</Styled.p>
-              </div>
-            )}
-          </section>
-        )}
-      </article>
-    </Layout>
+              {productDetail.showPrice && (
+                <span
+                  sx={{ variant: "productDetail.price" }}
+                  title={`Moneda: ${product.currency_id}`}
+                  aria-label={`Moneda: ${product.currency_id}`}
+                >
+                  {isOnSale ? (
+                    <span sx={{ variant: "productDetail.price.onSaleInfo" }}>
+                      <span
+                        sx={{ variant: "productDetail.price.originalPrice" }}
+                      >
+                        ${originalPrice}
+                      </span>
+                      <span>${price}</span>
+                      <span
+                        sx={{ variant: "productDetail.price.percentageOff" }}
+                      >
+                        {percentageOff}% OFF
+                      </span>
+                    </span>
+                  ) : (
+                    <span>${price}</span>
+                  )}
+                </span>
+              )}
+
+              {productDetail.showMercadoLibreButton && (
+                <a
+                  className="buyButton"
+                  sx={{ variant: "buttons.primary" }}
+                  href={product.permalink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Comprar en <strong>MercadoLibre</strong>
+                  <FiExternalLink />
+                </a>
+              )}
+
+              {productDetail.showAttributes &&
+                product.attributes &&
+                product.attributes.length > 0 && (
+                  <Styled.ul>
+                    {product.attributes.map(a => {
+                      if (a.value_name && a.value_name !== "") {
+                        return (
+                          <Styled.li>
+                            <strong>{a.name}: </strong>
+                            {a.value_name}
+                          </Styled.li>
+                        )
+                      }
+                    })}
+                  </Styled.ul>
+                )}
+            </section>
+          )}
+
+          {productDetail.showDescription && (
+            <section sx={{ variant: "productDetail.description" }}>
+              {product.itemDescription && (
+                <div>
+                  <Styled.h2>Descripción</Styled.h2>
+                  <Styled.p>{product.itemDescription}</Styled.p>
+                </div>
+              )}
+            </section>
+          )}
+        </article>
+      </Layout>
+    </Site>
   )
 }
 export default ProductDetail

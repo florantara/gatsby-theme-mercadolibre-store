@@ -12,5 +12,5 @@
     "noUnusedParameters": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*", "onPreBootstrap.js"]
+  "include": ["./src/**/*"]
 }

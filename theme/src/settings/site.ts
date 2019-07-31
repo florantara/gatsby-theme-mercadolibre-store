@@ -1,18 +1,34 @@
-interface IMenuItem {
+interface ILink {
   label: string
   link: string
 }
+
+export type TSocialLinkType = "facebook" | "instagram" | "twitter" | "whatsapp" // TODO: support more
+
+interface ILinkWithType extends ILink {
+  type: TSocialLinkType
+}
+
 interface ISiteConfig {
   header: {
     layout: "compact" | "wide"
-    mainNavigationItems: IMenuItem[]
+    mainNavigationItems?: ILink[]
     secondaryNavigation: {
       showMLStoreLink: boolean
       showContactLink: boolean
-      contactType: "email" | "link" // TODO: "page"/ "tel"
-      contactUrl: string
+      contactType?: "email" | "link" // TODO: "page"/ "tel"
+      contactUrl?: string
+      showWhatsAppLink: boolean
+      whatsAppNumber?: string
     }
   }
+  footer: {
+    showSocialLinksColumn: boolean
+    socialLinks?: ILinkWithType[]
+    showInternalLinksColumn: boolean
+    internalLinks?: ILink[]
+  }
+  copyright: string
   productsListing: {
     pageTitle: string
     paginationType: "loadMore" | "pages"
@@ -34,7 +50,6 @@ interface ISiteConfig {
     showDescription: boolean
     showAttributes: boolean
   }
-  copyright: string
 }
 
 export const siteConfig: ISiteConfig = {
@@ -51,12 +66,35 @@ export const siteConfig: ISiteConfig = {
       },
     ],
     secondaryNavigation: {
-      showMLStoreLink: true,
-      showContactLink: true,
-      contactType: "link",
-      contactUrl: "http://gogle.gom",
+      showMLStoreLink: true, // Shows a link to the ML Store
+      showContactLink: false, // Shows a Mail icon
+      showWhatsAppLink: false, // Shows a WhatsApp icon
     },
   },
+  footer: {
+    showSocialLinksColumn: false,
+    socialLinks: [
+      {
+        type: "whatsapp",
+        label: "WhatsApp",
+        link: "https://api.whatsapp.com/send?phone=5491123853660",
+      },
+      {
+        type: "facebook",
+        label: "Facebook",
+        link: "https://www.facebook.com/JSWeekly/",
+      },
+    ],
+    showInternalLinksColumn: false,
+    internalLinks: [
+      {
+        label: "shop",
+        link: "/productos",
+      },
+    ],
+  },
+  copyright: "Copyright © 2019",
+
   productsListing: {
     pageTitle: "Productos",
     paginationType: "loadMore", // if set to "pages" but no pages were created it will fallback to "loadMore"
@@ -78,6 +116,5 @@ export const siteConfig: ISiteConfig = {
     showDescription: true,
     showAttributes: true,
   },
-  copyright: "Copyright © 2019",
 }
 export default siteConfig
