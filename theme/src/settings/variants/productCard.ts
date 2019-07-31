@@ -25,7 +25,7 @@ export const productCard = {
     },
   },
   image: {
-    height: ["140px", "220px"],
+    height: ["240px", "140px", "220px"],
     bg: "white",
     display: "flex",
     alignItems: "center",

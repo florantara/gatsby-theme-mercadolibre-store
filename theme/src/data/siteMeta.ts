@@ -7,6 +7,7 @@ export const useMeta = () => {
         site {
           siteMetadata {
             title
+            meta
           }
         }
       }

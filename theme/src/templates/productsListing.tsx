@@ -24,6 +24,7 @@ import siteConfig from "../settings/site"
 
 // Data
 import { useAllProducts } from "../data/allProducts"
+import { useMeta } from "../data/siteMeta"
 
 interface IProps {
   pathContext: IPathContext
@@ -35,6 +36,8 @@ interface IProps {
  * "loadMore" is the default
  */
 const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
+  const { site } = useMeta()
+
   const group = pathContext && pathContext.group
   const first = pathContext && pathContext.first
   const index = pathContext && pathContext.index
@@ -93,7 +96,11 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
   return (
     <Site>
       <Helmet>
-        <title>{pageTitle}</title>
+        <title>{`${pageTitle} - ${site.siteMetadata.title}`}</title>
+        <meta
+          name="description"
+          content={`${pageTitle} - ${site.siteMetadata.meta}`}
+        />
       </Helmet>
       <Layout className="Layout--compact">
         <Flex sx={{ alignItems: "center" }}>
