@@ -12,6 +12,7 @@ https://gatsby-theme-mercadolibre-store.netlify.com
 - Sources from a [MercadoLibre](https://www.mercadolibre.com/) user.
 - Creates a Products grid and a Product detail screen.
 - Offers a "load more" button as the default pagination, and the ability to "paginate" into pages.
+- Uses [Theme UI](https://theme-ui.com) leveraging variants.
 - Uses [MDX](https://mdxjs.com/) for static pages, and provides fragments.
 - Written in TypeScript 👮‍♀️
 
