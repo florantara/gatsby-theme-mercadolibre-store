@@ -125,7 +125,7 @@ export const theme = {
       fontSize: "1.2em",
     },
     a: {
-      color: "brand_02.2",
+      color: "brand_01.2",
     },
   },
 

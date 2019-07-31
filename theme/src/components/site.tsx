@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import { Helmet } from "react-helmet"
 
 // Normalize
 import { Global, css } from "@emotion/core"
@@ -29,6 +30,9 @@ interface IProps {
 const Site: FunctionComponent<IProps> = ({ children }) => {
   return (
     <div>
+      <Helmet>
+        <html lang="en" />
+      </Helmet>
       <Global styles={globalStyles} />
       <ThemeProvider theme={theme}>
         <div sx={{ variant: "siteContainer" }}>
