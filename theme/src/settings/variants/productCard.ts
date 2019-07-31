@@ -23,6 +23,24 @@ export const productCard = {
         transform: "scale(1.1)",
       },
     },
+    "&:focus": {
+      outline: "red",
+      border: "2px solid red",
+    },
+    a: {
+      textDecoration: "none",
+      display: "block",
+      "&:focus": {
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "brand_02.2",
+      },
+      "&:active": {
+        borderWidth: "2px",
+        borderStyle: "solid",
+        borderColor: "brand_01.2",
+      },
+    },
   },
   image: {
     height: ["240px", "140px", "220px"],
@@ -116,7 +134,7 @@ export const productCard = {
     display: "block",
     fontSize: "10px",
     textTransform: "uppercase",
-    color: "gray.2",
+    color: "gray.3",
     paddingBottom: "0.5em",
     fontWeight: "bold",
   },

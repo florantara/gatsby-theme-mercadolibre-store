@@ -10,9 +10,6 @@ import { jsx } from "theme-ui"
 // Styled Components
 import styled from "@emotion/styled"
 
-const Card = styled(Link)`
-  text-decoration: none;
-`
 const Image = styled.span`
   .gatsby-image-wrapper {
     height: 100%;
@@ -59,8 +56,8 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
   )
 
   return (
-    <article sx={{ variant: "productCard.item" }}>
-      <Card to={product.fields.slug}>
+    <li sx={{ variant: "productCard.item" }}>
+      <Link to={product.fields.slug}>
         <Image sx={{ variant: "productCard.image" }}>
           {productCard.showImageActionBox && (
             <span
@@ -117,8 +114,8 @@ const ProductCard: FunctionComponent<IProps> = ({ product }) => {
             )}
           </span>
         )}
-      </Card>
-    </article>
+      </Link>
+    </li>
   )
 }
 

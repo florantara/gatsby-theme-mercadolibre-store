@@ -13,8 +13,9 @@ const mediaQueries: any = theme.breakpoints.map((b: string, i: number) => {
   }
 })
 
-export const ProductsGrid = styled.section`
+export const ProductsGrid = styled.ul`
   display: grid;
   grid-gap: ${theme.productsListing.space[0]};
+  padding-left: 0;
   ${mediaQueries}
 `

@@ -1,58 +1,24 @@
-# Gatsby Theme Jam Submission Example
+<!-- Markdown snippet -->
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
 
-This repo is an example and potential starting point for theme creators.
+## Demo
+A fresh install, with some default data:
+https://gatsby-theme-mercadolibre-store.netlify.com
 
-It includes:
-- a bare-bones theme (located in `theme/`) that includes basic setup
-- a demo site (located in `demo/`) that installs the theme
-- a Yarn workspaces configuration so the theme and demo can be worked on simultaneously
+## Documentation
+After installing the theme, the `index.mdx` page will be created with documentation.
 
-## How to use this repo
 
-**NOTE:** Make sure to replace `USERNAME` with your GitHub username and `THEMENAME` with your theme name.
+## Motivation
+A few months ago I started chatting with some friends from Argentina (where I'm from) about how they are handling their e-commerces. Being a web developer means you get to help your friends with their digital challenges, and I love that. 
 
-1.  Fork this repo.
+I realized how resourceful entrepeneurs are nowadays: they use social media a lot and publish the products they are selling wherever they can. 
 
-2.  Rename the forked repo `gatsby-theme-THEMENAME`. (Make sure to replace `THEMENAME` with your chosen name.)
+MercadoLibre is a large platform that is conquering the online sales of Latin America, where the average user still doesn't fully trust buying things online from sites they don't know. They provide a wide range of tools for them to sell their stuff, and they excell at that.
 
-3.  Get the theme set up locally.
-    ```sh
-    # clone the repo
-    git clone git@github.com:USERNAME/gatsby-theme-THEMENAME.git
+Going back to my friends, they all share one thing: they managed to create a website showcasing their products by using either TiendaNube (similar to Shopify), a WordPress site, or some other creative way, but we all know the pitfalls those have... starting with costs and performance, followed by: they have to do the process of managing stock twice.
 
-    # move into the directory
-    cd gatsby-theme-THEMENAME
+So I wanted to create a Gatsby site for them ("them" are "several different entrepeneurs with their own stores") that can use the data they already uploaded into ML, and I stared with a [source plugin](https://github.com/florantara/gatsby-source-mercadolibre).
 
-    # install dependencies
-    yarn
-    ```
+When I finished it, I was about to start coding each website, but Gatsby Themes launched, YAY!!! So instead of creating multiple sites, I created a theme.
 
-4.  Update `theme/package.json` with your info.
-    ```diff
-      {
-    +   "name": "gatsby-theme-THEMENAME",
-    +   "author": "Your Name <name@example.com>",
-        "repository": {
-          "type": "git",
-    +     "url": "https://github.com/USERNAME/gatsby-theme-THEMENAME.git"
-        },
-    ```
-
-5.  Start the demo site.
-    ```sh
-    yarn workspace demo develop
-    ```
-
-    The demo will start at http://localhost:8000
-
-    **NOTE:** If you’re new to Yarn workspaces, check out [this post](https://www.gatsbyjs.org/blog/2019-05-22-setting-up-yarn-workspaces-for-theme-development/) for details.
-
-6.  Start editing the theme! The demo site is configured to use the local theme, so any changes you make to the local `theme` directory will be reflected on the demo site for easy local development.
-
-7.  Follow the [submission checklist](./theme/README.md#submission-checklist) to make sure your theme qualifies to win!
-
-8.  [Submit your theme](https://themejam.gatsbyjs.org/submit) to win!
-
-## More information
-
-For contest rules and more information, see [the Theme Jam website](https://themejam.gatsbyjs.org).

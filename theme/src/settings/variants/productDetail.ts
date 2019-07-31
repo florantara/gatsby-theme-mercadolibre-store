@@ -119,7 +119,7 @@ export const productDetail = {
     display: "block",
     fontSize: "10px",
     textTransform: "uppercase",
-    color: "gray.2",
+    color: "gray.3",
     paddingBottom: "0.5em",
     fontWeight: "bold",
   },
