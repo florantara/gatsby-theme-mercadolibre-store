@@ -104,7 +104,7 @@ export const productDetail = {
     ul: {
       listStyle: "none",
       marginTop: "2em",
-      fontSize: ["11px", "13px", 1],
+      fontSize: ["13px", "13px", 1],
     },
   },
   description: {
