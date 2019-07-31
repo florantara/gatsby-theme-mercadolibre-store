@@ -30,6 +30,7 @@ export const theme = {
       "&.Layout--compact": {
         maxWidth: "980px",
         paddingX: [20, 30],
+        minHeight: "auto",
       },
       "&.Layout--tiny": {
         maxWidth: "680px",
@@ -92,7 +93,7 @@ export const theme = {
       },
     },
     h1: {
-      fontSize: [26, 28, 30],
+      fontSize: [28, 30, 32],
       fontFamily: "heading",
     },
     h2: {
@@ -107,6 +108,24 @@ export const theme = {
       padding: 0,
       lineHeight: "1.7",
       fontFamily: "body",
+      a: {
+        textDecoration: "none",
+      },
+    },
+    pre: {
+      padding: "20px",
+      borderRadius: "5px",
+      backgroundColor: "gray.0",
+      whiteSpace: "pre-wrap",
+      code: {
+        fontSize: "1em",
+      },
+    },
+    code: {
+      fontSize: "1.2em",
+    },
+    a: {
+      color: "brand_02.2",
     },
   },
 
@@ -126,4 +145,3 @@ export const theme = {
   copyright,
   fragments,
 }
-export default theme

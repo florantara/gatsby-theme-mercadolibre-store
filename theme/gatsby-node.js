@@ -36,7 +36,7 @@ exports.onPreBootstrap = async (
   }
 
   // Create a node for the Logo image
-  if (options.site.logoURL) {
+  if (options.site && options.site.logoURL) {
     // TODO: Detect if the URL is actually an image or not.
     reporter.info("importing the site logo")
     let fileNode = null
@@ -60,11 +60,17 @@ exports.onPreBootstrap = async (
 
 exports.createPages = ({ graphql, actions, reporter }, options) => {
   const { createPage } = actions
-  const productDetailPath = options.productDetail.slug || "producto"
-  const productsListingPath = options.productsListing.slug || "productos"
-  const enablePagination = options.productsListing.enablePagination || false
+  const productDetailPath =
+    (options.productDetail && options.productDetail.slug) || "producto"
+  const productsListingPath =
+    (options.productsListing && options.productsListing.slug) || "productos"
+  const enablePagination =
+    (options.productsListing && options.productsListing.enablePagination) ||
+    false
   const productsListingPerPage =
-    options.productsListing.productsListingPerPage || 6
+    (options.productsListing &&
+      options.productsListing.productsListingPerPage) ||
+    6
 
   return Promise.all([
     new Promise((resolve, reject) => {
@@ -210,7 +216,8 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
 
 exports.onCreateNode = ({ node, actions }, options) => {
   const { createNodeField } = actions
-  const productDetailPath = options.productDetail.slug || "producto"
+  const productDetailPath =
+    (options.productDetail && options.productDetail.slug) || "producto"
 
   if (node.internal.type === `MercadoLibreProduct`) {
     const slug = slugify.generate(node.title)

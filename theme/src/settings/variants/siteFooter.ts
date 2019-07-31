@@ -14,10 +14,18 @@ export const siteFooter = {
   },
 
   logoContainer: {
-    width: "50px",
+    width: "auto", // Set a specific width if using a logo image
     height: "auto",
     img: {
       maxWidth: "100%",
+    },
+    a: {
+      display: "block",
+      textDecoration: "none",
+      color: "white",
+      "&:hover": {
+        textDecoration: "none",
+      },
     },
   },
   textLogo: {

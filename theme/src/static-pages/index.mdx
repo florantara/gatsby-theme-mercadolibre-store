@@ -7,6 +7,123 @@ title: "Tienda Online"
 
 ### Bienvenido a tu
 
-# Tienda Online con Gatsby
+## Tienda de MercadoLibre 
+# con Gatsby 🚀
 
 </Hero>
+
+<Paper>
+
+## Setup your Store
+
+### Import data
+Open `gatsby-config.js` and add your MercadoLibre info.
+
+```javascript
+options: {
+  mercadoLibre: {
+    siteID: "yoursiteid",
+    user: "youruser",
+  }
+}
+```
+<a href="https://github.com/florantara/gatsby-source-mercadolibre/#readme" target="_blank">Read more ></a>
+
+### Paths and Pagination
+You can customize the slug for the products listing and the detail page paths.
+
+The default pagination format is a "load more" button, but you can setup "paginated" pagination.
+
+```javascript
+options: {
+  productDetail: {
+    slug: "producto",
+  },
+  productsListing: {
+    slug: "productos",
+    enablePagination: true, // defaults to false
+    productsListingPerPage: 3
+  },
+}
+```
+
+### Title and Logo
+Use the `siteMetadata` for the `title`. We'll use this for SEO, and if there isn't a logo image.
+
+
+```javascript
+siteMetadata: {
+  title: "Plants Store",
+}
+```
+
+To import a logo, configure:
+
+```javascript
+options: {
+  site: {
+    logoURL:
+      "https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo3.jpg",
+    }
+  }
+}
+```
+
+## Theming
+Most components come with a [Theme UI variant](https://theme-ui.com/guides/variants) setup you can use to style them, or you can style any component that the [Theme Spec](https://theme-ui.com/theme-spec) provides.
+
+#### Override the settings
+
+Create the file `settings/theme.js` in the site's `src` folder and add the following:
+
+```javascript
+import { theme as baseTheme } from "gatsby-theme-mercadolibre-store/src/settings/theme"
+
+export const theme = {
+  ...baseTheme,
+  // Your overrides here
+}
+
+```
+
+## Site settings
+We provide a set of settings for hiding/showing things, like the price on the products and the category, and also other site-wide configurations.   
+
+Following the same directions as with *Theming*, shadow this file: `settings/siteConfig.js`.
+
+```javascript
+import { siteConfig as baseSiteConfig } from "gatsby-theme-mercadolibre-store/src/settings/theme"
+
+export const siteConfig = {
+  ...baseSiteConfig,
+  // Your overrides here
+}
+
+```
+
+## Homepage and Pages
+Use [MDX](https://mdxjs.com/) to create pages, and edit this page from `src/static-pages`.
+At the top of the page, setup the `path` in the `frontmatter` data:
+
+```md
+---
+path: "/nueva-pagina"
+title: "Nueva Página"
+---
+```
+
+## Fragments
+There's a few available reusable components we are calling "fragments" available: 
+
+- Hero (the orange at the top ^)
+- Paper (this one!)
+- FeaturedProducts
+
+(more to come!)
+
+#### This is how the FeaturedProducts looks like:
+
+
+</Paper>
+
+<FeaturedProducts title="Destacados" itemIDs='"MLA652188588", "MLA647364605", "MLA776424887"'/>

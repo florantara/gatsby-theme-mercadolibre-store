@@ -10,7 +10,7 @@ interface IProps {
 }
 
 // Bring in the base styles for this fragment
-import theme from "../settings/theme"
+import { theme } from "../settings/theme"
 
 const Paper: FunctionComponent<IProps> = ({ id, children }) => {
   return (

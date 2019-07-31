@@ -3,12 +3,17 @@ import { convertHexToRGBA } from "../../utils/convertHexToRGBA"
 export const fragments = {
   hero: {
     marginX: "auto",
-    background: "linear-gradient(to right, #FFC371, #FF5F6D)",
+    background: "linear-gradient(45deg, #FFC371, #FF5F6D)",
     color: "white",
   },
   hero_homepage: {
     padding: "1em 3em",
+    marginBottom: "30px",
     h3: {
+      color: "white",
+      textAlign: "center",
+    },
+    h2: {
       color: "white",
       textAlign: "center",
     },
@@ -17,14 +22,23 @@ export const fragments = {
       textAlign: "center",
     },
   },
+  featuredProducts_homepage: {
+    marginBottom: "30px",
+  },
   paper: {
-    maxWidth: "980px",
+    maxWidth: "calc( 980px - 60px )",
     margin: "0 auto 30px",
     backgroundColor: "white",
-    padding: 30,
+    padding: "30px",
     boxShadow: `4px 4px 10px ${convertHexToRGBA("brand_01.3", 0.1)}`,
-    h1: {
+    "h1:first-of-type": {
       marginTop: 0,
+    },
+    "h2:first-of-type": {
+      marginTop: 0,
+    },
+    a: {
+      textDecoration: "none",
     },
   },
 }

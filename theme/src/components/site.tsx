@@ -6,7 +6,7 @@ import { Global, css } from "@emotion/core"
 // Theme UI
 /** @jsx jsx */
 import { ThemeProvider, Main, jsx } from "theme-ui"
-import theme from "../settings/theme"
+import { theme } from "../settings/theme"
 
 // Components
 import Header from "./header"

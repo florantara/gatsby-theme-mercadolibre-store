@@ -40,9 +40,9 @@ const Header: FunctionComponent = () => {
               alt={site.siteMetadata.title}
             />
           ) : (
-            <h1 sx={{ variant: "siteHeader.textLogo" }}>
+            <span sx={{ variant: "siteHeader.textLogo" }}>
               {site.siteMetadata.title}
-            </h1>
+            </span>
           )}
         </Link>
       </div>

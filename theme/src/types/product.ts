@@ -6,6 +6,7 @@ interface IAttribute {
   name: string
   value_name: string
 }
+
 export interface IProduct {
   id: string
   title: string
@@ -14,6 +15,7 @@ export interface IProduct {
   original_price: string
   video_id?: string
   permalink: string
+  itemID: string
   itemDescription: string
   accepts_mercadopago: boolean
   attributes: IAttribute[]
@@ -33,7 +35,4 @@ export interface IProductQuery {
 
 export interface IProductNode {
   node: IProduct
-}
-export interface IProductsQuery {
-  edges: IProductNode[]
 }

@@ -8,6 +8,7 @@ export const useAllProducts = () => {
           edges {
             node {
               id
+              itemID
               title
               fields {
                 slug

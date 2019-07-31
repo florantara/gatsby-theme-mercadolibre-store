@@ -67,7 +67,9 @@ export const siteConfig: ISiteConfig = {
     ],
     secondaryNavigation: {
       showMLStoreLink: true, // Shows a link to the ML Store
-      showContactLink: false, // Shows a Mail icon
+      showContactLink: true, // Shows a Mail icon
+      contactType: "email",
+      contactUrl: "florenciaantara@gmail.com",
       showWhatsAppLink: false, // Shows a WhatsApp icon
     },
   },
@@ -97,7 +99,7 @@ export const siteConfig: ISiteConfig = {
 
   productsListing: {
     pageTitle: "Productos",
-    paginationType: "loadMore", // if set to "pages" but no pages were created it will fallback to "loadMore"
+    paginationType: "pages", // if set to "pages" but no pages were created it will fallback to "loadMore"
     loadMoreAmount: 6,
     loadMoreButtonLabel: "Cargar más",
     loadMoreNoMoreText: "Fin",

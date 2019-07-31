@@ -11,7 +11,7 @@ export const pagination = {
     li: {
       minWidth: ["1.5em", "2em"],
       a: {
-        color: "brand_01.3",
+        color: "brand_01.2",
         textDecoration: "none",
         "&:hover, &:active": {
           color: "brand_01.0",
@@ -25,13 +25,13 @@ export const pagination = {
     },
   },
   separator: {
-    color: "gray.0",
+    color: "gray.1",
   },
 
   rightArrow: {
     paddingLeft: "30px",
     a: {
-      color: "brand_01.3",
+      color: "brand_01.2",
       "&:hover, &:active": {
         color: "brand_01.0",
       },
@@ -40,7 +40,7 @@ export const pagination = {
   leftArrow: {
     paddingRight: "30px",
     a: {
-      color: "brand_01.3",
+      color: "brand_01.2",
       "&:hover, &:active": {
         color: "brand_01.0",
       },

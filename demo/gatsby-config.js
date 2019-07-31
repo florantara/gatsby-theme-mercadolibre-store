@@ -6,29 +6,16 @@
 
 module.exports = {
   siteMetadata: {
-    title: "Guau Yeah Petstore",
+    title: "🌵Plants Store",
   },
   plugins: [
     {
       resolve: "gatsby-theme-mercadolibre-store",
       options: {
-        site: {
-          logoURL:
-            "https://s3-us-west-2.amazonaws.com/s.cdpn.io/575957/Logo-800x800.png",
-        },
-
-        productDetail: {
-          slug: "producto",
-        },
-        productsListing: {
-          slug: "productos",
-          enablePagination: true,
-          productsListingPerPage: 3,
-        },
-
+        // Default initial data:
         mercadoLibre: {
           siteID: "MLA",
-          user: "PICUADRADO_DESIGN", //PICUADRADO_DESIGN
+          user: "PICUADRADO_DESIGN",
         },
       },
     },

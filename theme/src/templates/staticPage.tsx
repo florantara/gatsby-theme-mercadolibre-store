@@ -33,7 +33,7 @@ const StaticPage: FunctionComponent<IProps> = ({ data }) => {
   const { mdx } = data
   const { frontmatter, body } = mdx
   // Todo, use {frontmatter.title} for SEO
-  console.log("fragments ", fragments)
+
   return (
     <Site>
       <MDXProvider components={{ ...fragments, Layout }}>

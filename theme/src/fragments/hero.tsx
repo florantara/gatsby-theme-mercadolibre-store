@@ -11,7 +11,7 @@ interface IProps {
 }
 
 // Bring in the base styles for this fragment
-import theme from "../settings/theme"
+import { theme } from "../settings/theme"
 
 const Hero: FunctionComponent<IProps> = ({ name, children, layout }) => {
   const maxWidth =
