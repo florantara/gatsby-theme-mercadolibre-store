@@ -63,9 +63,9 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
         <a
           sx={{
             variant: "buttons.transparent",
-            fontSize: 15,
-            color: "primary",
-            paddingTop: 30,
+            fontSize: "15px",
+            color: "brand_02.0",
+            paddingTop: "30px",
           }}
           onClick={() => window.history.back()}
           aria-label="Volver"
@@ -78,6 +78,8 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
               sx={{ variant: "productDetail.shareIcon" }}
               href={window.location.href} // TODO: copy to clipboard
               target="_blank"
+              aria-label="Compartir"
+              title="Compartir"
             >
               <FiShare />
             </a>
