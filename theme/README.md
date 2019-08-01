@@ -58,7 +58,7 @@ Open `gatsby-config.js` and add configure it under `plugins`.
 
 ```javascript
 {
-  resolve: "gatsby-theme-mercadolibre-store",
+  resolve: "@florantara/gatsby-theme-mercadolibre-store",
   options: {
     mercadoLibre: {
       siteID: "yoursiteid",
