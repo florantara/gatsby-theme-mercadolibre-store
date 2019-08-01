@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-theme-mercadolibre-store",
-  "author": "Flor Antara <florenciaantara@gmail.com>",
+  "name": "@florantara/gatsby-theme-mercadolibre-store",
+  "author": "Flor Antara",
   "repository": {
     "type": "git",
     "url": "https://github.com/florantara/gatsby-theme-mercadolibre-store.git"
   },
-  "version": "1.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
