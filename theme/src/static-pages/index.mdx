@@ -77,7 +77,7 @@ Most components come with a [Theme UI variant](https://theme-ui.com/guides/varia
 Create the file `settings/theme.js` in the site's `src` folder and add the following:
 
 ```javascript
-import { theme as baseTheme } from "gatsby-theme-mercadolibre-store/src/settings/theme"
+import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
 
 export const theme = {
   ...baseTheme,
@@ -92,7 +92,7 @@ We provide a set of settings for hiding/showing things, like the price on the pr
 Following the same directions as with *Theming*, shadow this file: `settings/siteConfig.js`.
 
 ```javascript
-import { siteConfig as baseSiteConfig } from "gatsby-theme-mercadolibre-store/src/settings/theme"
+import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
 
 export const siteConfig = {
   ...baseSiteConfig,
@@ -112,12 +112,13 @@ title: "Nueva Página"
 ---
 ```
 
-## Fragments
+## Fragments for MDX
 There's a few available reusable components we are calling "fragments" available: 
 
 - Hero (the orange at the top ^)
 - Paper (this one!)
 - FeaturedProducts
+- Layout (width `compact` and `tiny` options) 
 
 (more to come!)
 

@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-theme-mercadolibre-store",
+      resolve: "@florantara/gatsby-theme-mercadolibre-store",
       options: {
         // Default initial data:
         mercadoLibre: {

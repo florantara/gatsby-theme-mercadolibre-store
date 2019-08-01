@@ -7,7 +7,6 @@ Gatsby Theme that sources from MercadoLibre creating a showcase of products.
 A fresh install, with some default data:
 https://gatsby-theme-mercadolibre-store.netlify.com
 
-
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
 
 ## Motivation
@@ -44,11 +43,12 @@ From your Gatsby site's root:
 ```bash
 npm install @florantara/gatsby-theme-mercadolibre-store
 ```
+
 or
+
 ```bash
 yarn add @florantara/gatsby-theme-mercadolibre-store
 ```
-
 
 ## Setup
 
@@ -115,20 +115,23 @@ options: {
 
 Most components come with a [Theme UI variant](https://theme-ui.com/guides/variants) setup you can use to style them, or you can style any component that the [Theme Spec](https://theme-ui.com/theme-spec) provides.
 
+[Variants reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/tree/master/theme/src/settings/variants)
+
 #### Override the settings
 
 Create the file `settings/theme.js` in the site's `src` folder and add the following:
 
 ```javascript
-import { theme as baseTheme } from "gatsby-theme-mercadolibre-store/src/settings/theme";
+import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
 
 export const theme = {
-  ...baseTheme
+  ...baseTheme,
   // Your overrides here
-};
+}
 ```
 
 #### Typography
+
 The theme uses [Roboto](https://fonts.google.com/specimen/Roboto) for the body and headings too.
 
 You can configure any other typography you want in the `theme` settings - after importing it to your site with a plugin such as [gatsby-plugin-prefetch-google-fonts](https://www.gatsbyjs.org/packages/gatsby-plugin-prefetch-google-fonts/).
@@ -142,8 +145,6 @@ fonts: {
 }
 ```
 
-[Variants reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/tree/master/theme/src/settings/variants)
-
 ## Site settings
 
 We provide a set of settings for hiding/showing things, like the price on the products and the category, and also other site-wide configurations.
@@ -151,14 +152,14 @@ We provide a set of settings for hiding/showing things, like the price on the pr
 Following the same directions as with _Theming_, shadow this file: `settings/siteConfig.js`.
 
 ```javascript
-import { siteConfig as baseSiteConfig } from "gatsby-theme-mercadolibre-store/src/settings/theme";
+import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
 
 export const siteConfig = {
-  ...baseSiteConfig
+  ...baseSiteConfig,
   // Your overrides here
-};
-
+}
 ```
+
 [Settings reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/blob/master/theme/src/settings/site.ts)
 
 ## Static Pages

@@ -41,17 +41,18 @@ From your Gatsby site's root:
 ```bash
 npm install @florantara/gatsby-theme-mercadolibre-store
 ```
+
 or
+
 ```bash
 yarn add @florantara/gatsby-theme-mercadolibre-store
 ```
-
 
 ## Setup
 
 ### Import data
 
-Open `gatsby-config.js` and add configure it under `plugins`.
+Open `gatsby-config.js` and configure it under `plugins`.
 
 ```javascript
 {
@@ -112,12 +113,14 @@ options: {
 
 Most components come with a [Theme UI variant](https://theme-ui.com/guides/variants) setup you can use to style them, or you can style any component that the [Theme Spec](https://theme-ui.com/theme-spec) provides.
 
+[Variants reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/tree/master/theme/src/settings/variants)
+
 #### Override the settings
 
 Create the file `settings/theme.js` in the site's `src` folder and add the following:
 
 ```javascript
-import { theme as baseTheme } from "gatsby-theme-mercadolibre-store/src/settings/theme";
+import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme";
 
 export const theme = {
   ...baseTheme
@@ -126,6 +129,7 @@ export const theme = {
 ```
 
 #### Typography
+
 The theme uses [Roboto](https://fonts.google.com/specimen/Roboto) for the body and headings too.
 
 You can configure any other typography you want in the `theme` settings - after importing it to your site with a plugin such as [gatsby-plugin-prefetch-google-fonts](https://www.gatsbyjs.org/packages/gatsby-plugin-prefetch-google-fonts/).
@@ -139,8 +143,6 @@ fonts: {
 }
 ```
 
-[Variants reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/tree/master/theme/src/settings/variants)
-
 ## Site settings
 
 We provide a set of settings for hiding/showing things, like the price on the products and the category, and also other site-wide configurations.
@@ -148,14 +150,14 @@ We provide a set of settings for hiding/showing things, like the price on the pr
 Following the same directions as with _Theming_, shadow this file: `settings/siteConfig.js`.
 
 ```javascript
-import { siteConfig as baseSiteConfig } from "gatsby-theme-mercadolibre-store/src/settings/theme";
+import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme";
 
 export const siteConfig = {
   ...baseSiteConfig
   // Your overrides here
 };
-
 ```
+
 [Settings reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/blob/master/theme/src/settings/site.ts)
 
 ## Static Pages
@@ -196,6 +198,34 @@ Lighthouse scores for the Products Listing page (which has many images).
 Navigating with Tabs:
 
 ![](https://thepracticaldev.s3.amazonaws.com/i/zo6u02o8i821qjeom7zl.gif)
+
+# Contributions
+
+I'd love to hear ideas of features or improvements.
+
+If you are considering using this Theme and would love some feature [let me know](mailto:florenciaantara@gmail.com)!
+
+Found an issue? Please submit it [here](https://github.com/florantara/gatsby-theme-mercadolibre-store/issues/new)
+
+## Fork
+
+Upon forking this repository, setup the environment running this from the root of the cloned repo:
+
+```bash
+yarn
+```
+
+```bash
+yarn workspace demo develop
+```
+
+I've added a `clean` command that runs `gatsby clean`
+
+```bash
+yarn workspace demo clean
+```
+
+Then work on the `theme` folder.
 
 ### A note on language
 
