@@ -1,4 +1,4 @@
-<!-- Markdown snippet -->
+[![npm version](http://img.shields.io/npm/v/@florantara/gatsby-theme-mercadolibre-store.svg?style=flat)](https://www.npmjs.com/package/@florantara/gatsby-theme-mercadolibre-store "View this project on npm")
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
 

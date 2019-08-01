@@ -99,7 +99,7 @@ export const siteConfig: ISiteConfig = {
 
   productsListing: {
     pageTitle: "Productos",
-    paginationType: "pages", // if set to "pages" but no pages were created it will fallback to "loadMore"
+    paginationType: "loadMore", // if set to "pages" but no pages were created it will fallback to "loadMore"
     loadMoreAmount: 6,
     loadMoreButtonLabel: "Cargar más",
     loadMoreNoMoreText: "Fin",
