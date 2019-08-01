@@ -5,7 +5,6 @@ import { colors } from "../colors"
 
 export const productCard = {
   item: {
-    overflow: "hidden",
     fontFamily: "body",
     borderWidth: "1px",
     borderColor: colors.gray[0],
@@ -13,6 +12,7 @@ export const productCard = {
     borderRadius: "5px",
     transition: "box-shadow 10ms linear",
     backgroundColor: "white",
+    listStyle: "none",
     boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.gray[1], 0.1)}`,
     "&:hover": {
       boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.gray[1], 0.4)}`,
@@ -23,22 +23,13 @@ export const productCard = {
         transform: "scale(1.1)",
       },
     },
-    "&:focus": {
-      outline: "red",
-      border: "2px solid red",
-    },
     a: {
       textDecoration: "none",
       display: "block",
-      "&:focus": {
-        borderWidth: "2px",
-        borderStyle: "solid",
-        borderColor: "brand_02.2",
-      },
-      "&:active": {
-        borderWidth: "2px",
-        borderStyle: "solid",
-        borderColor: "brand_01.2",
+      "&:focus, &:active": {
+        outlineWidth: "2px",
+        outlineStyle: "solid",
+        outlineColor: colors.brand_02[2],
       },
     },
   },

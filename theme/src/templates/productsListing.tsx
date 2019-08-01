@@ -133,7 +133,7 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
           <aside sx={{ variant: "pagination.loadMoreButtonWrapper" }}>
             {products.length !== totalProducts ? (
               <button
-                sx={{ variant: "buttons.primaryOutline" }}
+                sx={{ variant: "buttons.secondaryOutline" }}
                 onClick={loadMoreHandler}
               >
                 {loadMoreButtonLabel}

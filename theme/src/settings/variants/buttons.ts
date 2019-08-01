@@ -29,7 +29,7 @@ const buttonShared = {
   borderWidth: 1,
   borderStyle: "solid",
   transition: "all 100ms linear",
-  padding: "0.7em 3em",
+  padding: "0.7em 2.4em",
   textTransform: "uppercase",
   fontSize: [2, 1, 0],
 }
