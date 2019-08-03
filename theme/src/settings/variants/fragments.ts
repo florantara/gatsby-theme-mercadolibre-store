@@ -1,4 +1,5 @@
 import { convertHexToRGBA } from "../../utils/convertHexToRGBA"
+import { colors } from "../colors"
 
 export const fragments = {
   hero: {
@@ -30,7 +31,7 @@ export const fragments = {
     margin: "0 auto 30px",
     backgroundColor: "white",
     padding: "30px",
-    boxShadow: `4px 4px 10px ${convertHexToRGBA("brand_01.3", 0.1)}`,
+    boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_01[3], 0.1)}`,
     "h1:first-of-type": {
       marginTop: 0,
     },

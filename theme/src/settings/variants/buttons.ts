@@ -1,4 +1,5 @@
 import { convertHexToRGBA } from "../../utils/convertHexToRGBA"
+import { colors } from "../colors"
 
 const buttonBase = {
   appareance: "none",
@@ -41,11 +42,11 @@ export const buttons = {
     borderColor: "brand_01.0",
     color: "brand_01.3",
     backgroundColor: "brand_01.0",
-    boxShadow: `1px 1px 0px ${convertHexToRGBA("brand_01.0", 0)}`,
+    boxShadow: `1px 1px 0px ${convertHexToRGBA(colors.brand_01[0], 0)}`,
     "&:hover, &:active": {
       color: "brand_01.0",
       backgroundColor: "brand_01.3",
-      boxShadow: `4px 4px 10px ${convertHexToRGBA("brand_01.0", 0.3)}`,
+      boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_01[0], 0.3)}`,
     },
     "&:focus": {
       outlineColor: "brand_01.0",
@@ -57,11 +58,11 @@ export const buttons = {
     borderColor: "brand_01.0",
     color: "brand_01.0",
     backgroundColor: "transparent",
-    boxShadow: `1px 1px 0px ${convertHexToRGBA("brand_01.0", 0)}`,
+    boxShadow: `1px 1px 0px ${convertHexToRGBA(colors.brand_01[0], 0)}`,
     "&:hover, &:active": {
       color: "white",
       backgroundColor: "brand_01.0",
-      boxShadow: `4px 4px 10px ${convertHexToRGBA("brand_01.0", 0.3)}`,
+      boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_01[0], 0.3)}`,
     },
     "&:focus": {
       outlineColor: "brand_01.0",
@@ -73,11 +74,11 @@ export const buttons = {
     borderColor: "brand_02.0",
     color: "brand_01.3",
     backgroundColor: "brand_02.0",
-    boxShadow: `1px 1px 0px ${convertHexToRGBA("brand_02.0", 0)}`,
+    boxShadow: `1px 1px 0px ${convertHexToRGBA(colors.brand_02[0], 0)}`,
     "&:hover, &:active": {
       color: "brand_02.0",
       backgroundColor: "brand_01.3",
-      boxShadow: `4px 4px 10px ${convertHexToRGBA("brand_02.0", 0.3)}`,
+      boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_02[0], 0.3)}`,
     },
     "&:focus": {
       outlineColor: "brand_02.0",
@@ -89,11 +90,11 @@ export const buttons = {
     borderColor: "brand_02.0",
     color: "brand_02.0",
     backgroundColor: "transparent",
-    boxShadow: `1px 1px 0px ${convertHexToRGBA("brand_02.0", 0)}`,
+    boxShadow: `1px 1px 0px ${convertHexToRGBA(colors.brand_02[0], 0)}`,
     "&:hover, &:active": {
       color: "brand_01.3",
       backgroundColor: "brand_02.0",
-      boxShadow: `4px 4px 10px ${convertHexToRGBA("brand_02.0", 0.3)}`,
+      boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_02[0], 0.3)}`,
     },
     "&:focus": {
       outlineColor: "brand_02.0",
