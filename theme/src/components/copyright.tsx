@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { jsx } from "theme-ui"
 
 // Data

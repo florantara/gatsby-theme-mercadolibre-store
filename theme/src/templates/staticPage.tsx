@@ -10,6 +10,7 @@ import { MDXProvider } from "@mdx-js/react"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { jsx, Layout } from "theme-ui"
 
 // Components

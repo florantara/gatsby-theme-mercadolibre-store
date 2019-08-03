@@ -6,6 +6,7 @@ import { IPathContext } from "../types/theme"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { Styled, jsx, Flex, Box, Layout } from "theme-ui"
 
 // Types
@@ -79,7 +80,7 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
   const initialDisplayedProducts =
     paginationType === "pages" && paginatedPagesExist
       ? group
-      : edges.filter((p: IProductNode, i: number) => i < groupedBy) // Limit the amount
+      : edges.filter((_: IProductNode, i: number) => i < groupedBy) // Limit the amount
 
   const [products, setProducts] = useState(initialDisplayedProducts)
 
@@ -88,7 +89,7 @@ const ProductsListing: FunctionComponent<IProps> = ({ pathContext }) => {
     const displaying = products.length
     const amountToLoad = displaying + groupedBy
     const updatedProducts = edges.filter(
-      (p: IProductNode, i: number) => i < amountToLoad
+      (_: IProductNode, i: number) => i < amountToLoad
     )
     setProducts(updatedProducts)
   }

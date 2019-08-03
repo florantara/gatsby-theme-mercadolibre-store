@@ -6,6 +6,7 @@ import { IProduct, IProductQuery } from "../types/product"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { Styled, jsx, Layout } from "theme-ui"
 
 // Gatsby
@@ -31,13 +32,13 @@ import siteConfig from "../settings/site"
 interface IProps {
   data: IProductQuery
 }
-const ProductDetail: FunctionComponent<IProps> = ({ data }, props) => {
+const ProductDetail: FunctionComponent<IProps> = ({ data }) => {
   const product: IProduct = data.mercadoLibreProduct
 
   // Site Config
   const { productDetail } = siteConfig
 
-  const galleryImages = product.itemImages.map((img, i) => ({
+  const galleryImages = product.itemImages.map(img => ({
     thumbnail: img.image.childImageSharp.fixed.src,
     renderItem: () => (
       <Img

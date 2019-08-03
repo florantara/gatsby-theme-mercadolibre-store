@@ -6,6 +6,7 @@ import { Global, css } from "@emotion/core"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { ThemeProvider, Main, jsx } from "theme-ui"
 import { theme } from "../settings/theme"
 

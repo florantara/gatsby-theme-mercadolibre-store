@@ -5,6 +5,7 @@ import { FaArrowRight, FaArrowLeft } from "react-icons/fa"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { jsx } from "theme-ui"
 
 // Gatsby
@@ -30,7 +31,7 @@ const getElement = (
   increment = 2,
   pathPrefix: string
 ) =>
-  Array.from({ length }, (p, i) => ({
+  Array.from({ length }, (_, i) => ({
     link: `/${pathPrefix}/${i + increment}/`,
     pageNumber: i + increment,
     isCurrent: page === i + increment,
@@ -59,7 +60,7 @@ const Pagination: FunctionComponent<IProps> = ({ context }) => {
   if (pageCount <= 5) {
     paginationElements = [
       ...paginationElements,
-      ...Array.from({ length: pageCount - 1 }, (p, i) => ({
+      ...Array.from({ length: pageCount - 1 }, (_, i) => ({
         link: `/${pathPrefix}/${i + 2}/`,
         pageNumber: i + 2,
         isCurrent: index === i + 2,

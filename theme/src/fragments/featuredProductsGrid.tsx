@@ -5,6 +5,7 @@ import { IProductNode } from "../types/product"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { Styled, jsx, Layout } from "theme-ui"
 
 // Styled

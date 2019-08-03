@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react"
 
 // Theme UI
 /** @jsx jsx */
+// @ts-ignore : jsx unused
 import { Header as ThemeHeader, jsx } from "theme-ui"
 
 // Gatsby
