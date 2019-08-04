@@ -83,6 +83,7 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }) => {
               sx={{ variant: "productDetail.shareIcon" }}
               href={typeof window !== "undefined" ? window.location.href : ""} // TODO: copy to clipboard
               target="_blank"
+              rel="noopener noreferrer"
               aria-label="Compartir"
               title="Compartir"
             >

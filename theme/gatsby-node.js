@@ -5,7 +5,7 @@ const fs = require("fs")
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 
 exports.onPreBootstrap = async (
-  { reporter, createNodeId, store, cache, actions },
+  { reporter, store, cache, actions },
   options
 ) => {
   const srcPath = "./src" // TODO: check that exists/ create one
@@ -125,9 +125,7 @@ exports.createPages = ({ graphql, actions, reporter }, options) => {
             // Create Products' Detail Pages
             const products = result.data.allMercadoLibreProduct.edges
             reporter.info(
-              `creating ${
-                products.length
-              } product pages with the path /${productDetailPath}:slug`
+              `creating ${products.length} product pages with the path /${productDetailPath}:slug`
             )
             products.forEach(({ node }) => {
               const slug = slugify.generate(node.title)

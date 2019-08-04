@@ -1,5 +1,6 @@
 const path = require("path")
-module.exports = ({ site = {}, mercadoLibre = {}, paths = {} }) => ({
+
+module.exports = ({ mercadoLibre = {} }) => ({
   siteMetadata: {
     title: "Mercado Libre Store",
     meta: "Tienda Online",
@@ -35,7 +36,6 @@ module.exports = ({ site = {}, mercadoLibre = {}, paths = {} }) => ({
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-tslint`,
     `gatsby-theme-ui`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-mdx`,
