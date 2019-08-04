@@ -1,11 +1,15 @@
-[![npm version](http://img.shields.io/npm/v/@florantara/gatsby-theme-mercadolibre-store.svg?style=flat)](https://www.npmjs.com/package/@florantara/gatsby-theme-mercadolibre-store "View this project on npm")
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
+<p>
+  <img src="http://img.shields.io/npm/v/@florantara/gatsby-theme-mercadolibre-store.svg?style=flat" alt="npm version">
+  <img src="https://app.codeship.com/projects/d724b210-9925-0137-7a7c-5a4d2a496d42/status?branch=master" alt="TS checks and linting status">
+</p>
 
 ## Demo
 
 A fresh install, with some default data:
 https://gatsby-theme-mercadolibre-store.netlify.com
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
+
 
 ## Motivation
 
