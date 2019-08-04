@@ -12,7 +12,7 @@ export const productDetail = {
     marginTop: 10,
     marginBottom: 30,
     padding: 30,
-    boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_01[3], 0.1)}`,
+    boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.gray[1], 0.1)}`,
     display: "grid",
     gridGap: 30,
     gridTemplateColumns: "minmax(0, 2fr) 1fr",
