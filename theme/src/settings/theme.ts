@@ -102,6 +102,20 @@ export const theme = {
     },
     p: {
       lineHeight: "1.7em",
+      code: {
+        fontSize: "1.1em",
+        backgroundColor: "#ffdeb8",
+        paddingX: "0.5em",
+        borderRadius: "3px",
+        color: "#222",
+      },
+    },
+    blockquote: {
+      padding: "0.1em 1em",
+      backgroundColor: "#F7F0BA",
+      margin: "0px",
+      borderRadius: "3px",
+      fontSize: 1,
     },
     ul: {
       margin: "0 0 0 1em",
@@ -120,9 +134,6 @@ export const theme = {
       code: {
         fontSize: "1em",
       },
-    },
-    code: {
-      fontSize: "1.2em",
     },
     a: {
       color: "brand_01.2",

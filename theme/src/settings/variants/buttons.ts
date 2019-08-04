@@ -72,12 +72,12 @@ export const buttons = {
     ...buttonBase,
     ...buttonShared,
     borderColor: "brand_02.0",
-    color: "brand_01.3",
+    color: "brand_02.3",
     backgroundColor: "brand_02.0",
     boxShadow: `1px 1px 0px ${convertHexToRGBA(colors.brand_02[0], 0)}`,
     "&:hover, &:active": {
       color: "brand_02.0",
-      backgroundColor: "brand_01.3",
+      backgroundColor: "brand_02.3",
       boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_02[0], 0.3)}`,
     },
     "&:focus": {
@@ -92,7 +92,7 @@ export const buttons = {
     backgroundColor: "transparent",
     boxShadow: `1px 1px 0px ${convertHexToRGBA(colors.brand_02[0], 0)}`,
     "&:hover, &:active": {
-      color: "brand_01.3",
+      color: "brand_02.3",
       backgroundColor: "brand_02.0",
       boxShadow: `4px 4px 10px ${convertHexToRGBA(colors.brand_02[0], 0.3)}`,
     },

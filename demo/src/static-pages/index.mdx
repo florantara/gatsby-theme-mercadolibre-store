@@ -69,37 +69,71 @@ options: {
 }
 ```
 
+## Shadow theme files
+To override any file from the theme, create **in your site's `src/` folder**:
+
+```
+src/@florantara/gatsby-theme-mercadolibre-store/
+```
+Then replicate the same folder/file structure from the theme that you want to shadow.
+
+Remember to restart the server for this to take effect.
+
 ## Theming
+
 Most components come with a [Theme UI variant](https://theme-ui.com/guides/variants) setup you can use to style them, or you can style any component that the [Theme Spec](https://theme-ui.com/theme-spec) provides.
+
+[Variants reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/tree/master/theme/src/settings/variants)
 
 #### Override the settings
 
-Create the file `settings/theme.js` in the site's `src` folder and add the following:
-
+Create the file `settings/theme.js` in the site's `src/@florantara/gatsby-theme-mercadolibre-store/` folder and add the following:
 ```javascript
-import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
+import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme";
 
 export const theme = {
-  ...baseTheme,
+  ...baseTheme
   // Your overrides here
-}
+};
+```
+> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
 
+
+#### Typography
+
+The theme uses [Roboto](https://fonts.google.com/specimen/Roboto) for the body and headings too.
+
+You can configure any other typography you want in the `theme` settings - after importing it to your site with a plugin such as [gatsby-plugin-prefetch-google-fonts](https://www.gatsbyjs.org/packages/gatsby-plugin-prefetch-google-fonts/).
+
+Use the [`fonts`](https://theme-ui.com/theming#typography) property of Theme UI.
+
+```javascript
+fonts: {
+  heading: "Roboto, system-ui, sans-serif",
+  body: "Roboto, system-ui, sans-serif",
+}
 ```
 
 ## Site settings
-We provide a set of settings for hiding/showing things, like the price on the products and the category, and also other site-wide configurations.   
 
-Following the same directions as with *Theming*, shadow this file: `settings/siteConfig.js`.
+We provide a set of settings for hiding/showing things, like the price on the products and the category, and also other site-wide configurations.
+
+Following the same directions as with _Theming_, shadow this file: `settings/siteConfig.js`.
 
 ```javascript
-import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
+import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/site";
 
 export const siteConfig = {
-  ...baseSiteConfig,
+  ...baseSiteConfig
   // Your overrides here
-}
-
+};
 ```
+> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
+
+
+[Settings reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/blob/master/theme/src/settings/site.ts)
+
+
 
 ## Homepage and Pages
 Use [MDX](https://mdxjs.com/) to create pages, and edit this page from `src/static-pages`.
@@ -112,12 +146,13 @@ title: "Nueva Página"
 ---
 ```
 
-## Fragments
+## Fragments for MDX
 There's a few available reusable components we are calling "fragments" available: 
 
 - Hero (the orange at the top ^)
 - Paper (this one!)
 - FeaturedProducts
+- Layout (width `compact` and `tiny` options) 
 
 (more to come!)
 
@@ -126,4 +161,4 @@ There's a few available reusable components we are calling "fragments" available
 
 </Paper>
 
-<FeaturedProducts title="Destacados" itemIDs='"MLA652188588", "MLA647364605", "MLA698157191"' name="homepage"/>
+<FeaturedProducts title="Destacados" itemIDs='"MLA652188588", "MLA647364605", "MLA776424887"'/>

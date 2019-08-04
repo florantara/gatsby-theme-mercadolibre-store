@@ -109,6 +109,16 @@ options: {
 }
 ```
 
+## Shadow theme files
+To override any file from the theme, create **in your site's `src/` folder**:
+
+```
+src/@florantara/gatsby-theme-mercadolibre-store/
+```
+Then replicate the same folder/file structure from the theme that you want to shadow.
+
+Remember to restart the server for this to take effect.
+
 ## Theming
 
 Most components come with a [Theme UI variant](https://theme-ui.com/guides/variants) setup you can use to style them, or you can style any component that the [Theme Spec](https://theme-ui.com/theme-spec) provides.
@@ -117,7 +127,7 @@ Most components come with a [Theme UI variant](https://theme-ui.com/guides/varia
 
 #### Override the settings
 
-Create the file `settings/theme.js` in the site's `src` folder and add the following:
+Create the file `settings/theme.js` in the site's `src/@florantara/gatsby-theme-mercadolibre-store/` folder and add the following:
 
 ```javascript
 import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme";
@@ -127,6 +137,8 @@ export const theme = {
   // Your overrides here
 };
 ```
+> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
+
 
 #### Typography
 
@@ -150,15 +162,19 @@ We provide a set of settings for hiding/showing things, like the price on the pr
 Following the same directions as with _Theming_, shadow this file: `settings/siteConfig.js`.
 
 ```javascript
-import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme";
+import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/site";
 
 export const siteConfig = {
   ...baseSiteConfig
   // Your overrides here
 };
 ```
+> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
+
 
 [Settings reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/blob/master/theme/src/settings/site.ts)
+
+
 
 ## Static Pages
 

@@ -7,15 +7,15 @@ export const siteHeader = {
     width: "auto", // Set a specific width if you have a logo image
     height: "auto",
     paddingY: "10px",
-    img: {
-      maxWidth: "100%",
-    },
     a: {
       display: "block",
       textDecoration: "none",
       color: "black",
       "&:hover": {
         textDecoration: "none",
+      },
+      img: {
+        maxWidth: "100%",
       },
     },
   },
