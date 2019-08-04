@@ -27,7 +27,7 @@ import { getPrice } from "../utils/getPrice"
 import { FiExternalLink, FiChevronLeft, FiShare } from "react-icons/fi"
 
 // Site config
-import siteConfig from "../settings/site"
+import { siteConfig } from "../settings/site"
 
 interface IProps {
   data: IProductQuery

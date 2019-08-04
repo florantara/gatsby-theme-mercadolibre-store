@@ -119,4 +119,3 @@ export const siteConfig: ISiteConfig = {
     showAttributes: true,
   },
 }
-export default siteConfig

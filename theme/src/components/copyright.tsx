@@ -9,7 +9,7 @@ import { jsx } from "theme-ui"
 import { useMeta } from "../data/siteMeta"
 
 // Site config
-import siteConfig from "../settings/site"
+import { siteConfig } from "../settings/site"
 
 const Copyright: FunctionComponent = () => {
   // Data

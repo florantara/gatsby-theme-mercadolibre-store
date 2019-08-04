@@ -9,7 +9,7 @@ import { Header as ThemeHeader, jsx } from "theme-ui"
 import { Link } from "gatsby"
 
 // Site config
-import siteConfig from "../settings/site"
+import { siteConfig } from "../settings/site"
 
 // Data
 import { useMeta } from "../data/siteMeta"

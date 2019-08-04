@@ -9,7 +9,7 @@ import { Footer as ThemeFooter, jsx } from "theme-ui"
 import { Link } from "gatsby"
 
 // Site config
-import siteConfig, { TSocialLinkType } from "../settings/site"
+import { siteConfig, TSocialLinkType } from "../settings/site"
 
 // Data
 import { useMeta } from "../data/siteMeta"

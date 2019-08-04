@@ -21,7 +21,7 @@ const Image = styled.span`
 import { getPrice } from "../utils/getPrice"
 
 // Site config
-import siteConfig from "../settings/site"
+import { siteConfig } from "../settings/site"
 
 // Gatsby
 import { Link } from "gatsby"

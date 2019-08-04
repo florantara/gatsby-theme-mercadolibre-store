@@ -21,7 +21,7 @@ import Pagination from "../components/pagination"
 import { ProductsGrid } from "../styledComponents/productsGrid"
 
 // Site config
-import siteConfig from "../settings/site"
+import { siteConfig } from "../settings/site"
 
 // Data
 import { useAllProducts } from "../data/allProducts"
