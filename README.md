@@ -70,7 +70,7 @@ Open `gatsby-config.js` and configure it under `plugins`.
 }
 ```
 
-<a href="https://github.com/florantara/gatsby-source-mercadolibre/#readme" target="_blank">About your MercadoLibre ID and user ></a>
+<a href="https://github.com/florantara/gatsby-source-mercadolibre#config" target="_blank">About your MercadoLibre ID and user ></a>
 
 ### Paths and Pagination
 
