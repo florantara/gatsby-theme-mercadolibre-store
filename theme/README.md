@@ -10,6 +10,11 @@ https://gatsby-theme-mercadolibre-store.netlify.com
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
 
+<img alt="Demo" src="https://thepracticaldev.s3.amazonaws.com/i/vqmtfn3usif727nsprd1.jpg" width="500">
+<br>
+
+### Product Detail
+<img alt="Demo" src="https://thepracticaldev.s3.amazonaws.com/i/xorujlvbib8othbgca1u.jpg" width="500">
 
 ## Features
 
