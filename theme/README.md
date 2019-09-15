@@ -3,12 +3,12 @@
   <img src="https://app.codeship.com/projects/d724b210-9925-0137-7a7c-5a4d2a496d42/status?branch=master" alt="TS checks and linting status">
 </p>
 
+Gatsby Theme that imports products from Mercado Libre and shows them on a grid format + detail screen.
+
+
 ## Demo
 
-A fresh install, with some default data:
 https://gatsby-theme-mercadolibre-store.netlify.com
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
 
 <img alt="Demo" src="https://thepracticaldev.s3.amazonaws.com/i/vqmtfn3usif727nsprd1.jpg" width="500">
 <br>
@@ -68,21 +68,25 @@ You can customize the slug for the products listing and the detail page paths.
 The default pagination format is a "load more" button, but you can setup "paginated" pagination.
 
 ```javascript
-options: {
-  productDetail: {
-    slug: "producto",
-  },
-  productsListing: {
-    slug: "productos",
-    enablePagination: true, // defaults to false
-    productsListingPerPage: 3
-  },
+{
+  resolve: "@florantara/gatsby-theme-mercadolibre-store",
+  options: {
+    productDetail: {
+      slug: "producto",
+    },
+    productsListing: {
+      slug: "productos",
+      enablePagination: true, // defaults to false
+      productsListingPerPage: 3
+    },
+  }
 }
 ```
 
 ### Title and Logo
 
-Use the `siteMetadata` for the `title`. We'll use this for SEO, and if there isn't a logo image.
+In `gatsby-config.js`, use the `siteMetadata` for the `title`. 
+We'll use this for SEO, and if there isn't a logo image.
 
 ```javascript
 siteMetadata: {
@@ -101,12 +105,13 @@ options: {
   }
 }
 ```
+Note: we currently don't support using a local image, but this image will be imported into the site. It won't be referenced using the link provided.
 
 ## Shadow theme files
 To override any file from the theme, create **in your site's `src/` folder**:
 
 ```
-src/@florantara/gatsby-theme-mercadolibre-store/
+@florantara/gatsby-theme-mercadolibre-store
 ```
 Then replicate the same folder/file structure from the theme that you want to shadow.
 
@@ -118,19 +123,32 @@ Most components come with a [Theme UI variant](https://theme-ui.com/guides/varia
 
 [Variants reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/tree/master/theme/src/settings/variants)
 
-#### Override the settings
+#### Customize the theme
 
-Create the file `settings/theme.js` in the site's `src/@florantara/gatsby-theme-mercadolibre-store/` folder and add the following:
+1. Install [lodash](https://lodash.com)
+```bash
+npm i --save lodash
+```
+
+2. Create a folder in your site to store the shadow files:
+`yourProjectRoot/src/@florantara/gatsby-theme-mercadolibre-store`
+
+
+
+3. Inside that folder create a `settings` folder, and then ` theme.js` file inside of it:
 
 ```javascript
-import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme";
+// In settings/theme.js
+import merge from "lodash/merge"
+import { theme as base } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
 
-export const theme = {
-  ...baseTheme
+export const theme = merge(base, {
+  ...base
   // Your overrides here
-};
+})
+
 ```
-> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
+Follow the [Theme UI](https://theme-ui.com/theming) documentation to know what properties to use.
 
 
 #### Typography
@@ -152,30 +170,33 @@ fonts: {
 
 We provide a set of settings for hiding/showing things, like the price on the products and the category, and also other site-wide configurations.
 
+
+[Settings reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/blob/master/theme/src/settings/site.ts)
+
+
 Following the same directions as with _Theming_, shadow this file: `settings/siteConfig.js`.
 
 ```javascript
-import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/site";
+// In settings/site.js
+import merge from "lodash/merge"
+import { siteConfig as base } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/site"
 
-export const siteConfig = {
-  ...baseSiteConfig
+export const siteConfig = merge(base, {
+  ...base
   // Your overrides here
-};
+})
+
 ```
-> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
-
-
-[Settings reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/blob/master/theme/src/settings/site.ts)
 
 
 
 ## Static Pages
 
-The homepage gets created automatically for you with some quick start documentation. Edit it from `static-pages/index.mdx`.
+The homepage gets created automatically for you with some quick start documentation. Edit it from `yourProjectRoot/static-pages/index.mdx`.
 
 Use [MDX](https://mdxjs.com/) to create pages. Place them in `src/static-pages`.
 
-At the top of the page, setup the `path` in the `frontmatter` data:
+At the top of the page, setup the `path` and `title` like so:
 
 ```md
 ---
@@ -192,8 +213,44 @@ There's a few reusable components we are calling "fragments" available:
 - Paper
 - FeaturedProducts
 - Layout (width `compact` and `tiny` options)
+- Container (wraps everything with a maxWidth container)
 
 ...more to come!
+
+## Custom Fragments
+You can create as many fragments as you want to use on the MDX pages. These can be buttons, banners, ads, etc.
+
+1. In the shadow folder (read the "Override the settings" if you don't have one yet), create a `fragments` folder, and then an `index.js` file inside, with:
+
+```javascript
+// In fragments/index.js
+import merge from "lodash/merge"
+import { fragments as base } from "@florantara/gatsby-theme-mercadolibre-store/src/fragments/index"
+
+export const fragments = merge(base, {
+  ...base
+  // Your new fragments here
+})
+
+```
+
+Example:
+
+```javascript
+// In fragments/index.js
+import merge from "lodash/merge"
+import { fragments as base } from "@florantara/gatsby-theme-mercadolibre-store/src/fragments/index"
+
+import { MyCustomButton } from "../components/MyCustomButton";
+
+// Custom fragments
+export const fragments = merge(base, {
+  ...base
+  MyCustomButton
+})
+
+```
+
 
 ## Performance
 

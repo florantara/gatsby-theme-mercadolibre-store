@@ -11,7 +11,7 @@ import { MDXProvider } from "@mdx-js/react"
 // Theme UI
 /** @jsx jsx */
 // @ts-ignore : jsx unused
-import { jsx, Layout } from "theme-ui"
+import { jsx, Layout, Container } from "theme-ui"
 
 // Components
 import Site from "../components/site"
@@ -48,7 +48,7 @@ const StaticPage: FunctionComponent<IProps> = ({ data }) => {
           content={`${frontmatter.title} - ${site.siteMetadata.meta}`}
         />
       </Helmet>
-      <MDXProvider components={{ ...fragments, Layout }}>
+      <MDXProvider components={{ ...fragments, Layout, Container }}>
         <MDXRenderer>{body}</MDXRenderer>
       </MDXProvider>
     </Site>
