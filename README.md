@@ -3,29 +3,28 @@
   <img src="https://app.codeship.com/projects/d724b210-9925-0137-7a7c-5a4d2a496d42/status?branch=master" alt="TS checks and linting status">
 </p>
 
-## Demo
-
-A fresh install, with some default data:
-https://gatsby-theme-mercadolibre-store.netlify.com
-
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/florantara/gatsby-theme-mercadolibre-store)
 
+## Description
 
-## Motivation
+Gatsby Theme that sources from a [Mercado Libre](https://mercadolibre.com) bringing the products listed by a specific user and showing them in a products listing page with a product page per each product.
 
-A few months ago I started chatting with some friends from Argentina (where I'm from) about how they are handling their e-commerces. Being a web developer means you get to help your friends with their digital challenges, and I love that.
+It also offers MDX to create pages with specific slugs and add them to the menu from the site's configuration.
 
-I realized how resourceful entrepreneurs are nowadays: they use social media a lot and publish the products they are selling wherever they can.
+## Demo
 
-MercadoLibre is a large platform that is conquering the online sales of Latin America, where the average user still doesn't fully trust buying things online from sites they don't know. They provide a wide range of tools for them to sell their stuff, and they excell at that.
+https://gatsby-theme-mercadolibre-store.netlify.com
 
-Going back to my friends, they all share one thing: they managed to create a website showcasing their products by using either TiendaNube (similar to Shopify), a WordPress site, or some other creative way, but we all know the pitfalls those have... starting with costs and performance, followed by: they have to do the process of managing stock twice.
 
-So I wanted to create a Gatsby site for them ("them" are "several different entrepreneurs with their own stores") that can use the data they already uploaded into ML.
+### Products Listing
 
-I started creating a Gatsby [source plugin](https://github.com/florantara/gatsby-source-mercadolibre).
+<img alt="Demo" src="https://thepracticaldev.s3.amazonaws.com/i/vqmtfn3usif727nsprd1.jpg" width="500">
+<br>
 
-When I finished it, I was about to start coding each website, but Gatsby Themes launched, YAY!!! So instead of creating multiple sites, I created a theme.
+### Product Detail
+<img alt="Demo" src="https://thepracticaldev.s3.amazonaws.com/i/xorujlvbib8othbgca1u.jpg" width="500">
+
+
 
 ## Install and setup
 
