@@ -115,7 +115,7 @@ To override any file from the theme, create **in your site's `src/` folder**:
 ```
 Then replicate the same folder/file structure from the theme that you want to shadow.
 
-Remember to restart the server for this to take effect.
+🔌 Remember to restart the server for this to take effect.
 
 ## Theming
 
@@ -143,7 +143,6 @@ import merge from "lodash/merge"
 import { theme as base } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
 
 export const theme = merge(base, {
-  ...base
   // Your overrides here
 })
 
@@ -182,7 +181,6 @@ import merge from "lodash/merge"
 import { siteConfig as base } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/site"
 
 export const siteConfig = merge(base, {
-  ...base
   // Your overrides here
 })
 
@@ -198,14 +196,17 @@ Use [MDX](https://mdxjs.com/) to create pages. Place them in `src/static-pages`.
 
 At the top of the page, setup the `path` and `title` like so:
 
+You can also specify a css `class` that will be added to the page container if you need to add styles to your new page, using the `bodyClass` field.
+
 ```md
 ---
 path: "/nueva-pagina"
 title: "Nueva Página"
+bodyClass: "pageHomepage"
 ---
 ```
 
-## Fragments for MDX pages
+## Fragments for Pages
 
 There's a few reusable components we are calling "fragments" available:
 
@@ -228,7 +229,6 @@ import merge from "lodash/merge"
 import { fragments as base } from "@florantara/gatsby-theme-mercadolibre-store/src/fragments/index"
 
 export const fragments = merge(base, {
-  ...base
   // Your new fragments here
 })
 
@@ -245,7 +245,6 @@ import { MyCustomButton } from "../components/MyCustomButton";
 
 // Custom fragments
 export const fragments = merge(base, {
-  ...base
   MyCustomButton
 })
 
@@ -285,7 +284,7 @@ yarn
 yarn workspace demo develop
 ```
 
-I've added a `clean` command that runs `gatsby clean`
+Use the `clean` command to run `gatsby clean`. This will delete the `public` and `.cache` folders.
 
 ```bash
 yarn workspace demo clean

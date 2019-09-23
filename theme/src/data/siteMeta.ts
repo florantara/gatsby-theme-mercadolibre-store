@@ -8,6 +8,7 @@ export const useMeta = () => {
           siteMetadata {
             title
             meta
+            language
           }
         }
       }

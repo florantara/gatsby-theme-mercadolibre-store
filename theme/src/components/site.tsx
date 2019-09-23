@@ -15,6 +15,9 @@ import Header from "./header"
 import Footer from "./footer"
 import Copyright from "./copyright"
 
+// Data
+import { useMeta } from "../data/siteMeta"
+
 const globalStyles = css`
   body {
     margin: 0;
@@ -27,21 +30,27 @@ const globalStyles = css`
 
 interface IProps {
   children: any
+  bodyClass?: string // defined in frontmatter for MDX pages in order to provide page-specific styling
 }
-const Site: FunctionComponent<IProps> = ({ children }) => {
+const Site: FunctionComponent<IProps> = ({ children, bodyClass }) => {
+  // Data
+  const { site } = useMeta()
+
   return (
     <div>
       <Helmet>
-        <html lang="en" />
+        <html lang={site.siteMetadata.language || "en"} />
       </Helmet>
       <Global styles={globalStyles} />
       <ThemeProvider theme={theme}>
-        <div sx={{ variant: "siteContainer" }}>
-          <Header />
-          <Main children={children} />
-          <div className="siteContainerBottom">
-            <Footer />
-            <Copyright />
+        <div className={bodyClass}>
+          <div sx={{ variant: "siteContainer" }}>
+            <Header />
+            <Main children={children} />
+            <div className="siteContainerBottom">
+              <Footer />
+              <Copyright />
+            </div>
           </div>
         </div>
       </ThemeProvider>

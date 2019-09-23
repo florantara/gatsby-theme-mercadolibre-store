@@ -15,6 +15,7 @@ import Img from "gatsby-image"
 
 // Components
 import Site from "../components/site"
+import { ButtonBuy } from "../components/buttonBuy"
 
 // Gallery
 import ImageGallery from "react-image-gallery"
@@ -24,7 +25,7 @@ import "react-image-gallery/styles/css/image-gallery.css"
 import { getPrice } from "../utils/getPrice"
 
 // Icons
-import { FiExternalLink, FiChevronLeft, FiShare } from "react-icons/fi"
+import { FiChevronLeft, FiShare } from "react-icons/fi"
 
 // Site config
 import { siteConfig } from "../settings/site"
@@ -149,18 +150,10 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }) => {
                 </span>
               )}
 
-              {productDetail.showMercadoLibreButton && (
-                <a
-                  className="buyButton"
-                  sx={{ variant: "buttons.primary" }}
-                  href={product.permalink}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Comprar en <strong>MercadoLibre</strong>
-                  <FiExternalLink />
-                </a>
-              )}
+              <ButtonBuy
+                permalink={product.permalink}
+                showMercadoLibreButton={productDetail.showMercadoLibreButton}
+              />
 
               {productDetail.showAttributes &&
                 product.attributes &&

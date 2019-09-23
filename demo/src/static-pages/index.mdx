@@ -1,6 +1,7 @@
 ---
 path: "/"
 title: "Tienda Online"
+bodyClass: "pageHomepage"
 ---
 
 <Hero name="homepage">
@@ -73,11 +74,11 @@ options: {
 To override any file from the theme, create **in your site's `src/` folder**:
 
 ```
-src/@florantara/gatsby-theme-mercadolibre-store/
+@florantara/gatsby-theme-mercadolibre-store
 ```
 Then replicate the same folder/file structure from the theme that you want to shadow.
 
-Remember to restart the server for this to take effect.
+🔌 Remember to restart the server for this to take effect.
 
 ## Theming
 
@@ -85,19 +86,30 @@ Most components come with a [Theme UI variant](https://theme-ui.com/guides/varia
 
 [Variants reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/tree/master/theme/src/settings/variants)
 
-#### Override the settings
+#### Customize the theme
 
-Create the file `settings/theme.js` in the site's `src/@florantara/gatsby-theme-mercadolibre-store/` folder and add the following:
-```javascript
-import { theme as baseTheme } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme";
-
-export const theme = {
-  ...baseTheme
-  // Your overrides here
-};
+1. Install [lodash](https://lodash.com)
+```bash
+npm i --save lodash
 ```
-> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
 
+2. Create a folder in your site to store the shadow files:
+`yourProjectRoot/src/@florantara/gatsby-theme-mercadolibre-store`
+
+
+3. Inside that folder create a `settings` folder, and then ` theme.js` file inside of it:
+
+```javascript
+// In settings/theme.js
+import merge from "lodash/merge"
+import { theme as base } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/theme"
+
+export const theme = merge(base, {
+  // Your overrides here
+})
+
+```
+Follow the [Theme UI](https://theme-ui.com/theming) documentation to know what properties to use.
 
 #### Typography
 
@@ -114,47 +126,92 @@ fonts: {
 }
 ```
 
+
 ## Site settings
 
 We provide a set of settings for hiding/showing things, like the price on the products and the category, and also other site-wide configurations.
-
-Following the same directions as with _Theming_, shadow this file: `settings/siteConfig.js`.
-
-```javascript
-import { siteConfig as baseSiteConfig } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/site";
-
-export const siteConfig = {
-  ...baseSiteConfig
-  // Your overrides here
-};
-```
-> Note: You'll need to spread every nested object you want to override. We recommend using [lodash's merge method](https://lodash.com/docs/4.17.14#merge) to mitigate this.
 
 
 [Settings reference >](https://github.com/florantara/gatsby-theme-mercadolibre-store/blob/master/theme/src/settings/site.ts)
 
 
+Following the same directions as with _Theming_, shadow this file: `settings/siteConfig.js`.
 
-## Homepage and Pages
-Use [MDX](https://mdxjs.com/) to create pages, and edit this page from `src/static-pages`.
-At the top of the page, setup the `path` in the `frontmatter` data:
+```javascript
+// In settings/site.js
+import merge from "lodash/merge"
+import { siteConfig as base } from "@florantara/gatsby-theme-mercadolibre-store/src/settings/site"
 
+export const siteConfig = merge(base, {
+  // Your overrides here
+})
+
+```
+
+## Pages
+
+### Homepage
+This page is created automatically. From here, you can edit it from `src/static-pages/index.mdx`.
+
+### Create and edit
+Use markdown + jsx ([MDX](https://mdxjs.com/)) to create more pages. 
+
+At the top of the page, setup the `path` and `title` like so:
+
+You can also specify a css `class` that will be added to the page container if you need to add styles to your new page, using the `bodyClass` field.
+
+For example: `src/static-pages/nueva-pagina.mdx`
 ```md
 ---
 path: "/nueva-pagina"
 title: "Nueva Página"
+bodyClass: "pageHomepage"
 ---
 ```
 
-## Fragments for MDX
+## Fragments for Pages
 There's a few available reusable components we are calling "fragments" available: 
 
 - Hero (the orange at the top ^)
 - Paper (this one!)
 - FeaturedProducts
 - Layout (width `compact` and `tiny` options) 
+- Container (wraps everything with a maxWidth container)
 
 (more to come!)
+
+## Custom Fragments
+You can create as many fragments as you want to use on the MDX pages. These can be buttons, banners, ads, etc.
+
+1. In the shadow folder (read the "Override the settings" if you don't have one yet), create a `fragments` folder, and then an `index.js` file inside, with:
+
+```javascript
+// In fragments/index.js
+import merge from "lodash/merge"
+import { fragments as base } from "@florantara/gatsby-theme-mercadolibre-store/src/fragments/index"
+
+export const fragments = merge(base, {
+  // Your new fragments here
+})
+
+```
+
+Example:
+
+```javascript
+// In fragments/index.js
+import merge from "lodash/merge"
+import { fragments as base } from "@florantara/gatsby-theme-mercadolibre-store/src/fragments/index"
+
+import { MyCustomButton } from "../components/MyCustomButton";
+
+// Custom fragments
+export const fragments = merge(base, {
+  MyCustomButton
+})
+
+```
+
 
 #### This is how the FeaturedProducts looks like:
 

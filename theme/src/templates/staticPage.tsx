@@ -29,6 +29,7 @@ interface IProps {
       body: any
       frontmatter: {
         title: string
+        bodyClass?: string
       }
     }
   }
@@ -38,9 +39,9 @@ const StaticPage: FunctionComponent<IProps> = ({ data }) => {
   const { mdx } = data
   const { frontmatter, body } = mdx
   const { site } = useMeta()
-
+  console.log("frontmatter", frontmatter)
   return (
-    <Site>
+    <Site bodyClass={frontmatter.bodyClass}>
       <Helmet>
         <title>{`${frontmatter.title} - ${site.siteMetadata.title}`}</title>
         <meta
@@ -61,6 +62,7 @@ export const staticPageQuery = graphql`
       body
       frontmatter {
         title
+        bodyClass
       }
     }
   }

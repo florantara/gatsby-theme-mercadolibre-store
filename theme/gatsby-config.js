@@ -4,6 +4,7 @@ module.exports = ({ mercadoLibre = {} }) => ({
   siteMetadata: {
     title: "Mercado Libre Store",
     meta: "Tienda Online",
+    language: "en",
   },
 
   plugins: [

@@ -64,7 +64,7 @@ export const theme = {
       fontSize: [12, 13, 13],
       fontWeight: "light",
       color: "brand_01.3",
-      backgroundColor: "gray.5",
+      backgroundColor: "rebeccapurple",
       ul: {
         margin: 0,
         padding: "1em 0 0 0",
@@ -145,6 +145,7 @@ export const theme = {
    * Variants (aka: components styling)
    *
    */
+
   siteContainer,
   siteHeader,
   siteFooter,
