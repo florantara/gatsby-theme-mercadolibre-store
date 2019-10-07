@@ -54,7 +54,7 @@ const Header: FunctionComponent = () => {
               {mainNavigationItems.map((m, i) => (
                 <li key={i}>
                   {m.link.indexOf("http") !== -1 ? (
-                    <a href={m.link} rel="noopener noreferrer">
+                    <a href={m.link} rel="noopener noreferrer" target="_blank">
                       {m.label}
                     </a>
                   ) : (
