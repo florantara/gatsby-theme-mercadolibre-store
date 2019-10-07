@@ -74,7 +74,13 @@ const Footer: FunctionComponent = () => {
                   <ul>
                     {footer.internalLinks.map((l, i) => (
                       <li key={i}>
-                        <Link to={l.link}>{l.label}</Link>
+                        {l.link.indexOf("http") !== -1 ? (
+                          <a href={l.link} rel="noopener noreferrer">
+                            {l.label}
+                          </a>
+                        ) : (
+                          <Link to={l.link}>{l.label}</Link>
+                        )}
                       </li>
                     ))}
                   </ul>

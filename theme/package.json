@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/florantara/gatsby-theme-mercadolibre-store.git"
   },
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -38,7 +38,6 @@
     "@mdx-js/react": "^1.0.27",
     "@types/react-helmet": "^5.0.8",
     "@types/react-image-gallery": "^0.8.4",
-    "@types/styled-components": "^4.1.18",
     "gatsby-image": "^2.2.6",
     "gatsby-paginate": "^1.1.0",
     "gatsby-plugin-mdx": "^1.0.17",

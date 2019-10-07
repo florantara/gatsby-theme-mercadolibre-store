@@ -53,7 +53,13 @@ const Header: FunctionComponent = () => {
             <ul>
               {mainNavigationItems.map((m, i) => (
                 <li key={i}>
-                  <Link to={m.link}>{m.label}</Link>
+                  {m.link.indexOf("http") !== -1 ? (
+                    <a href={m.link} rel="noopener noreferrer">
+                      {m.label}
+                    </a>
+                  ) : (
+                    <Link to={m.link}>{m.label}</Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -84,8 +90,8 @@ const Header: FunctionComponent = () => {
                   }${secondaryNavigation.contactUrl}`}
                   rel="noopener noreferrer"
                   target="_blank"
-                  title="Contactar al vendedor"
-                  aria-label="Contactar al vendedor"
+                  title="Contactar"
+                  aria-label="Contactar"
                 >
                   <FiMail />
                 </a>
