@@ -153,6 +153,7 @@ const ProductDetail: FunctionComponent<IProps> = ({ data }) => {
               <ButtonBuy
                 permalink={product.permalink}
                 showMercadoLibreButton={productDetail.showMercadoLibreButton}
+                product={product}
               />
 
               {productDetail.showAttributes &&
