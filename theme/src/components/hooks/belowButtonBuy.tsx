@@ -1,3 +1,5 @@
+//@ts-ignore
 import React from "react"
 
-export const Hook_BelowButtonBuy = () => null
+//@ts-ignore
+export const Hook_BelowButtonBuy = ({ product }) => null

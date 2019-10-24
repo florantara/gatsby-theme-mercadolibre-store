@@ -11,14 +11,17 @@ import { jsx } from "theme-ui"
 interface IProps {
   permalink: string
   showMercadoLibreButton: boolean
+  product: IProduct
 }
 
 // Component Hooks
 import { Hook_BelowButtonBuy } from "./hooks/belowButtonBuy"
+import { IProduct } from "../types/product"
 
 export const ButtonBuy: FunctionComponent<IProps> = ({
   permalink,
   showMercadoLibreButton,
+  product,
 }) => {
   return (
     <div>
@@ -34,7 +37,7 @@ export const ButtonBuy: FunctionComponent<IProps> = ({
           <FiExternalLink />
         </a>
       )}
-      <Hook_BelowButtonBuy />
+      <Hook_BelowButtonBuy product={product} />
     </div>
   )
 }
