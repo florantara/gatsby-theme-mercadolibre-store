@@ -15,7 +15,7 @@ module.exports = {
         // Default initial data:
         mercadoLibre: {
           siteID: "MLA",
-          user: "PICUADRADO_DESIGN",
+          user: "PI+CUADRADO",
         },
       },
     },
