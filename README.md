@@ -1,5 +1,5 @@
 <p>
-  <img src="http://img.shields.io/npm/v/@florantara/gatsby-theme-mercadolibre-store.svg?style=flat" alt="npm version">
+  <img src="https://img.shields.io/npm/v/@florantara/gatsby-theme-mercadolibre-store.svg?style=flat" alt="npm version">
   <img src="https://app.codeship.com/projects/d724b210-9925-0137-7a7c-5a4d2a496d42/status?branch=master" alt="TS checks and linting status">
 </p>
 
