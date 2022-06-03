@@ -40,7 +40,7 @@
     "@types/react-image-gallery": "^0.8.4",
     "gatsby-image": "^2.2.6",
     "gatsby-paginate": "^1.1.0",
-    "gatsby-plugin-mdx": "^1.0.17",
+    "gatsby-plugin-mdx": "^2.14.1",
     "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
     "gatsby-plugin-sharp": "^2.2.7",
     "gatsby-plugin-typescript": "^2.1.2",
