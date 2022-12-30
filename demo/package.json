@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@florantara/gatsby-theme-mercadolibre-store": "*",
-    "gatsby": "^2.13.1",
+    "gatsby": "^2.32.13",
     "lodash": "^4.17.19",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
